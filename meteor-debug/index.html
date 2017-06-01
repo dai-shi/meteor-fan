@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>meteor debugでnode-inspectorを使ったデバッグ - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor-debug/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="meteor debugでnode-inspectorを使ったデバッグ - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的にはnode-inspectorを使っているようです。 見つけ方Meteorでは、すべてはmeteorコマンドから始まります。ヘルプもmeteorからというわけ" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor-debug/" />
+    <meta property="article:published_time" content="2015-08-02T13:00:17.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="Tips" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="meteor debugでnode-inspectorを使ったデバッグ - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的にはnode-inspectorを使っているようです。 見つけ方Meteorでは、すべてはmeteorコマンドから始まります。ヘルプもmeteorからというわけ" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor-debug//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "meteor debugでnode-inspectorを使ったデバッグ - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor-debug/",
+    "datePublished": "2015-08-02T13:00:17.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "Tips",
+    "description": "「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的にはnode-inspectorを使っているようです。 見つけ方Meteorでは、すべてはmeteorコマンドから始まります。ヘルプもmeteorからというわけ"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">meteor debugでnode-inspectorを使ったデバッグ</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-08-02">02 August 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tips/">Tips</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的には<a href="https://github.com/node-inspector/node-inspector" target="_blank" rel="external">node-inspector</a>を使っているようです。</p>
+<h2 id="見つけ方"><a href="#見つけ方" class="headerlink" title="見つけ方"></a>見つけ方</h2><p>Meteorでは、すべては<code>meteor</code>コマンドから始まります。ヘルプも<code>meteor</code>からというわけで、</p>
+<pre><code>meteor help
+</code></pre><p>とします。debugというのがありました。</p>
+<pre><code>meteor help debug
+</code></pre><p>とすると使い方が表示されます。</p>
+<h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><p><code>meteor help debug</code>で表示される説明を少し見てみます。</p>
+<p>The server process will be suspended just before the first statement of server code that would normally execute.</p>
+<p>サーバプロセスは通常最初に実行される文の直前で止まります。</p>
+<p>In order to continue execution of server code, use either the web-based Node Inspector or the command-line debugger (further instructions will be printed in the console).</p>
+<p>実行を再開するにはWebベースのNode Inspectorかコマンドラインのデバッガーを使います(詳細説明は、コンソールに表示されます)。</p>
+<p>The easiest way to set breakpoints is to use the <code>debugger</code> keyword: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger</a></p>
+<p>最も簡単な方法は<code>debugger</code>キーワードを使ってブレークポイントを設定することです。</p>
+<h2 id="ドキュメント"><a href="#ドキュメント" class="headerlink" title="ドキュメント"></a>ドキュメント</h2><p>以下のMeteorのドキュメントにもmeteor debugの説明があります。</p>
+<p><a href="http://docs.meteor.com/#/full/meteordebug" target="_blank" rel="external">http://docs.meteor.com/#/full/meteordebug</a></p>
+<p>しかし<code>meteor help debug</code>とあまり情報が変わりません。</p>
+<h2 id="使ってみる"><a href="#使ってみる" class="headerlink" title="使ってみる"></a>使ってみる</h2><pre><code>meteor debug
+</code></pre><p>で起動すると、Node Inspectorの接続先が表示されます。これにChromeでアクセスすると、コードの初期の部分で止まっています。そこからステップ実行すると、Meteorの内部に入って大変なので、アプリのコードに<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">debuggerキーワード</a>を入力する方がよいです。</p>
+<p>というような説明が、コードが止まったところのコメントに書いてあるので、とても親切です。</p>
+<p>Node InspectorはChromeのDeveloper Toolsを使ったことがあれば、同じような操作なのでそれほど苦労することはなさそうです。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>Meteorのプラットフォームのデバッグや勉強のためには使えそうですが、アプリのデバッグには低レベルすぎるかと思いました。そもそもMeteorのコーディングは、手続き的ではなく、宣言的であるため、あまり実行順を意識しないと思います。今後、Meteorならではのデバッグツールが登場するとよいですね。既に出てきているかもしれません。</p>
+<p>node-inspectorは単なるインタフェースなので、内部で使われているのは<a href="https://nodejs.org/api/debugger.html" target="_blank" rel="external">Node.js Debugger</a>と言うのがおそらく正しいですね。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor-debug/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=meteor%20debug%E3%81%A7node-inspector%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%87%E3%83%90%E3%83%83%E3%82%B0&amp;url=http://meteor-fan.axlight.com/meteor-debug/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor-debug/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor-debug/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor-debug/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">
+        <section class="post">
+            <h2>Meteorで初めてのコレクション更新と削除</h2>
+            <p>本記事は公式チュートリアル5の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 (←今ここ)  チェックボックスと削除ボタンを&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/first-meteor-forms/">
+        <section class="post">
+            <h2>Meteorで初めてのフォームとイベント処理</h2>
+            <p>本記事は公式チュートリアル4の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのSpacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 (←今ここ)  フォームを追加するsample-app.htmlの中のheaderの中にフォームを追加しま&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

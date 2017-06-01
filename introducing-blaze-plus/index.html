@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/introducing-blaze-plus/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteor 1.2からReactとAngularのサポートが追加されましたが、標準のビューであるBlazeも根強い人気を持っています。機能面で見るとReactやAngularに見劣りする点もあるかもしれませんが、Blazeにも期待したいです。 Meteorを以前から使っている人はBlazeを好む開発者が多いようで、いろいろな拡張が提案され" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/introducing-blaze-plus/" />
+    <meta property="article:published_time" content="2015-11-01T12:40:42.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="パッケージ" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteor 1.2からReactとAngularのサポートが追加されましたが、標準のビューであるBlazeも根強い人気を持っています。機能面で見るとReactやAngularに見劣りする点もあるかもしれませんが、Blazeにも期待したいです。 Meteorを以前から使っている人はBlazeを好む開発者が多いようで、いろいろな拡張が提案され" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/introducing-blaze-plus//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/introducing-blaze-plus/",
+    "datePublished": "2015-11-01T12:40:42.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "パッケージ",
+    "description": "Meteor 1.2からReactとAngularのサポートが追加されましたが、標準のビューであるBlazeも根強い人気を持っています。機能面で見るとReactやAngularに見劣りする点もあるかもしれませんが、Blazeにも期待したいです。 Meteorを以前から使っている人はBlazeを好む開発者が多いようで、いろいろな拡張が提案され"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-11-01">01 November 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/packages/">パッケージ</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteor 1.2からReactとAngularのサポートが追加されましたが、標準のビューであるBlazeも根強い人気を持っています。機能面で見るとReactやAngularに見劣りする点もあるかもしれませんが、Blazeにも期待したいです。</p>
+<p>Meteorを以前から使っている人はBlazeを好む開発者が多いようで、いろいろな拡張が提案されています。その中の一つであるBlaze Plusを紹介します。原文は<a href="https://kadira.io/blog/meteor/introducing-blaze-plus-the-next-generation-of-blaze" target="_blank" rel="external">こちら</a>です。</p>
+<h2 id="次世代BlazeテンプレートのBlaze-Plusを紹介"><a href="#次世代BlazeテンプレートのBlaze-Plusを紹介" class="headerlink" title="次世代BlazeテンプレートのBlaze Plusを紹介"></a>次世代BlazeテンプレートのBlaze Plusを紹介</h2><p>BlazeはMeteorの中でもすばらしい機能の一つです。最近ではReactなど他のフレームワークの支持が増え始めていますが、これはBlazeの終了を意味するのでしょうか。</p>
+<p>その質問には答えられませんが、Blazeでアプリを書いたことのある多くの開発者は今後もBlazeを使い続けようとしています。一つのいい例は、<a href="http://www.telescopeapp.org/" target="_blank" rel="external">Telescope</a>です。</p>
+<h3 id="しかしBlazeはアップグレードする必要があります"><a href="#しかしBlazeはアップグレードする必要があります" class="headerlink" title="しかしBlazeはアップグレードする必要があります"></a>しかしBlazeはアップグレードする必要があります</h3><p>最近のアプリ開発方法は変わりました。Reactはデータをトップダウンに流すテクニックを導入し、Fluxアーキテクチャを導入しました。</p>
+<p>KadiraではReactのデータ受け渡し概念を気に入っています。一つのルートコンポーネントがデータの計算して必要な子コンポーネントに渡すことができるのです。</p>
+<p>どのようなデータ変更があっても、データセット全体が最下層のコンポーネントまで渡され、それぞれが必要に応じて更新します。</p>
+<p>このやり方はReactでは効率的です。なぜなら、バーチャルDOMがあるからです。しかし、Blazeではこれは非効率的です。なぜなら、データが変更されるたびにテンプレート全体が再描画されるからです。</p>
+<h3 id="Blaze-Plusの導入"><a href="#Blaze-Plusの導入" class="headerlink" title="Blaze Plusの導入"></a>Blaze Plusの導入</h3><p>この問題を解決するために、<a href="https://github.com/kadirahq/blaze-plus/" target="_blank" rel="external">Blaze Plus</a>を作りました。Blaze Plusは、Blazeにpropsとステート管理機能を追加します。これにより、データを下層のコンポーネントまでテンプレートの再描画なしで渡すことができます。</p>
+<p>Blaze Plusのコードを見てみましょう。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="comment">&lt;!-- This is our templates --&gt;</span></span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="template-variable">&#123;&#123;&gt; App&#125;&#125;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"App"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- This is the starting point of the Magic functionality --&gt;</span></div><div class="line">  <span class="template-variable">&#123;&#123;&gt;$ <span class="builtin-name">template</span>="Welcome" user=prop$getUser&#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"Welcome"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>Hello, <span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="template-variable">&#123;&#123;getName&#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This is place we get data in the top of the tree</span></div><div class="line">Template.App.helpers(&#123;</div><div class="line">  getUser: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = Session.get(<span class="string">"name"</span>) || <span class="string">"Arunoda"</span>;</div><div class="line">    <span class="keyword">return</span> &#123;name: name&#125;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// This is how we get data</span></div><div class="line">Template.Welcome.helpers(&#123;</div><div class="line">  getName: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// getting props via Template instance</span></div><div class="line">    <span class="keyword">var</span> props = Template.instance().props;</div><div class="line">    <span class="keyword">return</span> props.user().name;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>このビデオでBlaze Plusの力を見てください。</p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/Gaz6S75Qo6c" frameborder="0" allowfullscreen></iframe>
+
+<p>より詳細は<a href="https://github.com/kadirahq/blaze-plus/" target="_blank" rel="external">GitHub</a>を見てください。</p>
+<h3 id="これは使えますか"><a href="#これは使えますか" class="headerlink" title="これは使えますか"></a>これは使えますか</h3><p>このコンセプトを気に入っています。同じテクニックを<a href="https://github.com/meteorhacks/flow-components/" target="_blank" rel="external">Flow Components</a>でしばらく使ってきました。そこで、これを他のすべてのBlazeアプリで使えるようにしたくなりました。いつかコアにマージされるとよいです。</p>
+<p>つまり、今からこれを使うことができます。もし問題があったら、喜んで直すでしょう。</p>
+<h3 id="なぜこれを作ったのですか"><a href="#なぜこれを作ったのですか" class="headerlink" title="なぜこれを作ったのですか"></a>なぜこれを作ったのですか</h3><p>このようなものを発表する予定はありませんでした。しかし、<a href="https://github.com/kadirahq/flow-router" target="_blank" rel="external">Flow Router</a>にはデータコンテキストが欠けているという問題があったのです。データコンテキストはパフォーマンスのために外しました。</p>
+<p>しかし、データをルーターレベルで設定するのはいい考えです。subscribeしたデータの話ではなく、ルートパラメータのようなデータの話です。</p>
+<p>Blaze Plusではこの問題が解決できるのです。</p>
+<p>FlowRouterとBlazeLayoutを使ったアプリでBlaze Plusがどう使えるかのサンプルが<a href="https://github.com/flow-examples/flow-router-blaze-plus-example" target="_blank" rel="external">ここ</a>にあるので見てください。</p>
+<p>Blaze Plusを自分のアプリで使ってみて感想をシェアしてください。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>BlazeはMeteorの哲学が詰まっていてとても心地がよいものです。ぜひ拡張を続けて、入門以外でもちゃんと使えると思われるようになってほしいものです。現状はコアチームはあまり力を入れていないようなので、コミュニティでがんばりましょう。</p>
+<p>今回の記事では取り上げませんでしたが、<a href="http://frozeman.de/blog/2015/10/meteor-blaze-templates-done-right/" target="_blank" rel="external">template-var</a>というアイデアもあるようです。好みの問題かもしれませんが、個人的にはこっちのが気になります。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/introducing-blaze-plus/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%81%AE%E6%A8%99%E6%BA%96%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E6%8B%A1%E5%BC%B5Blaze%20Plus%E3%81%AE%E7%B4%B9%E4%BB%8B&amp;url=http://meteor-fan.axlight.com/introducing-blaze-plus/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/introducing-blaze-plus/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/introducing-blaze-plus/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/introducing-blaze-plus/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor-scoped-reactivity/">
+        <section class="post">
+            <h2>Meteorのリアクティブ変数をスコープに閉じる方法</h2>
+            <p>はじめにMeteorの公式チュートリアルにはSessionを使ってUIの表示を切り替える説明があります。これはとても分かりやすいのですが、リアクティブ変数としてSessionしか教えられないため、目的外のシーンで使ってしまう場合があります。 Sessionはユーザ毎のUIの状態を保持するためのもので、利用シーンとしてはこれまでCookieに&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/comparing-meteor-and-mean/">
+        <section class="post">
+            <h2>MeteorとMEANの比較</h2>
+            <p>Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文はこちら 導入まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

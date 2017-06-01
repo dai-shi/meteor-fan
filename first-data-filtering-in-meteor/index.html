@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteorで初めてのデータフィルタリング制御 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/first-data-filtering-in-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteorで初めてのデータフィルタリング制御 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="本記事は公式チュートリアル11の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/first-data-filtering-in-meteor/" />
+    <meta property="article:published_time" content="2015-08-14T03:49:56.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteorで初めてのデータフィルタリング制御 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="本記事は公式チュートリアル11の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/first-data-filtering-in-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteorで初めてのデータフィルタリング制御 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/first-data-filtering-in-meteor/",
+    "datePublished": "2015-08-14T03:49:56.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "本記事は公式チュートリアル11の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteorで初めてのデータフィルタリング制御</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-08-14">14 August 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本記事は<a href="https://www.meteor.com/tutorials/blaze/publish-and-subscribe" target="_blank" rel="external">公式チュートリアル11</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次"><a href="#チュートリアルの目次" class="headerlink" title="チュートリアルの目次"></a>チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/">Meteorで初めてのユーザアカウント</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-permission-control-in-meteor/">Meteorで初めてのパーミッション制御</a></li>
+<li>Meteorで初めてのデータフィルタリング制御</li>
+</ol>
+<p>今回でこの一連のチュートリアルは終わりです。</p>
+<h2 id="データの読み込み権限について"><a href="#データの読み込み権限について" class="headerlink" title="データの読み込み権限について"></a>データの読み込み権限について</h2><p><a href="http://meteor-fan.axlight.com/first-permission-control-in-meteor/">前回のチュートリアル</a>では、パーミッションの制御について学びました。明確には述べませんでしたが、このパーミッション制御は書き込み権限に関するものでした。読み込みに関しては、Meteor.methodsでは制御できません。</p>
+<p>Meteorにおけるデータの読み込みは、<a href="https://www.meteor.com/ddp" target="_blank" rel="external">DDP</a>によって裏で行なわれます。そのため、書き込みの時のようにAPI呼び出しにおける制御とは別の方法で制御します。それがpublishとsubscribeです。publishはサーバがから送信するデータを指示し、subscribeでそれを受信します。通常の(例えばRESTでよく行う)Request-Response型の通信形態とは逆向きになります。</p>
+<p>前回までのチュートリアルではpublish/subscribeは気にする必要がありませんでしたが、それはautopublishというパッケージのおかげです。autopublishはコレクションのすべてをサーバがpublishして、クライアントがそれをsubscribeするという仕組みです。</p>
+<p>autopublishはサーバのデータをすべてクライアントにコピーするものです。もしアプリの設計としてデータサイズが小規模でデータがすべて見えて構わない場合は、autopublishを使い続けることでも問題ないはずです。</p>
+<p>一方、データの一部のみを見せたい場合は、autopublishではなく独自のpublishを自前で定義することになります。</p>
+<h2 id="PublishとSubscribeで制御する"><a href="#PublishとSubscribeで制御する" class="headerlink" title="PublishとSubscribeで制御する"></a>PublishとSubscribeで制御する</h2><p>初めにautopublishを外します。</p>
+<pre><code>meteor remove autopublish
+</code></pre><p>で削除されます。この状態でアプリの動作を確認すると、今まで見えていたデータが見えなくなっているはずです。</p>
+<p>まず、autopublishと同等の状態に復元します。publishはsample-app.jsの<code>Tasks = new Mongo.Collection(&quot;tasks&quot;);</code>の直後に次のコードを追加してください。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Meteor.isServer) &#123;</div><div class="line">  Meteor.publish(<span class="string">"tasks"</span>, <span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">Tasks.find()</span>;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>これは”tasks”と言う名前でTasksコレクションのすべてを送信するものです。次にこれを受け取るsubscribeをsample-app.jsの<code>if (Meteor.isClient) {}</code>のブロック内の先頭に追加してください。</p>
+<pre><code>Meteor.subscribe(&quot;tasks&quot;);
+</code></pre><p>これで”tasks”でpublishされたコレクションを受け取ります。この2つの修正でautopublishを外す前の状態と同等になったはずですので、動作を確認しましょう。</p>
+<p>修正したコードは<a href="https://github.com/meteor/simple-todos/blob/b292ba8028b19999a63e84d48fb2ca15d1e30110/simple-todos.js" target="_blank" rel="external">こちら</a>と同じ(コメント除く)になっているはずです。</p>
+<h2 id="プライベートタスクを実装する"><a href="#プライベートタスクを実装する" class="headerlink" title="プライベートタスクを実装する"></a>プライベートタスクを実装する</h2><p>publishでデータのフィルタリングを制御する例として、プライベートタスクを実装します。プライベートタスクは、タスクの所有者のみが見ることのできるタスクで、privateプロパティで識別するようにします。</p>
+<p>最初にプライベートタスクにするかどうかの切替ボタンを作ります。sample-app.htmlのtaskテンプレートのcheckboxの直後に次のコードを追加します。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> isOwner&#125;&#125;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"toggle-private"</span>&gt;</span></div><div class="line">    <span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> private&#125;&#125;</span><span class="xml"></span></div><div class="line">      Private</div><div class="line">    <span class="template-variable">&#123;&#123;<span class="builtin-name">else</span>&#125;&#125;</span><span class="xml"></span></div><div class="line">      Public</div><div class="line">    <span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p><code>isOwner</code>はこれから作るヘルパーです。トグルボタンでプライベートタスクと今まで通りのパブリックタスクを切り替えるようにしています。</p>
+<p>プライベートタスクの場合は見ためも変えるようにしてみましょう。sample-app.htmlのtaskテンプレート内の1行目を次のように変更します。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> checked&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">checked</span></span></span><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="string"> </span></span></span><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> private&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">private</span></span></span><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>次に、sample-app.jsを修正します。まず、<code>isOwner</code>ヘルパーを<code>Template.task.events({})</code>のブロックの前に下記のように追加します。ブロックの外です。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Template</span><span class="selector-class">.task</span><span class="selector-class">.helpers</span>(&#123;</div><div class="line">  <span class="attribute">isOwner</span>: function () &#123;</div><div class="line">    return this.owner === Meteor.<span class="built_in">userId</span>();</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>さらに、トグルボタンのイベント処理を<code>Template.task.events.({})</code>のブロック内の最後に追加します(追加前の最後のアイテムにカンマ”,”をつけて区切ることを忘れずに)。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"click .toggle-private"</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  Meteor.call(<span class="string">"setPrivate"</span>, <span class="keyword">this</span>._id, ! <span class="keyword">this</span>.private);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>この<code>setPrivate</code>はMeteor.methods({})のブロック内の最後に追加します(追加前の最後のアイテムにカンマ”,”をつけて区切ることを忘れずに)。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setPrivate: <span class="function"><span class="keyword">function</span> <span class="params">(taskId, setToPrivate)</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> task = Tasks.findOne(taskId);</div><div class="line">  <span class="keyword">if</span> (task.owner !== Meteor.userId()) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">"not-authorized"</span>);</div><div class="line">  &#125;</div><div class="line">  Tasks.update(taskId, &#123; $<span class="keyword">set</span>: &#123; <span class="keyword">private</span>: setToPrivate &#125; &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>setPrivate</code>でデータを変更できるのはそのデータの所有者のみにしたいため、まずそれをチェックしてから<code>Tasks.update()</code>を呼び出しています。<code>findOne</code>はデータを一つだけ取得する<a href="http://docs.meteor.com/#/full/findone" target="_blank" rel="external">関数</a>です。</p>
+<h3 id="privateプロパティでpublishを変更"><a href="#privateプロパティでpublishを変更" class="headerlink" title="privateプロパティでpublishを変更"></a>privateプロパティでpublishを変更</h3><p>さて、privateプロパティができたので、プライベートタスクは他人からは見えないようにしましょう。そのためにはsample-app.jsを次のように修正します。</p>
+<p>先ほど入力した</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Meteor.publish(<span class="string">"tasks"</span>, <span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">Tasks.find()</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>を、次のコードで置き換えます。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Meteor.publish(<span class="string">"tasks"</span>, <span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">Tasks.find(&#123;</span></div><div class="line">    $<span class="keyword">or</span>: [</div><div class="line">      &#123; <span class="keyword">private</span>: &#123;$ne: <span class="literal">true</span>&#125; &#125;,</div><div class="line">      &#123; owner: this.userId &#125;</div><div class="line">    ]</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>MongoDBのクエリが多少複雑ですが、privateが設定されていないか、所有者が自分であるタスクをコレクションから抽出するようになっています。</p>
+<h3 id="Meteor-methodsの定義の変更"><a href="#Meteor-methodsの定義の変更" class="headerlink" title="Meteor.methodsの定義の変更"></a>Meteor.methodsの定義の変更</h3><p>プライベートタスクができたので、タスク完了の変更やタスクの削除についてもプライベートタスクについては所有者しか操作できないように制限しましょう。</p>
+<p>sample-app.jsのMeteor.methodの<code>deleteTask</code>と<code>setChecked</code>を次のように修正してください。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">deleteTask: <span class="function"><span class="keyword">function</span> <span class="params">(taskId)</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> task = Tasks.findOne(taskId);</div><div class="line">  <span class="keyword">if</span> (task.<span class="keyword">private</span> &amp;&amp; task.owner !== Meteor.userId()) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">"not-authorized"</span>);</div><div class="line">  &#125;</div><div class="line">  Tasks.remove(taskId);</div><div class="line">&#125;,</div><div class="line">setChecked: <span class="function"><span class="keyword">function</span> <span class="params">(taskId, setChecked)</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> task = Tasks.findOne(taskId);</div><div class="line">  <span class="keyword">if</span> (task.<span class="keyword">private</span> &amp;&amp; task.owner !== Meteor.userId()) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">"not-authorized"</span>);</div><div class="line">  &#125;</div><div class="line">  Tasks.update(taskId, &#123; $set: &#123; checked: setChecked&#125; &#125;);</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>このコードではパブリックタスクは誰でも削除できるようになっています。パブリックタスクでも所有者のみが削除できるようにする修正も可能です。</p>
+<h3 id="最終的なコード"><a href="#最終的なコード" class="headerlink" title="最終的なコード"></a>最終的なコード</h3><p>すべての修正を終えたファイルは、<a href="https://github.com/meteor/simple-todos/blob/d1a2cc5eefa0b830f5f952cb6a94a496d7bb13aa/simple-todos.html" target="_blank" rel="external">このHTMLファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/b5957208d50a064a4a22780c7ef76259691b2c7a/simple-todos.js" target="_blank" rel="external">このJavaScriptファイル</a>になっているはずです。コメントや空行の有無などの違いはあってもコードとしては同一になっているかを確認するとよいでしょう。</p>
+<h2 id="動作を確認する"><a href="#動作を確認する" class="headerlink" title="動作を確認する"></a>動作を確認する</h2><p>複数のユーザを作成して、それぞれプライベートタスクを作成し、互いに他人のプライベートタスクを見ることができないことを確認しましょう。</p>
+<p>また仮にすべてのタスクをpublishするようにした場合でも、他人のプライベートタスクを完了したり削除したりできないことを確認しましょう。このとき、Optimistic UIにより一瞬変更が有効になったように見えて、すぐに戻されるという現象を確認できるかもしれません。</p>
+<h2 id="確認項目"><a href="#確認項目" class="headerlink" title="確認項目"></a>確認項目</h2><ul>
+<li>deleteTaskメソッドが正しく例外処理すること</li>
+<li>setCheckedメソッドが正しく例外処理すること</li>
+</ul>
+<h2 id="まとめと今後の学習法"><a href="#まとめと今後の学習法" class="headerlink" title="まとめと今後の学習法"></a>まとめと今後の学習法</h2><p>以上で、一連のチュートリアルをすべて終了しました。これでMeteorの基本的な仕組みを学習できました。</p>
+<p>Meteorには他にも例題が用意されています。</p>
+<pre><code>meteor create --example todos
+meteor create --example localmarket
+</code></pre><p>とすることでプロジェクトディレクトリが作成されますので、これらのコードを読んでみることも参考になるでしょう。</p>
+<p>Meteorのマニュアルは<a href="http://docs.meteor.com/" target="_blank" rel="external">http://docs.meteor.com/</a>にあります。<a href="http://docs.meteor.com/#/basic/" target="_blank" rel="external">Basic Docs</a>は分量が少なめなので素直に上から読んでみるとよいかもしれません(英語ですが)。<a href="http://docs.meteor.com/#/full/" target="_blank" rel="external">Full API</a>は何か調べたいときに参照するのがよいのではないでしょうか。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/first-data-filtering-in-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%81%A7%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E5%88%B6%E5%BE%A1&amp;url=http://meteor-fan.axlight.com/first-data-filtering-in-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/first-data-filtering-in-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/first-data-filtering-in-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/first-data-filtering-in-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">
+        <section class="post">
+            <h2>Meteor日本語チュートリアル (Blaze)</h2>
+            <p>Meteorの日本語版のチュートリアルです。 公式のチュートリアルを元にしていますが、単なる翻訳ではなく多少アレンジしています。 コンテンツ 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/introducing-meteorpad/">
+        <section class="post">
+            <h2>Meteorをブラウザ環境のみで試すMeteorPad</h2>
+            <p>MeteorPadについて紹介します。過去のMeteorの公式ブログでも紹介されていました。 MeteorPadとは通常、Meteorアプリを開発する場合はローカルマシンに開発環境をインストールして、エディタでコードを書いて、ブラウザで動作を確認します。MeteorPadはこれをブラウザ環境で実行できるようにしたものです。 MeteorPa&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

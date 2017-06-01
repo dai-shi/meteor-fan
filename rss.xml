@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Meteor Fan (日本語情報)</title>
+    <link>http://meteor-fan.axlight.com/</link>
+    <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト</description>
+    <pubDate>Thu, 01 Jun 2017 12:08:20 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Meteor 1.5のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor15-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor15-announcement/</guid>
+      <pubDate>Thu, 01 Jun 2017 10:23:26 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;待望のMeteor 1.5がリリースされました。&lt;/p&gt;
+&lt;p&gt;公式ブログでのアナウンスは&lt;a href=&quot;https://blog.meteor.com/announcing-meteor-1-5-b82be66571bb&quot; target=&quot;_blank&quot; rel=&quot;ex
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>待望のMeteor 1.5がリリースされました。</p>
+<p>公式ブログでのアナウンスは<a href="https://blog.meteor.com/announcing-meteor-1-5-b82be66571bb" target="_blank" rel="external">こちら</a>です。</p>
+<p>このブログでは、Meteor 1.5のすべての変更は紹介されず、<br>今回の目玉機能であるDynamic importが歴史とともに紹介されています。</p>
+<p>Dynamic importはMeteorで大規模アプリを作る時に課題であった<br>バンドルサイズの大きさを解消します。</p>
+<p>Dynamic importはwebpack v2でも実装されていますが、<br>Meteor 1.5の実装方法はそれと異なります。<br>Meteorでは、WebSocketを使ってモジュールを個別にダウンロードし、<br>ハッシュを用いてキャッシュします。</p>
+<p>また、bundle-visualizerというツールも用意され、<br>何が原因でサイズが大きくなっているかを視覚的に知ることができます。</p>
+<p>その他の変更は<a href="https://github.com/meteor/meteor/blob/master/History.md#v15-2017-05-30" target="_blank" rel="external">リリースノート</a>を参照してください。</p>
+<p>Meteor 1.6も進められているようで今後の発展が楽しみです。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor15-announcement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.5で採用されるdynamic import</title>
+      <link>http://meteor-fan.axlight.com/dynamic-imports-in-meteor15/</link>
+      <guid>http://meteor-fan.axlight.com/dynamic-imports-in-meteor15/</guid>
+      <pubDate>Thu, 09 Mar 2017 22:44:20 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;先日のMeteor NightのBenのトークでdynamic importが紹介されました。&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j-WcyAjVceM&quot; fram
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>先日のMeteor NightのBenのトークでdynamic importが紹介されました。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j-WcyAjVceM" frameborder="0" allowfullscreen></iframe>
+
+<p>その後、Sashkoが<a href="https://blog.meteor.com/dynamic-imports-in-meteor-1-5-c6130419c3cd" target="_blank" rel="external">ブログ</a>でも詳しく紹介しています。</p>
+<p>Meteorはこれまでもimport文をif文の中に書ける変な拡張をしていたのですが、<br>このdynamic importはTC39で提案されているものでES.nextに入ることが期待されます。</p>
+<p><a href="https://github.com/tc39/proposal-dynamic-import" target="_blank" rel="external">https://github.com/tc39/proposal-dynamic-import</a></p>
+<p>dynamic importはwebpack v2でも採用されています。</p>
+<p><a href="https://webpack.js.org/guides/code-splitting-import/" target="_blank" rel="external">https://webpack.js.org/guides/code-splitting-import/</a></p>
+<p>dynamic importを使うと一部のコードを必要になってから読み込むことができるため、バンドルサイズを小さくできアプリの起動が速くなることが期待されます。</p>
+<p>最初のページで使わないライブラリはdynamic importにするとよいでしょう。<br>例えば、ブログで紹介されている利用シーンは次の4つです。</p>
+<ol>
+<li>あまり使わないページ、例えば管理者ページ</li>
+<li>重いUIツール、例えばPDFビューア</li>
+<li>大きなライブラリ、例えばmoment.js</li>
+<li>国際化のための言語パック</li>
+</ol>
+<p>これまでMeteorでは初期読み込みに時間が掛かる問題がありましたが、これで解消されると期待できます。<br>Meteor 1.5はbackward compatibleなので既存のプロジェクトで順次dynamic importを利用していくように変更できそうです。</p>
+<p>興味ある方はベータ版を試してみましょう。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/dynamic-imports-in-meteor15/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.4.3のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor143-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor143-announcement/</guid>
+      <pubDate>Thu, 09 Mar 2017 02:18:22 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;しばらく前になりますが、Meteor 1.4.3がアナウンスされました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.meteor.com/announcing-meteor-1-4-3-d1e9ab511d06&quot; target=&quot;_blank&quot; rel=&quot;e
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>しばらく前になりますが、Meteor 1.4.3がアナウンスされました。</p>
+<p><a href="https://blog.meteor.com/announcing-meteor-1-4-3-d1e9ab511d06" target="_blank" rel="external">Announcing Meteor 1.4.3</a></p>
+<p>アップデートするには次のようにしてください。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">meteor</span> <span class="selector-tag">update</span> <span class="selector-tag">--release</span> 1<span class="selector-class">.4</span><span class="selector-class">.3</span><span class="selector-class">.1</span></div></pre></td></tr></table></figure>
+<h2 id="変更点"><a href="#変更点" class="headerlink" title="変更点"></a>変更点</h2><p>1.4系は開発者向け改善を進めてられています。</p>
+<p>1.4.3の主な変更点は下記です。</p>
+<ul>
+<li>コアパッケージのバージョン制限の変更: パッチバージョンのみ変更可に</li>
+<li>npm v4へのアップグレード</li>
+<li>Blazeからアカウント機能の切り離し: accounts-facebookがfacebook-oauthとBlaze依存のfacebook-config-uiに分離</li>
+</ul>
+<p>詳細は<a href="https://github.com/meteor/meteor/blob/devel/History.md#v143-2017-02-13" target="_blank" rel="external">リリースノート</a>をご確認ください。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor143-announcement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>MeteorでGraphQLを使う方法</title>
+      <link>http://meteor-fan.axlight.com/use-graphql-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/use-graphql-in-meteor/</guid>
+      <pubDate>Thu, 12 Jan 2017 09:32:40 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteorを開発しているMDGは最近Apolloに力を入れています。&lt;br&gt;ApolloはGraphQLのライブラリでMeteorの機能の次世代版とも言えます。&lt;br&gt;MeteorとApolloの完全な連携はまだですがすでに使えます。&lt;br&gt;Meteor blogでもその
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteorを開発しているMDGは最近Apolloに力を入れています。<br>ApolloはGraphQLのライブラリでMeteorの機能の次世代版とも言えます。<br>MeteorとApolloの完全な連携はまだですがすでに使えます。<br>Meteor blogでもその方法が紹介されています。</p>
+<p><a href="https://blog.meteor.com/use-graphql-to-load-from-any-database-in-your-meteor-app-ab458925da78" target="_blank" rel="external">Use GraphQL to load from any database in your Meteor app</a></p>
+<p>要点のみ列挙すると:</p>
+<ul>
+<li>Meteorは成熟していて、使えるプラットフォームである</li>
+<li>一方、最大の欠点であるMongoDB依存はApolloによって解消できる</li>
+<li>MeteorとApolloを合わせて使う最大のメリットはアカウント機能である</li>
+<li>Meteorのapollo packageを使うとGraphiQLまで認証してくれる</li>
+<li>また、resolverにもMeteorのuserIdが渡る</li>
+<li>apollo packageを使わなくても連携はできる</li>
+<li>Meteorのpub/subとGraphQLは共存できる</li>
+<li>Meteor methodの代わりにGraphQL mutationが使える(逆はできない</li>
+<li>ApolloでMongoDB以外も使えるが、アカウント連携ができないのでうまみは少ない</li>
+<li>GraphQL subscriptionはまだ発展途上のようである</li>
+</ul>
+<p>より正確・詳細な情報は原文を参照してください。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/use-graphql-in-meteor/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.4.2のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor142-annoucement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor142-annoucement/</guid>
+      <pubDate>Thu, 27 Oct 2016 01:20:10 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.4.2がリリースされました。詳しくは、&lt;a href=&quot;http://info.meteor.com/blog/announcing-meteor-1.4.2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公式ブログでのアナウンス&lt;/a&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.4.2がリリースされました。詳しくは、<a href="http://info.meteor.com/blog/announcing-meteor-1.4.2" target="_blank" rel="external">公式ブログでのアナウンス</a>をご覧ください。</p>
+<p>下記では、いくつかの要点を紹介します。</p>
+<h2 id="リビルド時のパフォーマンス向上"><a href="#リビルド時のパフォーマンス向上" class="headerlink" title="リビルド時のパフォーマンス向上"></a>リビルド時のパフォーマンス向上</h2><p>特に大きいアプリでのリビルドの時間が短縮されるそうです。例えば、Galaxy自身のアプリとしては、これまで8〜10秒以上かかっていたリビルド時間が2秒未満になったそうです。より詳細な議論は<a href="https://github.com/meteor/meteor/pull/7668" target="_blank" rel="external">こちら</a>を参照ください。</p>
+<h2 id="パッケージの分離"><a href="#パッケージの分離" class="headerlink" title="パッケージの分離"></a>パッケージの分離</h2><p>具体的には、Blazeがコアから外れ、独立してメンテナンスされることなりました。コミュニティも成長していて、<a href="http://blazejs.org/" target="_blank" rel="external">新しいドキュメントサイト</a>や<a href="http://slack.blazejs.org/" target="_blank" rel="external">Slackグループ</a>ができています。</p>
+<h2 id="次のステップ"><a href="#次のステップ" class="headerlink" title="次のステップ"></a>次のステップ</h2><p><a href="https://github.com/meteor/meteor/blob/devel/Contributing.md#project-overview" target="_blank" rel="external">コントリビュートガイド</a>を整備中とのことです。また、1.4.2である程度達成されたので、次のパフォーマンス向上を目指す段階に来ました。Node 6にも注目しているとのことです。</p>
+<h2 id="さらにその先"><a href="#さらにその先" class="headerlink" title="さらにその先"></a>さらにその先</h2><p>GraphQLデータレイヤであるApolloプロジェクトが進んでいます。GalaxyやOpticsというツールがMeteorとApolloで開発されています。現状でも使えます。詳しくは<a href="http://dev.apollodata.com/core/meteor.html" target="_blank" rel="external">ドキュメント</a>を参照しましょう。また、<a href="http://graphqlsummit.com/" target="_blank" rel="external">GraphQL Summit</a>や<a href="http://www.meetup.com/Meteor-SFBay/events/235111928/" target="_blank" rel="external">次のMeteor Night</a>でも発信されるようです。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor142-annoucement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.4.1のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor141-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor141-announcement/</guid>
+      <pubDate>Sat, 20 Aug 2016 12:08:49 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.4.1がリリースされました。詳細は&lt;a href=&quot;http://info.meteor.com/blog/announcing-meteor-1.4.1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公式ブログ&lt;/a&gt;を参照してください
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.4.1がリリースされました。詳細は<a href="http://info.meteor.com/blog/announcing-meteor-1.4.1" target="_blank" rel="external">公式ブログ</a>を参照してください。Meteor 1.4.1には多くの段階的な改良が含まれています。</p>
+<h2 id="アップグレード方法"><a href="#アップグレード方法" class="headerlink" title="アップグレード方法"></a>アップグレード方法</h2><p>Meteorアプリを1.4.1にアップデートするには、単にアプリケーションディレクトリで、<code>meteor update</code>を実行するだけです。</p>
+<p>もしアップデートする前にMeteor 1.4.1を試したければ、<code>meteor create --release 1.4.1 my-test-app</code>で新しいアプリを作ることができます。</p>
+<p>1.4.1ではパッケージダウンロードが高速化されますが、1.4.1にアップデートする際は1.4で動くため高速化は効きません。もし時間がかかりすぎるようであれば、1.4.1をクリーンインストールする手もあります。</p>
+<h2 id="Node-4-5-0"><a href="#Node-4-5-0" class="headerlink" title="Node 4.5.0"></a>Node 4.5.0</h2><p>8/16にリリースされた最新のLTSバージョンに更新されました。Node 4.4.7との差分はそれほど特記するものはないため、アプリケーションを修正する必要はありません。ただ、Meteor 4.5.0では問題が解消されるいるため、Meteor 1.4.0.1でリリースしました。</p>
+<h2 id="より速いパッケージダウンロード"><a href="#より速いパッケージダウンロード" class="headerlink" title="より速いパッケージダウンロード"></a>より速いパッケージダウンロード</h2><p>パッケージダウンロードを不安定なネットワークでもより安定させるため、Meteor 1.4.1では格段にダウンロード時間を短縮しました。これはJSベースのtarの実装からネイティブのtarを使う(windowsでは7z.exe)ように変更したことによります。</p>
+<p>プログレス表示も改良され、「ダウンロード中」「展開中」「ロード中」が区別されるようになりました。</p>
+<h2 id="meteor-publish-for-archとのお別れ"><a href="#meteor-publish-for-archとのお別れ" class="headerlink" title="meteor publish-for-archとのお別れ"></a>meteor publish-for-archとのお別れ</h2><p>パッケージを公開するときに、バイナリモジュールを含む場合でも、<code>meteor publish-for-arch</code>を実行する必要がなくなりました。バイナリモジュールは開発者の責任でパッケージをインストールする際にコンパイルされるようになります。この方式が使えるのは1.3.3以降です。</p>
+<p>より詳しくは<a href="https://forums.meteor.com/t/whats-happening-to-meteor-publish-for-arch-in-meteor-1-4-1/28209" target="_blank" rel="external">こちらの記事</a>を参照してください。</p>
+<h2 id="その他の変更"><a href="#その他の変更" class="headerlink" title="その他の変更"></a>その他の変更</h2><p>詳細は<a href="https://github.com/meteor/meteor/blob/release-1.4.1/History.md#v141" target="_blank" rel="external">こちら</a>を参照してください。</p>
+<h2 id="次は何か"><a href="#次は何か" class="headerlink" title="次は何か"></a>次は何か</h2><p>Meteor 1.4.2はリビルドパフォーマンスに注力する予定です。またバグ修正も行います。近々ベータテストに入る予定です。詳細は<a href="https://github.com/meteor/meteor/pull/7668" target="_blank" rel="external">こちら</a>。</p>
+<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>1.4.*は地味ですが、実用性を上げる改修が多くて、使う人からすると助かるかと思います。そこまで手がまわるほど余裕がでてきたということですね。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor141-announcement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.4のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor14-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor14-announcement/</guid>
+      <pubDate>Tue, 26 Jul 2016 07:45:33 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;3月のMeteor 1.3のリリースから4か月も経っていませんが、Meteor 1.4がリリースされました。&lt;a href=&quot;http://info.meteor.com/blog/announcing-meteor-1.4&quot; target=&quot;_blank&quot; rel=&quot;ex
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>3月のMeteor 1.3のリリースから4か月も経っていませんが、Meteor 1.4がリリースされました。<a href="http://info.meteor.com/blog/announcing-meteor-1.4" target="_blank" rel="external">公式ブログ</a>の記事を紹介します。</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Meteor 1.4ではNodeとMongoDBのメジャーアップデートとより柔軟なパッケージリリースの仕組みが入りました。Meteor 1.4の狙いは長期間の安定性と、JavaScript全体のエコシステムへの継続的な追従と、コミュニティとのより密な連携です。</p>
+<p>主な変更点は、NodeをLTS版の4.4.7に上げたこと、MongoDBを最新の3.2.6に上げたことです。MongoDBのこのバージョンはパフォーマンスの高いWiredTigerストレージエンジンが入っています。また、Meteorのコアパッケージの固定方法を柔軟にしました。これにより、BlazeなどのコアパッケージのコミュニティメンテナがMeteor本体のリリーススケジュールとは関係なくアップデートをリリースすることができるようになります。</p>
+<p>アップデートは<code>meteor update</code>を実行するだけです。初めてインストールする方は、<a href="https://www.meteor.com/install" target="_blank" rel="external">Meteor install page</a>を参照してください。既存プロジェクトをアップデートする場合は、<a href="https://guide.meteor.com/1.4-migration.html" target="_blank" rel="external">Migrating to 1.4</a>も参照してください。</p>
+<h2 id="Node-4"><a href="#Node-4" class="headerlink" title="Node 4"></a>Node 4</h2><p>Nodeのバージョンは0.10.46から4.4.7に上がりました。Node 4シリーズは<a href="https://github.com/nodejs/LTS" target="_blank" rel="external">LTS</a>と呼ばれ、Node.js Foundationが2018年4月までメンテナンスすることを約束しているものです。これにともないMeteorのツールに手を加え、今後のNodeのバージョンアップも簡単に行えるようにしました。また、npmのエコシステムが十分になった時点でNode 6にアップデートする予定です。おそらく、Node 6がLTSとなる2016年10月頃になるでしょう。</p>
+<p>Node 4対応に関連して重要な変更は、Meteorのバイナリパッケージの扱いが変わったことです。以前のMeteorではパッケージは特定のNodeバージョンにハードコードされたnpmのバイナリパッケージが含まれていました。今回、Node 4に合わせて新しいバイナリフォーマットを用することはせず、バイナリビルドの作業をパッケージ作者からパッケージ利用者に移すことにしました。その結果、Meteor 1.4での開発では、バイナリパッケージを使う場合にコンパイラツールチェーンをインストールしなければならなくなりました。逆に、パッケージ開発の際はその必要がなくなりました。詳しくは、<a href="https://guide.meteor.com/1.4-migration.html" target="_blank" rel="external">1.4 migration guide</a>を参照してください。</p>
+<h2 id="Mongo-3-2"><a href="#Mongo-3-2" class="headerlink" title="Mongo 3.2"></a>Mongo 3.2</h2><p>MongoDBのバージョンは2.6.7から3.2.6に上がり、関連ドライバのバージョンも上がりました。新しく作成したアプリの開発用のデータベースはデフォルトでWiredTigerストレージエンジンを使います。しかし、古いMMAPv1エンジンで動くデータベースに接続することもできます。<code>Mongo.setConnectionOptions(options)</code>を呼び出すことでMongoドライバのオプション、例えばSSLの証明書の設定、を渡すことができます。</p>
+<p>このアップデートについてはMeteorコミュニティメンバの<a href="https://github.com/fabs" target="_blank" rel="external">@fabs</a>がほとんど開発してくれました。</p>
+<h2 id="コアパッケージバージョンの緩和"><a href="#コアパッケージバージョンの緩和" class="headerlink" title="コアパッケージバージョンの緩和"></a>コアパッケージバージョンの緩和</h2><p>Meteor 1.4では、開発者は新しいMeteorのリリースを待つことなく、アップデートされたコアパッケージを使うことができるようになります。1.4より前は、Meteorのリリースはアプリにインストールされるコアパッケージを厳密に固定していました。例えば、Meteor 1.3.2.4ではBlazeの2.1.7を使うように固定されていました。よって、Meteorの新しいリリースを待たない限り、新しいBlazeを試すことはできませんでした。Meteor 1.4はこの制限を緩和し、Meteorリリースで指定されたコアパッケージのバージョンより新しいものであればインストールできるようになりました。</p>
+<p>これにより、コアパッケージはMeteorのリリーススケジュールと切り離してコミュニティがリリースすることができます。さらに、Meteorパッケージを徐々にnpmに移行することがやりやすくなります。なぜなら、パッケージ作者が更新した際にいつでも利用者は新しいパッケージにアップデートできるからです。これはnpmのエコシステムのやり方で、Meteorもそれを採用することになりました。</p>
+<h2 id="今後の予定について"><a href="#今後の予定について" class="headerlink" title="今後の予定について"></a>今後の予定について</h2><p>既にMeteor 1.4.1への計画を立て始めています。パフォーマンス改善、例えば、パッケージ展開やリビルドの高速化に取り組んでいます。さらに、Meteor 1.4.1はNode 4の更新によりパフォーマンス改善がなされるでしょう。</p>
+<p>今年は、プラットフォームの多くの部分でコミュニティコントリビュータと一緒に活動してきています。コアパッケージバージョンの緩和により、とうとうMeteorの世界中のコミュニティがblazeやlivedataなどのコアパッケージをちゃんと更新できるようになりました。この機能にはわくわくしており、今後も積極的にコミュニティに係わっていくことを期待してください。</p>
+<p>Meteor 1.5に向けては、新しいGraphQLベースのデータスタックApolloの開発が進捗しています。これまで、重要機能の開発に集中し、MeteorでもMeteor以外のエコシステムでも使えるような技術を作ってきました。次は、既存のMeteorアプリとの密な連携に注力します。Meteor 1.5のその他の目標は、Apolloを用いたSQLサポートです。</p>
+<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>以前から言われてましたが、また新なたステップに向かうリリースがされました。NodeとMongoDBのアップデートはエコシステムとの連携を考えると必須ですね。逆に言うとそれ以外は特に目新しくなく、初めてMeteorを触る人には何ら違いはないかもしれません。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor14-announcement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3.3のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor133-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor133-announcement/</guid>
+      <pubDate>Thu, 16 Jun 2016 06:24:51 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteorの新しいバージョンである1.3.3がリリースされました。&lt;a href=&quot;http://info.meteor.com/blog/announcing-meteor-1.3.3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公式ブログ&lt;/a&gt;か
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteorの新しいバージョンである1.3.3がリリースされました。<a href="http://info.meteor.com/blog/announcing-meteor-1.3.3" target="_blank" rel="external">公式ブログ</a>から要点を紹介します。</p>
+<h2 id="コミュニティの貢献"><a href="#コミュニティの貢献" class="headerlink" title="コミュニティの貢献"></a>コミュニティの貢献</h2><p>Meteor 1.3.3の多くの機能はコミュニティメンバによって実装されました。例えば、2人のコミュニティメンバが開発したDDP Batchingは、多くのデータを一度に送る際のパフォーマンスを向上させるすばらしいものです。</p>
+<p>また、少なくないコミュニティメンバがGitHubのissueを調査し優先度を検討してくれ、フィードバックをうまく回してきています。</p>
+<h2 id="特筆すべき変更点"><a href="#特筆すべき変更点" class="headerlink" title="特筆すべき変更点"></a>特筆すべき変更点</h2><p>アップデートする人が知るべき変更を2つお知らせします。</p>
+<p>1つは、 <code>.babelrc</code> のサポートです。これにより、 <code>ecmascript</code> パッケージによって実行されるbabelの挙動を変えることができます。この機能もコミュニティメンバによって提案・実装されました。もしすでにプロジェクトフォルダに <code>.babelrc</code> がある場合は、これまで無視されていたものが有効になるので注意が必要です。</p>
+<p>もう1つは、ES2015の <code>import</code> 宣言の実装が改良されたことです。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Template &#125; <span class="keyword">from</span> <span class="string">'meteor/templating'</span>;</div><div class="line"><span class="keyword">import</span> &#123; ReactiveVar &#125; <span class="keyword">from</span> <span class="string">'meteor/reactive-var'</span>;</div><div class="line"></div><div class="line">Template.hello.onCreated(<span class="function"><span class="keyword">function</span> <span class="title">helloOnCreated</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.counter = <span class="keyword">new</span> ReactiveVar(<span class="number">0</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>このように書いた場合、コンパイルされたコードでも普通に <code>Template</code> と <code>ReactiveVar</code> が参照できるようになります。従来は、 <code>_templating.Template</code> や <code>_reactiveVar.ReactiveVar</code> でした。</p>
+<p>また、ブロック内で <code>import</code> を書けるようになりました。すなわち、</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Meteor.isServer) &#123;</div><div class="line">  import &#123; <span class="built_in">name</span>, <span class="built_in">version</span> &#125; <span class="keyword">from</span> <span class="string">"./server/config.json"</span>;</div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">name</span> + <span class="string">"@"</span> + <span class="built_in">version</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>と <code>require</code> を使わずに書くことができます。</p>
+<p>(編注: これはやってはいけないのではないだろうか)</p>
+<h2 id="次は何か"><a href="#次は何か" class="headerlink" title="次は何か"></a>次は何か</h2><p>Meteor 1.3.3はNode 0.10.xとMongo 2.6で提供される最後のバージョンです。Meteor 1.4では、Node 4.4.xとMongo 3.2になり、また、最新のMeteorパッケージを利用するのが容易になります。</p>
+<p>これらの変更は既に完了していて、レビュー段階に来ています。1.3.3がリリースされたため、1.4のベータリリースに取り掛かれるでしょう。1.4に直接移行する手もありましたが、中間ステップがあった方がスムーズと考え、1.3.3がリリースされました。</p>
+<h2 id="アップデート方法"><a href="#アップデート方法" class="headerlink" title="アップデート方法"></a>アップデート方法</h2><p>アップデート方法はいつも通り、</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">meteor update</span></div></pre></td></tr></table></figure>
+<p>です。Meteorアプリケーションディレクトリで実行するとそのアプリケーションのバージョンが上がります。</p>
+<p>ところで、Meteorのこれまでのリリースの一覧を見るには、</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">meteor show METEOR</span></div></pre></td></tr></table></figure>
+<p>とします。</p>
+<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>Nobutaka OSHIROさんがDDP Batchingの比較アプリを公開しているので、興味ある方はお試しください。</p>
+<p><a href="https://github.com/nobutakaoshiro/meteor-app-example-1-3-2-4" target="_blank" rel="external">https://github.com/nobutakaoshiro/meteor-app-example-1-3-2-4</a></p>
+<p><a href="https://github.com/nobutakaoshiro/meteor-app-example-1-3-3" target="_blank" rel="external">https://github.com/nobutakaoshiro/meteor-app-example-1-3-3</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor133-announcement/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>もうすぐ登場するMeteor 1.4</title>
+      <link>http://meteor-fan.axlight.com/coming-soon-meteor-14/</link>
+      <guid>http://meteor-fan.axlight.com/coming-soon-meteor-14/</guid>
+      <pubDate>Sun, 05 Jun 2016 03:16:09 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.3がリリースされたのがつい数か月前のことですが、もう1.4のリリースが間近かもしれないようです。&lt;a href=&quot;https://forums.meteor.com/t/coming-soon-meteor-1-4/23260&quot; target=&quot;_blan
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.3がリリースされたのがつい数か月前のことですが、もう1.4のリリースが間近かもしれないようです。<a href="https://forums.meteor.com/t/coming-soon-meteor-1-4/23260" target="_blank" rel="external">Meteorフォーラムの記事</a>によると、coming soonとのことです。記事のポイントを紹介します。</p>
+<h2 id="Node-4"><a href="#Node-4" class="headerlink" title="Node 4"></a>Node 4</h2><p>これまでMeteorはv0.10系で動いていました。世の中的にはv4がLTSで最新版はv6になっています。以前から要望があったようですが、1.3リリースが済んでやっと着手できるようになったということでしょう。Geoffも1.3の次にやると話していたので。今回はv4へのアップグレードですが、一度できればv6にも上げやすくなる(する)そうです。</p>
+<p>何が大変なのかというと、これまでのMeteorパッケージ(Atmosphere)はバイナリ配布があったため、バージョンを固定する必要があったようです。今後は、手元でコンパイルするようになるようです。npmと似たようになるのでしょうか。パッケージ開発者の悩みが増えるのかもしれません。</p>
+<h2 id="Mongo-3-2"><a href="#Mongo-3-2" class="headerlink" title="Mongo 3.2"></a>Mongo 3.2</h2><p>Mongoのバージョンも上がります。基本的には互換性があるとのことですが、開発用のローカルDBはリセットする必要があるかもしれないとのことです。</p>
+<h2 id="パッケージの依存バージョンを柔軟に"><a href="#パッケージの依存バージョンを柔軟に" class="headerlink" title="パッケージの依存バージョンを柔軟に"></a>パッケージの依存バージョンを柔軟に</h2><p>これまで、Meteor本体のバージョンと各コアパッケージのバージョンは完全にひもづいていましたが、これが柔軟になるようです。本体のバージョンを上げずにコアパッケージの一つだけを新しいバージョンを試すことができるようになるそうです。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>Meteor 1.3のリリースからプロフェッショナル指向になりましたが、それがますま進すんだ感じがします。柔軟でよいこともある一方、これまでの統一性がなくなり、開発者側の責任および手間が増える傾向になるのは残念でもあります。</p>
+<p>Meteor 1.5ではnpmに統合する計画のようです。今後のアップデート情報を待ちましょう。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/coming-soon-meteor-14/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteorでフルアプリテスト</title>
+      <link>http://meteor-fan.axlight.com/meteor-full-app-testing/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-full-app-testing/</guid>
+      <pubDate>Mon, 11 Apr 2016 23:51:32 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.3からアプリのテストもサポートされました。チュートリアルにもとても簡単なものが紹介されています。&lt;a href=&quot;http://meteor-fan.axlight.com/meteor13-react-tutorial-step11/&quot;&gt;Meteor 1
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.3からアプリのテストもサポートされました。チュートリアルにもとても簡単なものが紹介されています。<a href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step11/">Meteor 1.3 React日本語チュートリアル (step11)</a>にあるものです。</p>
+<p>Meteorの公式ブログで<a href="http://info.meteor.com/blog/full-app-testing-in-meteor" target="_blank" rel="external">フルアプリテスト</a>に関する記事があったので紹介します。</p>
+<p>Meteorはフルスタックフレームワークであるため、フルアプリテストという特徴的なスタイルになります。</p>
+<h2 id="フルスタックフレームワークであるMeteor"><a href="#フルスタックフレームワークであるMeteor" class="headerlink" title="フルスタックフレームワークであるMeteor"></a>フルスタックフレームワークであるMeteor</h2><p>Meteorのフレームワークはフルスタックです。すなわち、MeteorのJavaScriptコードはクライアント(Webブラウザやモバイルアプリ)とサーバ(node.js)の両方で動作します。そのため、他のフルスタックでないフレームワークでは存在しなかったテストに関する挑戦と機会があります。</p>
+<p>挑戦は、クライアントとサーバの両方合わせてテストしなければならないコードが分割されていることです。おそらく、アプリにはパブリケーションとメソッドが定義されていますが、ページで何からのアクションが起きメソッドが呼ばれた場合にパブリケーションが正しく動作し正しくページに反映されることを確認したいでしょう。もしくは、UI上でルーティングした場合に、新しいデータがサーバから送られてくることを確認したいかもしれません。</p>
+<p>一方、他のフレームワークと比較して、Meteorはこの挑戦に対する機会があります。なぜなら、フルスタックですべてのコードをビルドしているためです。他のフレームワークでは、サーバ側のメソッドとパブリケーションの連携がうまく行くことを確認するだけのところが、Meteorでは、サーバとクライアントの境界を越えて統合テストを実施することができます。</p>
+<p>よくあるWebスタックのテストの構成:</p>
+<p><img src="http://info.meteor.com/hs-fs/hubfs/Blog/system_testing_-_march_2016.png" alt="Typical web stack testing"></p>
+<p>Meteorのフルアプリテストの構成:</p>
+<p><img src="http://info.meteor.com/hs-fs/hubfs/Blog/meteor_testing_2_-_March_2016.png" alt="Meteor full app testing"></p>
+<h2 id="どのように動作するか"><a href="#どのように動作するか" class="headerlink" title="どのように動作するか"></a>どのように動作するか</h2><p>Meteorアプリをテストモードで開始すると特殊な”testing”というMeteorアプリが起動します。典型的には、ブラウザでアプリを開くことでテストを開始します。すると、クライアントテストはそのブラウザで実行され、サーバテストもサーバで実行されてブラウザにレポートが表示されます。</p>
+<p><img src="http://info.meteor.com/hs-fs/hubfs/Blog/Mocha_test_results_-_March_2016.png" alt="screenshot"></p>
+<p>アプリを通常のテストモード(<code>meteor test</code>)で起動すると、テストするアプリはテストファイルをクライアントとサーバの両方でロードしますが、普通にアプリを動かしたときにロードされるファイルはロードしません。これの意味することころは、テストファイルは必要なファイルのみをインポートでき、普通にアプリ動かしたときに用意されるメソッドやパブリケーションなどは使えないということです。</p>
+<p>これは単体テストや簡単な統合テストに便利です。このモードはこれらのテストのために使います。</p>
+<h2 id="フルアプリテストモード"><a href="#フルアプリテストモード" class="headerlink" title="フルアプリテストモード"></a>フルアプリテストモード</h2><p>一方、フルアプリテストモード(<code>meteor test --full-app</code>)で起動すると、アプリ全体が通常通りロードされ、その上でフルアプリテストが動きます。これにより、テストをアプリコンテキストで動作させることができ、ルーティングやメソッド呼び出しなどのアプリレベルのテストを行うことができます。</p>
+<p>このように、フルアプリテストは通常の統合テストよりも受け入れテストに近いものになっています。最大のメリットは、フルアプリテストはクライアントとサーバのどのスタックにも入れることができることです。これにより、「ホワイトボックス」受け入れテストを書くことができます。これは、seleniumなどのwebdriverを使った「ブラックボックス」テストと比較して制限が少なくなります。</p>
+<h2 id="歴史"><a href="#歴史" class="headerlink" title="歴史"></a>歴史</h2><p>Meteorのフルアプリテストは新しいアイデアではありません。Velocityプロジェクトは同じようなことを実現し、多くの先進的な取り組みでこのテストのデザインを知らしめました。</p>
+<p>また、Gagarinツール(Laikaプロジェクトの影響を受けて)は動作しているMeteorアプリにテストコードを注入することを実現しています。これはMeteorアプリの外で動く様々なツールを利用することを可能にします。</p>
+<p>Meteor 1.3のリリースで新しいテストモードが導入され、Meteorのテストの未来はよりはっきりとしたでしょう。コミュニティによってMeteorアプリのテストをより簡単で高速ににするツールが開発されることを期待します。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>これまでもパッケージ毎に単体テストを書くことはできたため、アプリを(アプリ内)パッケージに分割して構築する方法をとっているケースもありました。Meteor 1.3ではモジュールも導入されたため、パッケージを分ける必要がなく、だいぶ手軽になったのではないかと思います。また、フルアプリテストも統合され分かりやすくなったのではないでしょうか。Velocityがなくなってしまうのは残念なことではありますが、アイデアは生きていると思うことにします。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor-full-app-testing/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3のリリース</title>
+      <link>http://meteor-fan.axlight.com/announcing-meteor13/</link>
+      <guid>http://meteor-fan.axlight.com/announcing-meteor13/</guid>
+      <pubDate>Tue, 29 Mar 2016 22:02:55 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://info.meteor.com/blog/announcing-meteor-1.3&quot; target=&quot;_blank&quot; rel=&quot;external
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。</p>
+<p><a href="http://info.meteor.com/blog/announcing-meteor-1.3" target="_blank" rel="external">公式ブログのアナウンス文</a>を紹介します。</p>
+<h2 id="Meteor-1-3のアナウンス-ES2015モジュール、アプリテスト、モバイル改善ほか"><a href="#Meteor-1-3のアナウンス-ES2015モジュール、アプリテスト、モバイル改善ほか" class="headerlink" title="Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか"></a>Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか</h2><p>本日(2016/3/28)、Meteor JavaScriptアプリケーションフレームワークの最新版のMeteor 1.3が発表されました。このメジャリリースの狙いは、プロダクションアプリケーションを管理し、スケールさせ、テストし、 JavaScriptの最新技術を継続的に利用していく、これらを行う開発チームをサポートすることです。これまでのアプリをアップグレードするには<code>Meteor update</code>を実行してください。もしこれからMeteorを使い始めるのであれば、<a href="https://www.meteor.com/install" target="_blank" rel="external">Meteor install page</a>を参照してください。</p>
+<p>Meteor 1.3の狙いはこれまでいくつものMeteorのリリースを使ってプロダクションアプリを開発してきた顧客からのヒアリングをもとにしたものです。アプリケーションテストのサポートへの要望はその中でもおよそ一番強く、Meteor 1.3ではユニットテストとイングレーションテストがコアでサポートされるようになりました。ユニットテストはコードがきれいに分割されている場合に有効であり、Meteor 1.3でNode標準のNPMパッケージがサポートされたのもそれが理由の一つです。モバイル開発者にとっては、Meteor 1.3によってCordovaアプリでのより堅牢なホットコードプッシュが提供されます。MeteorのLivedataシステムでは、大規模アプリをスケールさせるためのtunable queriesがサポートされます。AngularやReactとの統合も改善し、これら有名なビューレイヤーを使ったフルスタックアプリケーションを開発する簡単な方法をMeteorは提供しています。</p>
+<p>今回はじめて、リリースに合わせて<a href="http://guide.meteor.com/" target="_blank" rel="external">Meteor Guide</a>も発表します。このガイドはMeteorアプリを開発するためのベストプラクティスの推薦し、モジュール構成からUI抽象化のためのデータベーススキーマの設計まで幅広くカバーします。ガイドと一緒になったMeteorを使うと、すぐにより生産的にアプリを開発できるでしょう。ガイドの推薦を越えたものが必要な場合は、直接の<a href="http://info.meteor.com/lp/developer-subscription" target="_blank" rel="external">ベンダーサポート</a>もあります。</p>
+<p>ES2015の採用とコミュニティのnpmへの集結により、JavaScript開発者にはこれまでにないくらいよい時代になりました。Meteor 1.3をJavaScriptエコシステムのどこに位置付けるかを入念に検討し、将来のリリースの方法性を計画しました。例えば、Meteor 1.3は最新のES2015の機能を有効にしてすぐに使えるようにしています。また、source mapsを自動で生成し、開発者がES2015でデバッグできるようにしています。新しいnpm統合では、開発者が<code>npm install</code>で簡単にパッケージをアプリのクライアントおよびサーバに簡単に追加できるようになりました。ReactやAngularのコンポーネントもnpmを用いてインストールできます。</p>
+<p>これまで以上にコミュニティと顧客の目にかかるよう、この3か月必死でリリースに向けて準備してきました。16個のベ3タと13個のリリース候補を経て、世界中の開発者コミュニティにテストされ、Meteor 1.3はこれまでになく完成されたリリースになっています。その上で、もし1.3でバグを見つけた場合でも、次の公式リリースまで長く待つことはありません。1.3までのプレリリースサイクルで、すばやく頻繁にリリースすることの価値が見えており、従来の遅く単一なリリースサイクルに戻ることは想像できません。</p>
+<p>下記にもう少し詳細に説明します。</p>
+<h3 id="ES2015モジュール"><a href="#ES2015モジュール" class="headerlink" title="ES2015モジュール"></a>ES2015モジュール</h3><p>Meteor 1.2では<a href="https://github.com/meteor/meteor/blob/devel/packages/ecmascript/README.md#supported-es2015-features" target="_blank" rel="external">多くの新しいECMAScript 2015の機能</a>が導入されましたが、一つの大きな欠落として<a href="http://exploringjs.com/es6/ch_modules.html" target="_blank" rel="external">ES2015のimportとexportの文法</a>がありました。Meteor 1.3は完全な標準モジュールシステムとのギャップを埋め、クライアントとサーバの両方で動くようにしました。複数の長期的な問題(ファイルのロード順など)を解決するとともに、これまでのMeteorのコードとの後方互換性も維持しました。</p>
+<p>さらに、<code>npm install</code>(もしくは<code>meteor npm install</code>)でnpmパッケージを直接Meteorアプリで使うことができるサポート追加しました。npmパッケージは、開発者がちゃんと設計していれば、クライアントとサーバの両方で動作します。この統合により、コアパッケージの一部をnpmに移し始めることができ、npmパッケージのラッパーパッケージをAtmosphereに作る必要がなくなりました。このニュースはnpmのエコシステムをそのまま使えるため、特にReactやAngularの開発者に歓迎されるはずです。</p>
+<h3 id="内蔵アプリケーションテスト"><a href="#内蔵アプリケーションテスト" class="headerlink" title="内蔵アプリケーションテスト"></a>内蔵アプリケーションテスト</h3><p>アプリケーションレベルでテストを実行する手段が追加されました。テストには、単体テストと統合テストの<a href="http://guide.meteor.com/testing.html" target="_blank" rel="external">2種類があります</a>。単体テストモード(<code>meteor test</code>)では、Meteorはテストモジュールとそこからインポートされるものだけロードし、他のコードと分離してテストできます。統合テスト(<code>meteor test --full-app</code>)では、テストコードに加えてアプリケーションコードすべてをロードし、全体が期待通りに動くかどうかを検証できます。</p>
+<p>ES2015モジュールと合わせることで、新しいテストの仕組みでは、アプリのコードをテストだけのためにローカルパッケージに分割する必要がなくなります。また、特定のテストフレームワークでテストを動かすためのドライバーを書くこともできます。これまでのところ、コミュニティと協力して<a href="https://atmospherejs.com/practicalmeteor/mocha" target="_blank" rel="external">Mochaのドライバー</a>を作りました。今後、他のドライバーも出てくることを期待します。</p>
+<h3 id="新しいCordova実装"><a href="#新しいCordova実装" class="headerlink" title="新しいCordova実装"></a>新しいCordova実装</h3><p>Meteor 1.3ではiOSとAndroidアプリを作るためのCordovaレイヤーが完全に書き直されました。新しい堅牢なiOSとAndroidラッパーは不完全なJavaScriptコードを検出し対処します。以前はアプリの再インストールでしか直せなかった、壊れたコードをホットコードプッシした状態から回復することができるようになりました。ホットコードプッシュはとても速くなり、逐次的かつ復元可能な更新によりネットワーク帯域とバッテリを節約します。Meteor 1.3はiOS(含iOS8)のWKWebViewをサポートし、アプリのパフォーマンスとフレームレートが大幅に改善されました。最後に、Cordovaは最新バージョンにアップグレードされました。(Cordova 6.0.0, Cordova iOS 4.1.0, Android 5.1.1)</p>
+<h3 id="さらに加えて"><a href="#さらに加えて" class="headerlink" title="さらに加えて"></a>さらに加えて</h3><p>アプリのビルドパフォーマンスとminimongoの更新クエリを改善しました。<a href="http://guide.meteor.com/" target="_blank" rel="external">Meteor Guide</a>はMeteorのベストプラクティスで更新され、<a href="http://guide.meteor.com/1.3-migration.html" target="_blank" rel="external">1.2からのアップグレード</a>もサポートします。<a href="https://github.com/meteor/meteor/blob/master/History.md" target="_blank" rel="external">release notes</a>にある改善一覧も参照してください。</p>
+<h3 id="次は何がくるか"><a href="#次は何がくるか" class="headerlink" title="次は何がくるか"></a>次は何がくるか</h3><p>いろいろあります。NodeとMongoのアップデート、npmへの移行、コアパッケージの分離。より詳しくは、<a href="https://www.youtube.com/watch?v=7d0xTR-eYh0" target="_blank" rel="external">Meteor Nightのトーク</a>を見て、<a href="https://forums.meteor.com/t/mdg-s-plans-and-priorities/18185" target="_blank" rel="external">Meteor forums</a>の議論に参加してください。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/announcing-meteor13/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step12)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:47:15 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep12
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep12です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li>その後の学習法について (本記事)</li>
+</ol>
+<h2 id="その後の学習法について"><a href="#その後の学習法について" class="headerlink" title="その後の学習法について"></a>その後の学習法について</h2><p>おめでとうございます。あなたは新しいMeteorアプリを作りました。</p>
+<p>今回作ったアプリは今のところ1つのTODOリストを共有して使うことを実現しています。さらにどのような機能を追加できるのかを知りたければ、”todos”というアプリを勉強してみてください。これは複数のリストをサポートするなどより完成されたアプリになっています。また、”localmarket”というアプリもあります。これはネイティブの機能やソーシャルの機能を備えたクロスプラットフォームの顧客エンゲージメントアプリです。</p>
+<p>これらのアプリは下記のコマンドで作成することができます。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor <span class="built_in">create</span> <span class="comment">--example todos</span></div><div class="line">meteor <span class="built_in">create</span> <span class="comment">--example localmarket</span></div></pre></td></tr></table></figure>
+<p>他の学習リソースとしては、下記があります。</p>
+<ol>
+<li><a href="http://guide.meteor.com" target="_blank" rel="external">Meteor Guide</a>: ベストプラクティスや便利なコミュニティパッケージについて学べます</li>
+<li><a href="https://docs.meteor.com" target="_blank" rel="external">Meteorのドキュメント</a>: 完全なAPIの解説があります</li>
+<li><a href="tools">tools</a>や<a href="https://www.meteor.com/tools/resources" target="_blank" rel="external">resources</a>: 様々なツールや情報源が載っています</li>
+</ol>
+<h3 id="Meteorの日本語情報について"><a href="#Meteorの日本語情報について" class="headerlink" title="Meteorの日本語情報について"></a>Meteorの日本語情報について</h3><p>現状ではMeteorの日本語情報は下記のようなものがあります。</p>
+<ul>
+<li><a href="http://meteor-fan.axlight.com">Meteor日本語情報サイト</a>: 本ブログ</li>
+<li><a href="http://meteor-fan.github.io/meteor-docs-ja/" target="_blank" rel="external">Meteor日本語ドキュメントPJ</a>: 協力者募集中</li>
+<li><a href="https://meteor-fan.herokuapp.com/" target="_blank" rel="external">meteor-fanのSlack</a>: メールアドレスを入れると招待メールが送られます</li>
+<li><a href="https://twitter.com/hashtag/meteorjs_jp" target="_blank" rel="external">Twitterの#meteorjs_jp</a></li>
+<li><a href="http://ja.stackoverflow.com/questions/tagged/meteor" target="_blank" rel="external">スタック・オーバーフローのmeteorタグ</a></li>
+</ul>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step11)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step11/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step11/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:47:12 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep11
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep11です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li>テストについて (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="テストについて"><a href="#テストについて" class="headerlink" title="テストについて"></a>テストについて</h2><p>アプリのいくつかの機能を作ったため、それが期待通り動き、こわれていないかを保証するテストを追加しましょう。</p>
+<p>今回は、メソッドのうち1つについてテストを書き、正しく動くことを検証しましょう。</p>
+<p>そのために、JavaScriptテストフレームワーク<a href="https://mochajs.org" target="_blank" rel="external">Mocha</a>の<a href="http://guide.meteor.com/testing.html#test-driver" target="_blank" rel="external">テストドライバー</a>を追加します。下記のコメンドを実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">add</span><span class="bash"> practicalmeteor:mocha</span></div></pre></td></tr></table></figure>
+<p>これにより、このドライバを指定した特殊なコマンドを実行することで、アプリを「テストモード」で動かすことができます。通常のアプリは止めるか、<code>--port XYZ</code>で別のポートで動かす必要るあります。下記のコマンドを実行してください。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor test --driver-<span class="keyword">package</span> <span class="string">practicalmeteor:</span>mocha</div></pre></td></tr></table></figure>
+<p>実行すると、空のテスト結果がブラウザに表示されるはずです。</p>
+<p>簡単なテスト(何もしない)を追加してみましょう。次のようにファイルを作成してください。ファイル名は<code>imports/api/tasks.tests.js</code>です。</p>
+<script src="http://gist-it.appspot.com/github/meteor/simple-todos/blob/92f2ca1d2865a5fd196879bb0185fd2edf3c619c/imports/api/tasks.tests.js"></script>
+
+<p>テストでは開始時にデータベースを期待した状態にしておく必要があります。これは、Mochaの<code>beforeEach</code>を使って簡単にきます。<code>imports/api/tasks.tests.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos/blob/cd403a50cacba784de11a7a94e6d55bc884b33fb/imports/api/tasks.tests.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/0227418d9c9484236609.js"></script>
+
+<p>上記コードでは、テスト実行毎に変わるランダムな<code>userId</code>に対応づけた1つのタスクを作成しています。</p>
+<p>では、そのユーザとして<code>task.remove</code>を呼び出しタスクが削除されるかを確認するテストを書きましょう。<code>imports/api/tasks.tests.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos/blob/9a08b96bae018a4ecb3d23dada624accdb817cb0/imports/api/tasks.tests.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/63a3114c0237c68f817c.js"></script>
+
+<p>Meteorのテストではさらにいろいろなことができます。詳細はMeteor Guideの<a href="http://guide.meteor.com/testing.html" target="_blank" rel="external">テストに関する記事</a>を参照してください。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step12: <a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step11/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step10)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step10/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step10/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:47:08 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep10
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep10です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li>パブリッシュとサブスクライブによるデータフィルタリング (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="パブリッシュとサブスクライブによるデータフィルタリング"><a href="#パブリッシュとサブスクライブによるデータフィルタリング" class="headerlink" title="パブリッシュとサブスクライブによるデータフィルタリング"></a>パブリッシュとサブスクライブによるデータフィルタリング</h2><p>前回のステップで、アプリの重要なコードをメソッドに移して、安全にしました。今回は、Meteorの安全性のもう一つの側面について学びます。これまではデータベース全体がクライアント側から参照できることを前提にしてきました。すなわち、<code>Tasks.find()</code>を呼べばコレクションの中のすべてのタスクが取得できる、という意味です。アプリのユーザがプライバシーが必要なデータを登録したい場合に、これはよくありません。Meteorがどのようなデータをクライアント側のデータベースに送るから制御する方法が必要です。</p>
+<p>前回のステップの<code>insecure</code>と同様に、新しく作られたMeteorプロジェクトにはデフォルトで<code>autopublish</code>パッケージが追加されています。これはデータベースのすべての内容を自動的にクライアントと同期するパッケージです。このパッケージを削除してどうなるか見てみましょう。下記のコマンドを実行してください。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="builtin-name">remove</span> autopublish</div></pre></td></tr></table></figure>
+<p>アプリが更新されると、タスクリストが空になるはずです。<code>autopublish</code>パッケージがない状態では、サーバがクライアントに何を送るかを明確に示す必要があります。Meteorでこれを実現する関数が<code>Meteor.publish</code>と<code>Meteor.subscribe</code>です。</p>
+<p>まずは、すべてのタスクをパブリッシュしてみましょう。<code>imports/api/tasks.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/df8dda980a15cc866b3335c296508ab8ffb1b26e/imports/api/tasks.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/40f9e3037c61844e19c1.js"></script>
+
+<p>次に、<code>App</code>コンポーネントが作られたときに、そのパブリッシュしたものにサブスクライブしてみましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/5d258f06f6102a6f90767585e15ace14b3cef1ee/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/829557a781378370541e.js"></script>
+
+<p>これが完了すると、すべてのタクスがまた見えるようになるでしょう。</p>
+<p><code>Meteor.publish</code>をサーバで呼び出すと<code>&quot;tasks&quot;</code>という名前のパブリケーションが登録されます。<code>Meteor.subscribe</code>がクライアントからそのパブリケーションの名前で呼び出されると、クライアントはそのパブリケーションで指定されているすべてのデータをサブスクライブ(つまり、購読)します。今の例ではデータベースの中のすべてのタスクです。パブリッシュ・サブスクライブモデルの真価を見るために、ユーザがタスクを「プライベート」にする機能を実装してみましょう。「プライベート」とは他のユーザが見ることができないことを意味します。</p>
+<h3 id="タスクをプライベートにするボタンを追加する"><a href="#タスクをプライベートにするボタンを追加する" class="headerlink" title="タスクをプライベートにするボタンを追加する"></a>タスクをプライベートにするボタンを追加する</h3><p>タクスオブジェクトに新しいプロパティ”private”を追加して、また、ユーザがタスクをプライベートにするボタンを追加しましょう。このボタンはタスクの所有者のみに見えるべきです。また、タスクがpublic(プライベートでない)かprivateであるかの状態を示すラベルも表示したいでしょう。</p>
+<p>まず、タスクのプライベート状態を設定するメソッドを追加する必要があります。<code>imports/api/tasks.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/f01138adb09b56b2137a7954097d7ee91c89c1c2/imports/api/tasks.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/ecdc5ca04165799d9a4d.js"></script>
+
+<p>次に、privateボタンを表示するかを決めるために新しいプロパティを<code>Task</code>に渡す必要があります。ボタンはログインしているユーザがそのタスクの所有者である場合のみ表示されるべきです。</p>
+<p><code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/4c57163c745caad5d9a610f1530141b001a87469/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/10fc8adf303f1d859cf9.js"></script>
+
+<p>続いて、<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/2fb05bd2519ddf5ad1d76acbc6784ee1cc109775/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/efa9d777e10276e44fe6.js"></script>
+
+<p>ボタンを追加しましょう。この新しいpropを使って表示するかを判断します。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/451b6de0329407ec45cd337e359325f15f1ad2e8/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/03404d1b18a5a2108b0c.js"></script>
+
+<p>このボタンが呼び出すイベントハンドラを定義します。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/38178ac83badfcac39b7e2640e76f705ec99c41d/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/d87ed7301860d461fbfc.js"></script>
+
+<p>最後に、<code>Task</code>コンポーネントの<code>&lt;li&gt;</code>要素のクラスをタスクのプライベート状態に応じて変更するようにしましょう。このために、<code>classnames</code>NPMパッケージを使います。下記のコマンドを実行してください。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor npm <span class="keyword">install</span> <span class="comment">--save classnames</span></div></pre></td></tr></table></figure>
+<p>このパッケージを使って表示するタスクのクラスを選択します。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/0103d4d006302d8b8268df20b97a716c048fe182/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/205c1a190d35732fc830.js"></script>
+
+<h3 id="プライバシー状態に応じてタスクを選択的にパブリッシュする"><a href="#プライバシー状態に応じてタスクを選択的にパブリッシュする" class="headerlink" title="プライバシー状態に応じてタスクを選択的にパブリッシュする"></a>プライバシー状態に応じてタスクを選択的にパブリッシュする</h3><p>タスクをプライベートに設定する方法ができたので、ユーザが閲覧権限を持つタスクだけを送るようにパブリッシュ関数を変更すべきです。<code>imports/api/tasks.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/255b2e9c631a472fd7be694d7beda1cd8f55367c/imports/api/tasks.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/98b893f5f4bc63f6011f.js"></script>
+
+<p>この機能が正しく動いているか試すには、ブラウザのプライベートブラウジングモードを使って別のユーザでログインすることができます。2つのウインドウを並べて開いて、一方でタスクをプライベートにすると、他方から見えなくなることを確認してください。プライベートを外す(publicにする)ことでまた見えるようになります。</p>
+<h3 id="追加のメソッドのセキュリティ"><a href="#追加のメソッドのセキュリティ" class="headerlink" title="追加のメソッドのセキュリティ"></a>追加のメソッドのセキュリティ</h3><p>プライベートタスクの機能を完成させるためには、<code>deleteTask</code>メソッドと<code>setChecked</code>メソッドにチェックを追加して、タクスの所有者しか操作できないようにする必要があります。<code>imports/api/tasks.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/f645c84ea0fbf00dfe45819e5aacbe077fc73b9a/imports/api/tasks.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/519b49f2da5d282bbb52.js"></script>
+
+<blockquote>
+<p>実はこのコードでは、プライベートでない(public)タスクは誰でも削除することができてしまいます。コードに少し修正を加えると、所有者だけが自分のタスクを削除することができるようになります。</p>
+</blockquote>
+<p>やっと、プライベートタスクの機能が完成しました。これでアプリは安全で、攻撃者が他人のプライベートタスクを見たり修正したりすることはできません。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step11: <a href="../meteor13-react-tutorial-step11/">テストについて</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step10/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step09)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step09/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step09/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:47:04 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep09
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep09です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li>メソッドによるセキュリティ (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="メソッドによるセキュリティ"><a href="#メソッドによるセキュリティ" class="headerlink" title="メソッドによるセキュリティ"></a>メソッドによるセキュリティ</h2><p>このステップより前では、アプリのすべてのユーザがデータベースの任意の部分を編集可能でした。これは小さな内部アプリやデモの場合は問題ないかもしれませんが、実際のアプリの場合はデータに対する権限を制御する必要があります。Meteorでは、このために<em>methods</em>を定義するのが一番よい方法です。クライアントコードから直接<code>insert</code>や<code>update</code>や<code>remove</code>を呼び出すのではなく、ユーザにそのアクションの権限があるかを確認してからデータベースに変更を加える処理をするメソッドを呼び出します。</p>
+<h3 id="insecureパッケージを削除する"><a href="#insecureパッケージを削除する" class="headerlink" title="insecureパッケージを削除する"></a><code>insecure</code>パッケージを削除する</h3><p>新しく作られたMeteorプロジェクトにはデフォルトで<code>insecure</code>パッケージが追加されています。これはクライアントから直接データベースを編集することを可能にするパッケージです。これはプロトタイピングには便利ですが、そろそろ便利なものを外すことにしましょう。このパッケージを削除するには、アプリディレクトリで下記を実行してください。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="builtin-name">remove</span> insecure</div></pre></td></tr></table></figure>
+<p>このパッケージを削除してからアプリを使おうとすると、入力フィールドやボタンが機能しないことに気づくはずです。これは、すべてのクライアンサイトのデータベース操作の権限が無効になったためです。そこでメソッドを使って、アプリの一部を書き直す必要があります。</p>
+<h3 id="メソッドを定義する"><a href="#メソッドを定義する" class="headerlink" title="メソッドを定義する"></a>メソッドを定義する</h3><p>まず、いくつかのメソッドを定義する必要があります。クライアントで行いたいデータベース操作毎に1つのメソッドを定義する必要があります。メソッドはクライアントとサーバで実行されるコードの中で定義すべきです。これについては本記事後半の「オプティミスティックUI」にて解説します。</p>
+<p><code>imports/api/tasks.js</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/14b3e9e5c84ea1b06b70ee51014b933cb3108a5b/imports/api/tasks.js" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/b62a01695ba4b824c770.js"></script>
+
+<p>上記でメソッドを定義したので、コレクションを操作している箇所を代わりメソッドを使うように変更する必要があります。</p>
+<p><code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/2da4b190163f07eb2234487a2455325fb6a770dd/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/4191cfeb9278417b4419.js"></script>
+
+<p>続いて、<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/3113186e723246278d8a77c22ac9286c33915452/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/8b1e7226bd5a708eef54.js"></script>
+
+<p>これにより、入力フィールドやボタンが再び機能するようになったはずです。これらの修正によって何ができたかでしょうか。</p>
+<ol>
+<li>タスクをデータベースに追加する際に、安全にバリデーションできるようになりました。バリデーション内容は、ユーザがログインしていること、<code>createdAt</code>フィールドが正しいこと、<code>owner</code>フィールドと<code>username</code>フィールドが正しく、かつ、ユーザがなりすましをしていないこと、です。</li>
+<li><code>setChecked</code>と<code>deleteTask</code>にも同様のバリデーションを追加することができます。後半のステップでタクスをプライベートにする機能を追加する際に行います。</li>
+<li>クライアントコードはデータベースロジックと分離されました。イベントハンドラ内で多くの処理が行われていたのを、どこからでも呼び出せるメソッドに分けることができました。</li>
+</ol>
+<h3 id="オプティミスティックUI"><a href="#オプティミスティックUI" class="headerlink" title="オプティミスティックUI"></a>オプティミスティックUI</h3><p>さて、なぜメソッドをクライアントとサーバの両方で定義するとよいのでしょうか。これは「オプティミスティックUI」のためです。</p>
+<p>クライアントが<code>Meteor.call</code>を使ってメソッドを呼び出すと2つのことが同時に起こります。</p>
+<ol>
+<li>クライントがサーバにリクエストを送り、安全な環境でメソッドを実行する。これは、通常のAJAXリクエストと同様。</li>
+<li>クライアントで直接メソッドをシミュレーションして実行する。これはクライアントにある情報を使ってサーバでの実行の結果を予測することになる。</li>
+</ol>
+<p>これが意味することは、新しく追加されたタスクは、サーバから結果が返ってくるより<em>前に</em>、画面上に現われるということです。</p>
+<p>もしサーバからの結果がクライアントでのシミュレーション結果と同一であれば、すべてはそのままです。一方、もしサーバからの結果がシミュレーション結果と異なればクライアント側はサーバ結果に合わせて修正され、UIも修正されます。</p>
+<p>メソッドとオプティミスティックUIに関する詳細は、Meteor Guideの<a href="http://guide.meteor.com/methods.html" target="_blank" rel="external">Methodsの記事</a>や<a href="http://info.meteor.com/blog/optimistic-ui-with-meteor-latency-compensation" target="_blank" rel="external">オプティミスティックUIに関するブログ記事</a>を参照してください。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step10: <a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step09/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step08)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:47:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep08
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep08です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li>ユーザアカウントを追加する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="ユーザアカウントを追加する"><a href="#ユーザアカウントを追加する" class="headerlink" title="ユーザアカウントを追加する"></a>ユーザアカウントを追加する</h2><p>Meteorはアカウントシステムとすぐ使えるログインUIを備えていて、数分でアプリにマルチユーザの機能を追加できます。</p>
+<blockquote>
+<p>今のところ、そのUIはMeteor標準のUIエンジンであるBlazeで作られています。将来的には、React専用のコンポーネントも用意されるかもしれません。</p>
+</blockquote>
+<p>アカウントシステムとそのUIを有効にするには、対応するパッケージが必要です。アプリディレクトリで下記のコマンドを実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">add</span><span class="bash"> accounts-ui accounts-password</span></div></pre></td></tr></table></figure>
+<h3 id="BlazeコンポーネントをReactでラップする"><a href="#BlazeコンポーネントをReactでラップする" class="headerlink" title="BlazeコンポーネントをReactでラップする"></a>BlazeコンポーネントをReactでラップする</h3><p><code>accounts-ui</code>パッケージに含まれるBlazeのUIコンポーネントを利用するには、それをReactコンポーネントでラップする必要があります。そのために、<code>AccountsUIWrapper</code>というコンポーネントを新しいファイルで作りましょう。次のようにファイルを作成してください。ファイル名は<code>imports/ui/AccountsUIWrapper.jsx</code>です。</p>
+<script src="http://gist-it.appspot.com/github/meteor/simple-todos-react/blob/cfb42777b34ec46a22101588c646109b77fbf2cd/imports/ui/AccountsUIWrapper.jsx"></script>
+
+<p>新しく定義したコンポーネントを読み込みましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/aa6a33ec1a5c203a62ac0c7459ebb378f70bfc81/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/2cf26129263f728078e8.js"></script>
+
+<p>続いて、アカウントUIにおいて電子メールアドレスの代わりにユーザ名を使う設定を追加しましょう。次のようにファイルを作成してください。ファイル名は<code>imports/startup/accounts-config.js</code>です。</p>
+<script src="http://gist-it.appspot.com/github/meteor/simple-todos-react/blob/ea28e3011eda90020f1329b3cdd8be37857bfdb8/imports/startup/accounts-config.js"></script>
+
+<p>この設定を読み込む必要があります。<code>client/main.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/eef345667c247c8adca26d365a9d57fac1ca5c65/client/main.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/90b165c7375966141041.js"></script>
+
+<h3 id="ユーザ関連の機能を追加する"><a href="#ユーザ関連の機能を追加する" class="headerlink" title="ユーザ関連の機能を追加する"></a>ユーザ関連の機能を追加する</h3><p>ユーザがアカウントを作成してアプリにログインできるようになりました。しかし、ログインできただけでは大して便利でもありません。2つの機能を追加しましょう。</p>
+<ol>
+<li>新しいタスクの入力フィールドをログインしたユーザにのみ見せる</li>
+<li>それぞれのタスクをだれが作成したか見せる</li>
+</ol>
+<p>これを実現するために、<code>tasks</code>コレクションに2つのフィールドを追加します。</p>
+<ol>
+<li><code>owner</code> - そのタスクを作成したユーザの<code>_id</code>。</li>
+<li><code>username</code> - そのタスクを作成したユーザの<code>username</code>。ユーザ名を直接タスクオブジェクトに保存することで、表示する度にユーザ情報を検索する必要がなくなります。</li>
+</ol>
+<p>はじめに、<code>handleSubmit</code>イベントハンドラでこれらのフィールドを保存するコードを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/08ab8b186c3fbe9adb69bea457152e26b95617fb/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/67ed0af79701245c8563.js"></script>
+
+<p>データコンテナを修正してログインしているユーザの情報を取得します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/c49b83bef043096b8294bbb1e93483b66ce371a2/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/6b3263a0683d0c34e509.js"></script>
+
+<p>続いて、<code>render</code>メソッドにおいて、ユーザがログインしているときのみ表示するように条件文を追加します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/b784c6a07138104abf3b7e7f537457b4b46f6a66/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/5c6c200f7a70131509b9.js"></script>
+
+<p>最後に、それぞれのタスクのテキストの直前に<code>username</code>フィールドを表示するようにします。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/083e8e6b5dff73a926e6efe5848f69dd5e42f2b6/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/6f47116b07664e6979d5.js"></script>
+
+<p>ブラウザで、タスクを追加してみて自分の名前が表示されることを確認してください。本ステップ以前に入力した古いタスクはユーザ名がついていません。気になるようなら削除してしまいましょう。</p>
+<p>これで、ユーザがログインしてそれぞれのタスクが誰のものであるかを管理できるようになりました。以下では、今回用いた概念を少し解説します。</p>
+<h3 id="自動型アカウントUI"><a href="#自動型アカウントUI" class="headerlink" title="自動型アカウントUI"></a>自動型アカウントUI</h3><p><code>accounts-ui</code>パッケージをアプリに導入すると、ログインドロップダウンを追加するのに必要なことはそのUIコンポーネントを表示することだけです。このドロップダウンUIはどのログインメソッドがアプリに導入されているかを検知し、自動で必要なコントロールUIを表示します。今回の例では、有効にされたログインメソッドは<code>accounts-password</code>だけであったため、ドロップダウンUIはパスワードフィールドを表示しました。もし試したければ、Facebookログインを有効にする<code>accounts-facebook</code>パッケージを追加してみましょう。ドロップダウンUIにFacebookボタンが自動で表示されるはずです。</p>
+<h3 id="ログインしているユーザの情報を取得する"><a href="#ログインしているユーザの情報を取得する" class="headerlink" title="ログインしているユーザの情報を取得する"></a>ログインしているユーザの情報を取得する</h3><p>データコンテナにおいて、ログインしているユーザの情報を取得するために<code>Meteor.user()</code>を使うことができます。例えば、<code>Meteor.user().username</code>はログインしているユーザの名前を返します。また、<code>Meteor.userId()</code>を使うと単にログインしているユーザの<code>_id</code>を取得できます。</p>
+<p>次のステップでは、データのバリデーションをサーバで行い、アプリをより安全にする方法を学びます。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step09: <a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step07)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step07/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step07/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:46:57 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep07
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep07です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li>一時的なUIデータをステートに格納する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="一時的なUIデータをステートに格納する"><a href="#一時的なUIデータをステートに格納する" class="headerlink" title="一時的なUIデータをステートに格納する"></a>一時的なUIデータをステートに格納する</h2><p>このステップでは、アプリにクライアントサイドのデータフィルタリングの機能を追加します。具体的には、ユーザがチェックボックスをonにすることで未完のタスクのみを表示するようにします。Reactのコンポーネントステートを使ってクライアントのみで使う一時的な情報を格納する方法を学びます。</p>
+<p>まず、<code>App</code>コンポーネントにチェックボックスを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/a9478103c1fe847c2eaf3130b81944a9a7505350/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/1a3eaa0ed3d152d8c03a.js"></script>
+
+<p>チェックボックスの状態は<code>this.state.hideCompleted</code>から取得しています。Reactコンポーネントは<code>state</code>という特殊なフィールドを持ち、そこにコンポーネントデータを格納することができます。この<code>this.state.hideCompleted</code>の値をコンポーネントのコンストラクタで初期化する必要があるため、<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/1a03ff5929c27f91e29e3021609922b092095e3b/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/29c5666839902f334862.js"></script>
+
+<p><code>this.state</code>はイベントハンドラから<code>this.setState</code>を呼び出すことで更新することができます。これにより、ステートは非同期に更新され、コンポーネントは再レンダリングされます。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/d52f74743aeba73dccdffebf49d590af00d44c77/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/a04f2e4091ba31bae39a.js"></script>
+
+<p>さて、<code>renderTasks</code>関数を修正して<code>this.state.hideCompleted</code>がtrueの場合に完了したタスクを表示しないようにしましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/aa63e1e665112a813a00779ba94ce1f4690e8b3e/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/1e0b6dea30645260aceb.js"></script>
+
+<p>チェックボックスをonにするとタスクリストが完了していないものだけになるはずです。</p>
+<h3 id="もう一つの機能-未完のタスクの数を表示する"><a href="#もう一つの機能-未完のタスクの数を表示する" class="headerlink" title="もう一つの機能: 未完のタスクの数を表示する"></a>もう一つの機能: 未完のタスクの数を表示する</h3><p>未完のタスクだけを取得するクエリが書けたので、同じクエリを使って未完のタスクの数を表示することができます。このためには、データコンテナでその数を取得して、<code>render</code>メソッドでそれを表示するようにする必要があります。データ自体は既にクライアントサイドのminimongoのコレクションにあるため、この数を数えるためのクエリはサーバに対して追加の処理を要求するわけではありません。</p>
+<p><code>imports/ui/App.jsx</code>を下記2つのように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/ccfc9d51bcdc179ca1040228d73c26aa4ce70e90/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/08dda99733bb20c9cdce.js"></script>
+<script src="https://gist.github.com/dai-shi/d124672f443d94d93689.js"></script>
+
+<p>想定通り動いているか、アプリを確認しましょう。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step08: <a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step07/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step06)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:46:54 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep06
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep06です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li>アプリをAndroidやiOSで動かす (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="アプリをAndroidやiOSで動かす"><a href="#アプリをAndroidやiOSで動かす" class="headerlink" title="アプリをAndroidやiOSで動かす"></a>アプリをAndroidやiOSで動かす</h2><blockquote>
+<p>今のところ、MeteorのWindows版ははモバイル開発はサポートされていません。Windows版を使っている場合はこのステップはスキップしてください。</p>
+</blockquote>
+<p>これまではWebブラウザでアプリを作りテストしてきましたが、Meteorは複数のプラットフォームで動作するように設計されています。開発したsimple-todosアプリもいくつかのコマンドでiOSアプリやAndroidアプリにすることができます。</p>
+<p>Meteorでは簡単にモバイルアプリ開発環境を構築することができます。しかし、すべての開発環境をダウンロードするにはそれなりに時間がかかります。Andriodの場合は約300MBのダウンロードで、iOSの場合は約2GBのXcodeをインストールする必要があります。ダウンロードする時間がない場合は、このステップはスキップしても問題ありません。</p>
+<h3 id="iOSシミュレータで動かす-Macのみ"><a href="#iOSシミュレータで動かす-Macのみ" class="headerlink" title="iOSシミュレータで動かす (Macのみ)"></a>iOSシミュレータで動かす (Macのみ)</h3><p>Macを使っている場合は、アプリをiOSシミュレータで動かすことができます。<br>If you have a Mac, you can run your app inside the iOS simulator.</p>
+<p>アプリフォルダで下記を実行してください。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">install</span>-sdk ios</div></pre></td></tr></table></figure>
+<p>これにより、iOSアプリの開発に必要なものがセットアップされます。完了したら、次に下記を実行してください。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor<span class="built_in"> add-platform </span>ios</div><div class="line">meteor run ios</div></pre></td></tr></table></figure>
+<p>これで、iOSシミュレータが起動しアプリが動くはずです。</p>
+<h3 id="Androidエミュレータで動かす"><a href="#Androidエミュレータで動かす" class="headerlink" title="Androidエミュレータで動かす"></a>Androidエミュレータで動かす</h3><p>ターミナルで、アプリフォルダに移動し下記を実行してください。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">install</span>-sdk android</div></pre></td></tr></table></figure>
+<p>これにより、Androidアプリの開発に必要なツールがインストールされます。完了したら、次に下記を実行してください。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor<span class="built_in"> add-platform </span>android</div></pre></td></tr></table></figure>
+<p>ライセンスに合意した後に、下記を実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">run</span><span class="bash"> android</span></div></pre></td></tr></table></figure>
+<p>初期化処理の後に、Androidエミュレータが立ち上がり、アプリがAndroidラッパーの中で動いているはずです。エミュレータはいくぶん遅いため、もし実際の動きを確認したい場合は、実際のデバイスで動作させる必要があります。</p>
+<h3 id="Androidデバイスで動かす"><a href="#Androidデバイスで動かす" class="headerlink" title="Androidデバイスで動かす"></a>Androidデバイスで動かす</h3><p>最初に、上記のAndroid開発環境のセットアップが完了している必要があります。その後、<a href="http://developer.android.com/tools/device.html#developer-device-options" target="_blank" rel="external">USBデバッグを有効にしたデバイス</a>をUSBケーブルでコンピュータに接続してください。また、Androidエミュレータは事前に止めておく必要があります。</p>
+<p>準備ができたら、下記のコマンドを実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">run</span><span class="bash"> android-device</span></div></pre></td></tr></table></figure>
+<p>これでアプリがデバイスにインストールされるはずです。<br>The app will be built and installed on your device.</p>
+<h3 id="iPhoneやiPadで動かす-Macのみ-Apple-developer-accountが必要"><a href="#iPhoneやiPadで動かす-Macのみ-Apple-developer-accountが必要" class="headerlink" title="iPhoneやiPadで動かす (Macのみ; Apple developer accountが必要)"></a>iPhoneやiPadで動かす (Macのみ; Apple developer accountが必要)</h3><p>もしApple developer accountを持っていれば、アプリをiOSデバイスで動かすこともできます。下記のコマンドを実行してください。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor run ios-device</div></pre></td></tr></table></figure>
+<p>これによりiOSアプリのプロジェクトがXcodeで起動します。Xcodeを使ってアプリを任意のデバイスやサポートされたシミュレータで動かすことができます。</p>
+<p>さて、モバイルでアプリを簡単に動かせることが分かったところで、次のステップではさらに機能を追加していきましょう。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step07: <a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step05)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:46:50 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep05
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep05です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li>タスクにチェックマークをつける・削除する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="タスクにチェックマークをつける・削除する"><a href="#タスクにチェックマークをつける・削除する" class="headerlink" title="タスクにチェックマークをつける・削除する"></a>タスクにチェックマークをつける・削除する</h2><p>これまでは、コレクションに対してデータの追加しかしてきませんでした。ここでは、データの更新と削除について学びます。</p>
+<p><code>task</code>コンポーネントに2つの要素を追加しましょう。チェックボックスと削除ボタンです。それぞれイベントハンドラも設定します。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/c8be3a08ea2ae3a778dab859d9f19dc71056c608/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/2396f8d6d6a0578bf601.js"></script>
+
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>上記のコードでは、<code>Tasks.update</code>を呼び出してチェックマークをつけます。</p>
+<p>コレクションの<code>update</code>関数は2つの引数をとります。1つ目はコレクションのサブセットを特定するためのセレクタで、2つ目は該当するオブジェクトをどう変更するかを示すアップデートパラメータです。</p>
+<p>今回の例では、セレクタは単に対象タスクの<code>_id</code>です。アップデートパラメータは<code>$set</code>を用いて<code>checked</code>フィールドをトグル変換しています。<code>checked</code>フィールドがタスクが完了しているかを表しています。</p>
+<h3 id="削除"><a href="#削除" class="headerlink" title="削除"></a>削除</h3><p>上記のコードでは、<code>Tasks.remove</code>を使ってタスクを削除しています。<code>remove</code>関数は1つの引数をとり、コレクションから削除するドキュメントを決めるためのセレクタを指定します。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step06: <a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Meteor 1.3 React日本語チュートリアル (step04)</title>
+      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</link>
+      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</guid>
+      <pubDate>Fri, 25 Mar 2016 02:46:46 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep04
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep04です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li>フォームを使ってタスクを追加する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="フォームを使ってタスクを追加する"><a href="#フォームを使ってタスクを追加する" class="headerlink" title="フォームを使ってタスクを追加する"></a>フォームを使ってタスクを追加する</h2><p>このステップでは、ユーザがタスクをリストに追加するためのインプットフィールドを追加します。</p>
+<p>はじめに、Appコンポーネントにフォームを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/b595a90b125e15632f84bbe16f7d46e1682418a0/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/1c0c67f6d53456e276d1.js"></script>
+
+<p>(メモ: JSXコード内では <code>{/* ... */}</code>でコメントを入れることができます)</p>
+<p>上記修正で、<code>form</code>要素に<code>onSubmit</code>属性がつきそこにコンポーネントの<code>handleSubmit</code>が指定されているのが分かるでしょう。Reactでは、このようにしてフォームのイベントなどブラウザのイベントを受け取ります。<code>input</code>要素には<code>ref</code>属性を付与することでコードから要素へのアクセスが簡単になります。</p>
+<p>それでは、<code>handleSubmit</code>メソッドを<code>App</code>コンポーネントに追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/9e3e3dd400d5d18024b2a1ba92a6fab5512be5b3/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/909bac9950f1449af5ca.js"></script>
+
+<p>これでアプリに入力フィールドができました。タスクを追加するには、フィールドに入力してエンターを押すだけです。新しいブラウザウィンドウを開いてアプリを開けば、リストが同期しているはずです。すべてのクライアントで自動同期します。</p>
+<h3 id="Reactでイベントを受け取る"><a href="#Reactでイベントを受け取る" class="headerlink" title="Reactでイベントを受け取る"></a>Reactでイベントを受け取る</h3><p>すでにやったように、Reactではコンポーネントのメソッドを直接指定することでDOMのイベントを処理します。イベントハンドラでは、<code>ref</code>属性を指定した要素を<code>ReactDOM.findDOMNode</code>で参照することができます。Reactがサポートするその他のイベントやイベントシステムの仕組みについては、<a href="https://facebook.github.io/react/docs/events.html" target="_blank" rel="external">React docs</a>を参照してください。</p>
+<h3 id="コレクションに追加する"><a href="#コレクションに追加する" class="headerlink" title="コレクションに追加する"></a>コレクションに追加する</h3><p>イベントハンドラでは、<code>Tasks.insert()</code>を呼び出して<code>tasks</code>コレクションにタスクを追加しています。コレクションのスキーマは定義しないため、タスクオブジェクトには作成時間など任意のプロパティを割り当てることができます。</p>
+<p>クライアントから任意のデータをデータベースに追加できることは実は安全ではありません。しかし、現時点ではよしとします。チュートリアルの後半のステップで、アプリを安全にするためのデータベースへのデータの追加を制限する方法を解説します。</p>
+<h3 id="タスクデータをソートする"><a href="#タスクデータをソートする" class="headerlink" title="タスクデータをソートする"></a>タスクデータをソートする</h3><p>現状では、新しいタスクはリストの最後に追加されて表示されます。これはあまり好ましくなく、新しいタスクは最初に見えるようにしたいでしょう。</p>
+<p>そこで、<code>createdAt</code>プロパティを自動で追加し、それをもとにソートするようにしましょう。<code>App</code>コンポーネントをラップしているコンテナにある<code>find</code>呼び出しにソートオプションを追加します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/0f68a3dea14816f10c88b4d6491612cedd093aaa/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/b5b99391b48270235dd8.js"></script>
+
+<p>ブラウザに戻って想定通りになっているか確認してください。新しいタスクがリストの最初に追加されるようになったはずです。</p>
+<p>次のステップでは、TODOリストの重要な機能を追加します。それはタスクの完了を示すチェックマークをつけることと、タスクを削除することです。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step05: <a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>公式サイトで説明されているMeteorの特徴 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor-features/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="公式サイトで説明されているMeteorの特徴 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteor 1.2がリリースされてからMeteorの公式サイトもリニューアルされました。その中のWhy Meteor?のエリアにMeteorの特徴が載っていたので紹介します。なお、内容は執筆時点のものです。 Meteorで開発するMeteorを使うととても簡単な方法でリアルタイムアプリ(モバイルおよびWeb)を作ることができます。すべてJ" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor-features/" />
+    <meta property="article:published_time" content="2015-10-09T13:09:26.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="紹介" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="公式サイトで説明されているMeteorの特徴 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteor 1.2がリリースされてからMeteorの公式サイトもリニューアルされました。その中のWhy Meteor?のエリアにMeteorの特徴が載っていたので紹介します。なお、内容は執筆時点のものです。 Meteorで開発するMeteorを使うととても簡単な方法でリアルタイムアプリ(モバイルおよびWeb)を作ることができます。すべてJ" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor-features//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "公式サイトで説明されているMeteorの特徴 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor-features/",
+    "datePublished": "2015-10-09T13:09:26.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "紹介",
+    "description": "Meteor 1.2がリリースされてからMeteorの公式サイトもリニューアルされました。その中のWhy Meteor?のエリアにMeteorの特徴が載っていたので紹介します。なお、内容は執筆時点のものです。 Meteorで開発するMeteorを使うととても簡単な方法でリアルタイムアプリ(モバイルおよびWeb)を作ることができます。すべてJ"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">公式サイトで説明されているMeteorの特徴</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-10-09">09 October 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/intro/">紹介</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteor 1.2がリリースされてから<a href="https://www.meteor.com/" target="_blank" rel="external">Meteorの公式サイト</a>もリニューアルされました。<br>その中のWhy Meteor?のエリアに<a href="https://www.meteor.com/why-meteor/features" target="_blank" rel="external">Meteorの特徴</a>が載っていたので紹介します。なお、内容は執筆時点のものです。</p>
+<h2 id="Meteorで開発する"><a href="#Meteorで開発する" class="headerlink" title="Meteorで開発する"></a>Meteorで開発する</h2><p>Meteorを使うととても簡単な方法でリアルタイムアプリ(モバイルおよびWeb)を作ることができます。すべてJavaScriptで一つのコードベースから作るこができます。</p>
+<h3 id="ユニバーサルJavaScript"><a href="#ユニバーサルJavaScript" class="headerlink" title="ユニバーサルJavaScript"></a>ユニバーサルJavaScript</h3><p>同じコードがクライアンとでもクラウドでも動きます。また、パッケージもデータベースAPIも同じコードです。さらに、同じコードで様々なブラウザやモバイルデバイスで動きます。</p>
+<h3 id="モバイルとWeb"><a href="#モバイルとWeb" class="headerlink" title="モバイルとWeb"></a>モバイルとWeb</h3><p>インストール型のiOSやAndroidアプリとしても動作しますし、ネットワーク型のWebアプリとしても動作します。</p>
+<h3 id="リアクティブレンダリング"><a href="#リアクティブレンダリング" class="headerlink" title="リアクティブレンダリング"></a>リアクティブレンダリング</h3><p>クライアントのGUIコンポーネントによってリッチなクライアントアプリができます。これにはMeteorのBlazeフレームワークを使うか、AngularJSやReactJSの連携を使います。</p>
+<h2 id="Galaxyによるサービス提供"><a href="#Galaxyによるサービス提供" class="headerlink" title="Galaxyによるサービス提供"></a>Galaxyによるサービス提供</h2><p>Meteorのクラウドプラットフォーム「Galaxy」はデプロイ、規模拡張、接続クライアントの監視のすべてを簡単にします。</p>
+<h3 id="接続クライアントの操作"><a href="#接続クライアントの操作" class="headerlink" title="接続クライアントの操作"></a>接続クライアントの操作</h3><p>Galaxyではサービスに接続しているクライアントの管理ができ、規模拡張の操作が正常に機能しているか確認できます。</p>
+<h3 id="ホットデプロイ"><a href="#ホットデプロイ" class="headerlink" title="ホットデプロイ"></a>ホットデプロイ</h3><p>一つのコマンドでアプリをプロダクションリリースするこができ、すべての接続しているブラウザやデバイス、AppStoreのアプリまでもが更新されます。</p>
+<h3 id="バージョンアップデートコーディネート"><a href="#バージョンアップデートコーディネート" class="headerlink" title="バージョンアップデートコーディネート"></a>バージョンアップデートコーディネート</h3><p>Galaxyはクライアントのバージョンアップがシームレスで自動的になるように調整します。アプリが動作中でも可能です。</p>
+<h2 id="楽しいアプリ"><a href="#楽しいアプリ" class="headerlink" title="楽しいアプリ"></a>楽しいアプリ</h2><p>ユーザが楽しくなるアプリを、楽しいプラットフォームで作りましょう。</p>
+<h3 id="最小限のコード"><a href="#最小限のコード" class="headerlink" title="最小限のコード"></a>最小限のコード</h3><p>リアクティブプログラミングのおかげでこれまで1000行だったコードが10行になります。データベースからユーザのスクリーンまでの道のりをすべてリアクティブにします。</p>
+<h3 id="オプティミスティックUI"><a href="#オプティミスティックUI" class="headerlink" title="オプティミスティックUI"></a>オプティミスティックUI</h3><p>Meteorは遅延を考慮した解決機能を持つデータ転送を提供します。データに変更があると更新情報が影響するクライアントに伝達されます。これはLivequeryとフルスタックDBドライバとminidatabaseによって実現されます。</p>
+<h3 id="統合と柔軟性"><a href="#統合と柔軟性" class="headerlink" title="統合と柔軟性"></a>統合と柔軟性</h3><p>Meteorの統合された構造により、開発者はそれぞれの機能を統合管理したりコーディングする必要がなくなります。そのためアプリ開発に集中できます。また、Meteorのパッケージシステムにより、追加機能を持った何千ものライブラリを利用することができます。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>これだけの説明で伝わるのか分かりませんが、これが公式サイトでうたわれている特徴ですので、少なくとも網羅感はあるかと思います。個別の特徴についてはさらに詳しく調べるのがよいでしょう。</p>
+<p>もし誤訳など見つけましたら、ご連絡ください。<a href="http://meteor-fan.herokuapp.com/" target="_blank" rel="external">Slack</a></p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor-features/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88%E3%81%A7%E8%AA%AC%E6%98%8E%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8BMeteor%E3%81%AE%E7%89%B9%E5%BE%B4&amp;url=http://meteor-fan.axlight.com/meteor-features/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor-features/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor-features/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor-features/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/why-you-should-learn-meteor/">
+        <section class="post">
+            <h2>なぜ今Meteorを学ぶべきか</h2>
+            <p>Just Meteorのブログにはしばしば参考になることが書いてあります。今回は、Why you should learn Meteor nowの記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。 ほんの数秒で開始できるインストールは手順に従えばすぐにできます。すべてがセットになっていてイ&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/changes-in-meteor-12/">
+        <section class="post">
+            <h2>Meteor 1.2での変更点</h2>
+            <p>Meteor 1.2がリリースされました→ https://www.meteor.com/ サイトの構成はほとんど変わっていないので、あまり大きなバージョンアップではないようにも見えますが、大きいはずです。チュートリアルは3種類になりました。 Meteor 1.2のBreaking changes公式ブログでのアナウンス記事はまだありません&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

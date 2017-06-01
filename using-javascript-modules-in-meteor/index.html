@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.3でJavaScriptのmodulesを使う - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.3でJavaScriptのmodulesを使う - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteor 1.3ではmodulesのサポートが追加されます。本記事では、package/modulesのREADME.mdに従ってmodulesの使い方を説明します。 執筆時点のREADME.mdのバージョンはこちらです。 はじめにMeteor 1.2でES2015のサポートが追加されましたが、期待の大きかったimport/export" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/" />
+    <meta property="article:published_time" content="2016-02-17T11:00:20.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="紹介" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.3でJavaScriptのmodulesを使う - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteor 1.3ではmodulesのサポートが追加されます。本記事では、package/modulesのREADME.mdに従ってmodulesの使い方を説明します。 執筆時点のREADME.mdのバージョンはこちらです。 はじめにMeteor 1.2でES2015のサポートが追加されましたが、期待の大きかったimport/export" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/using-javascript-modules-in-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.3でJavaScriptのmodulesを使う - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/",
+    "datePublished": "2016-02-17T11:00:20.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "紹介",
+    "description": "Meteor 1.3ではmodulesのサポートが追加されます。本記事では、package/modulesのREADME.mdに従ってmodulesの使い方を説明します。 執筆時点のREADME.mdのバージョンはこちらです。 はじめにMeteor 1.2でES2015のサポートが追加されましたが、期待の大きかったimport/export"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.3でJavaScriptのmodulesを使う</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-02-17">17 February 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/intro/">紹介</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteor 1.3ではmodulesのサポートが追加されます。本記事では、package/modulesの<a href="https://github.com/meteor/meteor/blob/release-1.3/packages/modules/README.md" target="_blank" rel="external">README.md</a>に従ってmodulesの使い方を説明します。</p>
+<p>執筆時点のREADME.mdのバージョンは<a href="https://github.com/meteor/meteor/blob/6710a8177ab9ad99e5189e2b6f092e92c8dce914/packages/modules/README.md" target="_blank" rel="external">こちら</a>です。</p>
+<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>Meteor 1.2でES2015のサポートが追加されましたが、期待の大きかったimport/export構文は入りませんでした。Meteor 1.3ではこの標準のモジュールシステムがサポートされるようになります。これはサーバサイドとクライアントサイドの両方で使えることができ、Meteorで長らく懸案事項だったファイルロード順の問題が解決されます。それでいて後方互換性を持ち、今までのコードもそのまま動きます。</p>
+<h2 id="モジュールを有効にする"><a href="#モジュールを有効にする" class="headerlink" title="モジュールを有効にする"></a>モジュールを有効にする</h2><p>Meteor 1.3ではmodulesパッケージはデフォルトでインストールされています。しかし、このパッケージは必須ではありません。これを既存アプリや既存パッケージに追加するかどうかは開発者の自由です。</p>
+<p>アプリの場合は、<code>meteor add modules</code>とすると有効にできます。もしくは、よりおすすめは<code>meteor add ecmascript</code>とすることです。<code>ecmascript</code>には<code>modules</code>が含まれているからです。</p>
+<p>パッケージの場合は、<code>package.js</code>ファイルの<code>Package.onUse</code>や<code>Package.onTest</code>のセクションに<code>api.use(&quot;modules&quot;)</code>を追加すると有効にできます。</p>
+<p>ところで、<code>ecmascript</code>パッケージを使わずに<code>modules</code>パッケージを使う意味があるかについて補足します。<code>modules</code>パッケージのみを使った場合、NodeでおなじみのCommonJSの<code>require</code>と<code>exports</code>が提供されます。<code>ecmascript</code>は単に<code>import</code>と<code>export</code>の構文をCommonJSに変換しているだけになります。<code>require</code>と<code>exports</code>を使ってMeteorアプリでNodeモジュールを使うこともできます。<code>modules</code>を別パッケージに分けておくことで、<code>ecmascript</code>が使えない場合でも<code>require</code>と<code>exports</code>が使えます。実際に、<code>ecmascript</code>パッケージの実装はそのようになっています。</p>
+<p><code>modules</code>パッケージ単体でも便利ですが、<code>ecmascript</code>パッケージを使って<code>import</code>と<code>export</code>を使うことがおすすめです(<code>require</code>と<code>exports</code>ではなく)。より説得材料が必要であれば、<a href="http://benjamn.github.io/empirenode-2015" target="_blank" rel="external">http://benjamn.github.io/empirenode-2015</a>をご覧ください。</p>
+<h2 id="基本文法"><a href="#基本文法" class="headerlink" title="基本文法"></a>基本文法</h2><p><code>import</code>と<code>export</code>の文法には様々な種類がありますが、まずは誰もが知っているべき基本の形式について述べます。</p>
+<p>最初に、宣言の前に<code>export</code>とつけることでその宣言の名前でエクスポートすることができます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exporter.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = ...;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> b = ...;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> c = ...;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;...&#125;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>* <span class="title">e</span>(<span class="params"></span>) </span>&#123;...&#125;</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">F</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<p>上記の宣言では、<code>a</code>, <code>b</code>, <code>c</code>といった変数がこの<code>exporter.js</code>モジュールのファイルのスコープだけでなく、<code>exporter.js</code>を<code>import</code>した他のモジュールからも利用できるようになります。</p>
+<p>もしくは、宣言の前につけるのではなく、分けて<code>export</code>と変数名を書くことでエクスポートもできます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exporter.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;...&#125;</div><div class="line"><span class="keyword">let</span> h = g();</div><div class="line"></div><div class="line"><span class="comment">// at the end of the file</span></div><div class="line"><span class="keyword">export</span> &#123;g, h&#125;;</div></pre></td></tr></table></figure>
+<p>これらすべてのエクスポートは「名前つき」であり、つまり他のモジュールからはその「名前」でインポートできることになります。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importer.js</span></div><div class="line"><span class="keyword">import</span> &#123;a, c, F, h&#125; <span class="keyword">from</span> <span class="string">"./exporter"</span>;</div><div class="line"><span class="keyword">new</span> F(a, c).method(h);</div></pre></td></tr></table></figure>
+<p>もし別の名前を使いたい場合は、<code>export</code>や<code>import</code>で名前を変えることができます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exporter.js</span></div><div class="line"><span class="keyword">export</span> &#123;g <span class="keyword">as</span> x&#125;;</div><div class="line">g(); <span class="comment">// same as calling y() in importer.js</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importer.js</span></div><div class="line"><span class="keyword">import</span> &#123;x <span class="keyword">as</span> y&#125; <span class="keyword">from</span> <span class="string">"./exporter"</span>;</div><div class="line">y(); <span class="comment">// same as calling g() in exporter.js</span></div></pre></td></tr></table></figure>
+<p>CommonJSの<code>module.exports</code>と同様に、一つのデフォルトのエクスポートを定義することもできます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exporter.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> any.arbitrary(expression);</div></pre></td></tr></table></figure>
+<p>このデフォルトのエクスポートは、波括弧なしてインポートすることができ、その際に名前をつけることになります。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importer.js</span></div><div class="line"><span class="keyword">import</span> Value <span class="keyword">from</span> <span class="string">"./exporter"</span>;</div><div class="line"><span class="comment">// Value is identical to the exported expression</span></div></pre></td></tr></table></figure>
+<p>CommonJSの<code>module.exports</code>とは異なり、デフォルトエクスポートを使う場合でも名前つきエクスポートを使うこともできます。下記は両方を混在させた例です。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importer.js</span></div><div class="line"><span class="keyword">import</span> Value, &#123;a, F&#125; <span class="keyword">from</span> <span class="string">"./exporter"</span>;</div></pre></td></tr></table></figure>
+<p>実は、デフォルトエクスポートは単に”default”と名づけられたエクスポートにすぎません。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importer.js</span></div><div class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> Value, a, F&#125; <span class="keyword">from</span> <span class="string">"./exporter"</span>;</div></pre></td></tr></table></figure>
+<p>これらの例をもとに、<code>import</code>と<code>export</code>の文法を使い始めることができるでしょう。より詳しい情報は、<a href="https://twitter.com/rauschma" target="_blank" rel="external">Axel Rauschmayer</a>による<a href="http://www.2ality.com/2014/09/es6-modules-final.html" target="_blank" rel="external">詳細な説明</a>に載っている様々な<code>import</code>と<code>export</code>の文法を参照してください。</p>
+<h2 id="モジュールアプリケーション構造"><a href="#モジュールアプリケーション構造" class="headerlink" title="モジュールアプリケーション構造"></a>モジュールアプリケーション構造</h2><p>Meteor 1.3がリリースされる前は、アプリケーション内でがファイル間で値を共有するにはグローバル変数を割り当てるか、<code>Session</code>のような共有変数(一応、グローバルではない)で伝達するしかありませんでした。モジュールの導入により、あるモジュールから別のモジュールのエクスポートされた値を参照できるようになるため、グローバル変数はもう使わなくてよくなります。</p>
+<p>Nodeでのモジュールに慣れていると、モジュールはインポートされた時に初めて評価されるものと期待するかもしれません。しかし、Meteorの以前のバージョンではすべてのコードがアプリケーション開始時に評価されました。そこで後方互換性を維持するため、開始時評価がデフォルトのふるまいとなります。</p>
+<p>もしモジュールを遅延評価(Nodeと同じように初回インポート時に評価)したい場合は、そのモジュールを<code>imports/</code>ディレクトリ(アプリ内のルートディレクトリ以外のどこでも)に入れ、インポートするときにそのパスを指定します。例えば、<code>import {stuff} from &quot;./imports/lazy&quot;</code>のようにします。<code>node_modules/</code>内のファイルは常に遅延評価されます(後述)。</p>
+<p>Meteorの将来のバージョンでは、遅延評価はデフォルトの動作になる可能性が高いです。もし現時点からその方式を採用したいのであれば、おすすめの方法はすべてのモジュールを<code>client/imports/</code>ディレクトリや<code>server/imports/</code>ディレクトリに格納し、それぞれ<code>client/main.js</code>と<code>server/main.js</code>に単一のエントリーポイントを作ることです。<code>main.js</code>ファイルはアプリ起動時に最初に評価され、そこから<code>imports/</code>ディレクトリ内のモジュールが評価されます。</p>
+<h2 id="モジュールパッケージ構造"><a href="#モジュールパッケージ構造" class="headerlink" title="モジュールパッケージ構造"></a>モジュールパッケージ構造</h2><p>パッケージを作成する場合は、<code>package.js</code>ファイルの<code>Package.onUse</code>に<code>api.use(&quot;modules&quot;)</code>や<code>api.use(&quot;ecmascript&quot;)</code>を追加するのに加えて、メインエントリポイントを指定するために<code>api.mainModule</code>という新しいAPIを使用することもできます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Package.describe(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">"my-modular-package"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">Npm.depends(&#123;</div><div class="line">  <span class="attr">moment</span>: <span class="string">"2.10.6"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">Package.onUse(<span class="function"><span class="keyword">function</span> (<span class="params">api</span>) </span>&#123;</div><div class="line">  api.use(<span class="string">"modules"</span>);</div><div class="line">  api.mainModule(<span class="string">"server.js"</span>, <span class="string">"server"</span>);</div><div class="line">  api.mainModule(<span class="string">"client.js"</span>, <span class="string">"client"</span>);</div><div class="line">  api.export(<span class="string">"Foo"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>ここで<code>server.js</code>と<code>client.js</code>はパッケージの他のディレクトリにあるファイルをインポートできます。この際、それらのファイルは<code>api.addFiles</code>によって追加されている必要はありません。</p>
+<p><code>api.mainModule</code>を使う場合、メインモジュールでエクスポートされたものは<code>Package[&quot;my-modular-package&quot;]</code>でグローバルにアクセス可能になります。加えて、<code>api.export</code>でエクスポートされたものはそのパッケージをインポートすることで自動でインポートされます。言い換えると、メインモジュールは<code>Foo</code>のエクスポートを<code>api.export</code>で決めますが、他のプロパティも明示的に指定することでインポートはできる状態になります。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// In an application that uses my-modular-package:</span></div><div class="line"><span class="keyword">import</span> &#123;Foo <span class="keyword">as</span> ExplicitFoo, bar&#125; <span class="keyword">from</span> <span class="string">"meteor/my-modular-package"</span>;</div><div class="line"><span class="built_in">console</span>.log(Foo); <span class="comment">// Auto-imported because of api.export.</span></div><div class="line"><span class="built_in">console</span>.log(ExplicitFoo); <span class="comment">// Explicitly imported, but identical to Foo.</span></div><div class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// Exported by server.js or client.js, but not auto-imported.</span></div></pre></td></tr></table></figure>
+<p>ここでの注意点は、<code>import</code>は<code>from &quot;my-modular-package&quot;</code>ではなく、<code>from &quot;meteor/my-modular-package&quot;</code>とすることです。MeteorパッケージはNodeパッケージと区別するために、<code>meteor/...</code>で始まるようにします。</p>
+<p>最後に、このパッケージは新しい<code>modules</code>パッケージを使っており、<code>Npm.depends</code>によって、”moment”というNodeパッケージに依存しているため、このパッケージ内では<code>import moment from &quot;moment&quot;</code>とすることで、クライアントサイドでもサーバサイドでもこのモジュールをインポートできます。以前のMeteorでは<code>Npm.require</code>でNodeパッケージをサーバサイドでしかインポートできなかったため、これはすばらしいことです。</p>
+<h2 id="ローカルのnode-modules"><a href="#ローカルのnode-modules" class="headerlink" title="ローカルのnode_modules"></a>ローカルの<code>node_modules</code></h2><p>Meteor 1.3より以前では、Meteorアプリケーションの<code>node_modules</code>ディレクトリの中身は完全に無視されていました。<code>modules</code>を有効にすると、この無意味だった<code>node_modules</code>ディレクトリが突然すばらしく意味を持つことになります。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">meteor create modular-app</div><div class="line"><span class="built_in">cd</span> modular-app</div><div class="line">mkdir node_modules</div><div class="line">npm install moment</div><div class="line"><span class="built_in">echo</span> <span class="string">'import moment from "moment";'</span> &gt;&gt; modular-app.js</div><div class="line"><span class="built_in">echo</span> <span class="string">'console.log(moment().calendar());'</span> &gt;&gt; modular-app.js</div><div class="line">meteor</div></pre></td></tr></table></figure>
+<p>このアプリを実行すると、<code>moment</code>ライブラリがクライアントサイドでもサーバサイドでもインポートされ、両方のコンソールで<code>Today at 7:51 PM</code>のようなログが出力さ出るでしょう。このようにnpmモジュールを直接インストールできるようになると、<a href="https://atmospherejs.com/momentjs/moment" target="_blank" rel="external">https://atmospherejs.com/momentjs/moment</a>のようなnpmラッパーパッケージを減らせることが期待されます。</p>
+<p>Meteor 1.3のベータリリースでは、npmモジュールはクライアントサイドでもサーバサイドでも同じエントリーポイント(<code>package.json</code>ファイルの<code>main</code>フィールドか、<code>index.js</code>)でインポートされます。そのため、ブラウザで動くことが分かっているnpmモジュールだけを慎重にクライアントサイドにインポートする必要があります。今後は、<a href="https://github.com/substack/node-browserify#browser-field" target="_blank" rel="external"><code>package.json</code>ファイルの<code>browser</code>フィールド</a>をサポートすることを検討する予定ですが、ベータリリースには入っていません。</p>
+<h2 id="ファイルロード順序"><a href="#ファイルロード順序" class="headerlink" title="ファイルロード順序"></a>ファイルロード順序</h2><p>Meteor 1.3以前では、どのファイルが先に評価されるかの順番は<a href="http://docs.meteor.com/#/full/structuringyourapp" target="_blank" rel="external">Structuring Your Application</a>の<strong>File Load Order</strong>に書かれているルールによって決まっていました。このルールは、あるファイルが別のファイルの変数に依存しているのに読み込みの順が逆になる場合など、制御にしくいものでした。</p>
+<p>モジュールのおかげで、いかなる依存関係によるロード順も<code>import</code>文で解決できます。例えば、<code>a.js</code>が<code>b.js</code>より先に読み込まれる(ファイル名の順序で)としても、<code>a.js</code>で<code>b.js</code>の何かが必要な場合は、<code>a.js</code>で<code>b.js</code>の値を<code>import</code>すればいいだけになります。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a.js</span></div><div class="line"><span class="keyword">import</span> &#123;bThing&#125; <span class="keyword">from</span> <span class="string">"./b"</span>;</div><div class="line"><span class="built_in">console</span>.log(bThing, <span class="string">"in a.js"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// b.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> bThing = <span class="string">"a thing defined in b.js"</span>;</div><div class="line"><span class="built_in">console</span>.log(bThing, <span class="string">"in b.js"</span>);</div></pre></td></tr></table></figure>
+<p>場合によってはモジュールが別のモジュールの値をインポートする必要がなくとも先にロードして欲しいことがあるかもしれません。その場合は、より簡単な<code>import</code>文を使うこともできます。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// c.js</span></div><div class="line"><span class="keyword">import</span> <span class="string">"./a"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"in c.js"</span>);</div></pre></td></tr></table></figure>
+<p>この場合、どのモジュールが先にインポートされても、<code>console.log</code>の呼び出し順は常に次のように一定になります。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(bThing, <span class="string">"in b.js"</span>);</div><div class="line"><span class="built_in">console</span>.log(bThing, <span class="string">"in a.js"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"in c.js"</span>);</div></pre></td></tr></table></figure>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>モジュールのサポートはMeteor 1.3の目玉機能の一つです。これまでのMeteorでは暗黙的だった動作を明確に記述することができ、コード量は増えるもののそれを上回るメリットがあると期待できるでしょう。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.3%E3%81%A7JavaScript%E3%81%AEmodules%E3%82%92%E4%BD%BF%E3%81%86&amp;url=http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/using-javascript-modules-in-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル</h2>
+            <p>Meteorの日本語版のチュートリアルです。 公式チュートリアルをもとにしています。ビューライブラリとしてReactを用いており、simple-todosというアプリを作るチュートリアルになっています。 Meteorのバージョンは1.3が対象です。(執筆時点ではベータ版) 目次 最初のアプリを作成する (本記事) Reactコンポーネントで&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/user-status-package/">
+        <section class="post">
+            <h2>Meteorでユーザのオンライン状態を取得するためのパッケージ</h2>
+            <p>Meteorではクライアントは常にサーバに接続しているため、クライアント(ユーザ)の状態を取得することが容易であるはずです。本記事では、それを簡単に行うためのパッケージを紹介します。 user-statusmizzao:user-statusは、ユーザの接続状態を取得するパッケージです。ユーザの接続状態とは、IPアドレスやブラウザの種類(u&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

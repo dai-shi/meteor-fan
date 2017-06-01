@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteorで初めてのユーザアカウント - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteorで初めてのユーザアカウント - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="本記事は公式チュートリアル9の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Mete" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/" />
+    <meta property="article:published_time" content="2015-08-13T01:00:51.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteorで初めてのユーザアカウント - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="本記事は公式チュートリアル9の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Mete" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/first-user-accounts-in-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteorで初めてのユーザアカウント - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/first-user-accounts-in-meteor/",
+    "datePublished": "2015-08-13T01:00:51.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "本記事は公式チュートリアル9の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Mete"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteorで初めてのユーザアカウント</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-08-13">13 August 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本記事は<a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts" target="_blank" rel="external">公式チュートリアル9</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次"><a href="#チュートリアルの目次" class="headerlink" title="チュートリアルの目次"></a>チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></li>
+<li>Meteorで初めてのユーザアカウント (←今ここ)</li>
+</ol>
+<h2 id="Meteorに標準で用意されているユーザアカウント機能"><a href="#Meteorに標準で用意されているユーザアカウント機能" class="headerlink" title="Meteorに標準で用意されているユーザアカウント機能"></a>Meteorに標準で用意されているユーザアカウント機能</h2><p>Meteorには標準ですぐに使えるアカウント機能が組み込まれています。現状では、下記のパッケージが用意されています。</p>
+<ul>
+<li>accounts-password</li>
+<li>accounts-facebook</li>
+<li>accounts-github</li>
+<li>accounts-google</li>
+<li>accounts-meetup</li>
+<li>accounts-twitter</li>
+<li>accounts-weibo</li>
+</ul>
+<p>これらのパッケージを使うと、例えばFacebookの認証に対応したWebアプリを簡単に作ることができます。今回のチュートリアルでは外部システムと連携不要なaccounts-passwordを使います。accounts-passwordはhttpで用いるとパスワードが平文で流れるため、production環境で用いるにはhttpsが前提になるでしょう。テスト環境で使う分にはとても手軽です。</p>
+<h2 id="accounts-passwordパッケージを追加する"><a href="#accounts-passwordパッケージを追加する" class="headerlink" title="accounts-passwordパッケージを追加する"></a>accounts-passwordパッケージを追加する</h2><p>まずパッケージを追加しましょう。meteorは起動したままで大丈夫です。</p>
+<pre><code>meteor add accounts-ui accounts-password
+</code></pre><p>を実行してください。これで関係する依存パッケージも自動で追加されます。</p>
+<h2 id="ログインボタンを配置する"><a href="#ログインボタンを配置する" class="headerlink" title="ログインボタンを配置する"></a>ログインボタンを配置する</h2><p>次にログインボタンを表示するためのコードを追加します。sample-app.htmlの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のすぐ上に下記のコードを追加してください。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&gt; loginButtons&#125;&#125;</div></pre></td></tr></table></figure>
+<p>これだけでログインボタン(リンク)が表示されるはずです。ブラウザで確認しましょう。</p>
+<p>デフォルトではログインのアカウント作成時に電子メールアドレスとパスワードの入力を求めます。テスト時は電子メールアドレスでなくても問題ないので、次のコードをsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内の最後に追加してください。</p>
+<pre><code>Accounts.ui.config({
+  passwordSignupFields: &quot;USERNAME_ONLY&quot;
+});
+</code></pre><p>これにより電子メールアドレスではなく単なるユーザ名を指定するようになります。</p>
+<h2 id="ログイン動作の確認"><a href="#ログイン動作の確認" class="headerlink" title="ログイン動作の確認"></a>ログイン動作の確認</h2><p>ログインボタンを押すとログインダイアログが表示され、そこにアカウント作成のリンクもあります。まずは、新規にアカウントを作成しましょう。その後、ログインやログアウトの機能がどのように動くかを確認しましょう。</p>
+<h2 id="ログインによる機能拡張"><a href="#ログインによる機能拡張" class="headerlink" title="ログインによる機能拡張"></a>ログインによる機能拡張</h2><p>さて、ログイン自体はできましたが、このままでは特に機能に変化はありません。そこで、ログインによって次の2つの機能を実現します。</p>
+<ol>
+<li>ログインしている場合のみ新規タスク追加のフォームを表示する</li>
+<li>タスクに作成者を設定してログインユーザを作成者にする</li>
+</ol>
+<p>1つ目の機能のためには、sample-app.htmlの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のブロック全体を次のようにifブロックで囲みます。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> currentUser&#125;&#125;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"new-task"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"Type to add new tasks"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p><code>currentUser</code>はログインしているユーザの情報を格納しているオブジェクトで、ログインしていない状態では空(null)になるのでifブロックで表示の制御ができます。</p>
+<p>2つ目の機能のためには、DBに追加するドキュメント(データ)にプロパティを追加します。具体的には、sample-app.jsの<code>Tasks.insert()</code>文を次のように変更します。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Tasks</span><span class="selector-class">.insert</span>(&#123;</div><div class="line">  <span class="attribute">text</span>: text,</div><div class="line">  createdAt: new <span class="built_in">Date</span>(),</div><div class="line">  owner: Meteor.<span class="built_in">userId</span>(),</div><div class="line">  username: Meteor.<span class="built_in">user</span>().username</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>Meteor.userId()</code>はログインユーザのIDを返します。<code>Meteor.user()</code>はログインユーザのオブジェクトを返すもので、HTMLで用いるhelperの<code>currentUser</code>と同等の情報が格納されます。<code>username</code>プロパティでユーザ名を取り出すことができます。<code>_id</code>プロパティがユーザIDであり、<code>Meteor.user()._id</code>と<code>Meteor.userId()</code>は基本的に同じ意味になります。</p>
+<p>ところで、このownerとusernameを両方指定する手法は非正規化と言ってJOINのないMongoDBではしばしば使われるようです。そもそもユーザIDが分かればユーザ名は一意に決まるはずなので冗長なのですが、ユーザ名も合わせて格納することで高速化できます。</p>
+<p>最後に、DBに追加したユーザ名を表示するようにします。sample-app.htmlの</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span></span><span class="template-variable">&#123;&#123;text&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>を</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span></span><span class="template-variable">&#123;&#123;username&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">strong</span>&gt;</span> - </span><span class="template-variable">&#123;&#123;text&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>に変更しましょう。</p>
+<p>今回の以上の修正で変更した後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/cd80f2966275060c64e4418c44cf13669386ce4d/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/d7ad84ff5ae149e78621c85a1d2fd32959439f29/simple-todos.html" target="_blank" rel="external">こちらのHTMLファイル</a>と同じようになっているはずなので必要応じて確認してください。</p>
+<h2 id="動作確認"><a href="#動作確認" class="headerlink" title="動作確認"></a>動作確認</h2><p>実際に想定通りに動くか確認しましょう。可能であれば複数のアカウントを作成してそれぞれでタスクを追加してみるとよいです。以前に追加したタスクにはusernameプロパティはないのでユーザ名は表示されないことに注意しましょう。</p>
+<h2 id="確認項目"><a href="#確認項目" class="headerlink" title="確認項目"></a>確認項目</h2><ul>
+<li>ログインボタンが表示されていること</li>
+<li>ログインボタンが機能すること</li>
+</ul>
+<h2 id="まとめと次のステップ"><a href="#まとめと次のステップ" class="headerlink" title="まとめと次のステップ"></a>まとめと次のステップ</h2><p>今回はパスワード認証のパッケージを用いましたが、OAuthなどの外の認証機構を用いることもできます。これらを使い込なすことでよりアプリ開発が楽になるでしょう。次回はデータの書き込み権限に関する改善について学びます。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/first-user-accounts-in-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%81%A7%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88&amp;url=http://meteor-fan.axlight.com/first-user-accounts-in-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/first-user-accounts-in-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/first-user-accounts-in-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/first-user-accounts-in-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/">
+        <section class="post">
+            <h2>Meteorのaccounts-facebookの設定をリセットする方法</h2>
+            <p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。 accounts-facebookの簡単な使い方説明meteor add accounts-ui accounts-facebook でアプリにパッケージを導入し、HTMLで&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor-file-structure/">
+        <section class="post">
+            <h2>Meteorのファイル・ディレクトリ(フォルダ)構成について</h2>
+            <p>本記事では、Meteorのファイル構成について説明します。Meteorのファイル構成は複雑ではありませんが色々決まりがあるため理解する必要があります。 Meteorの初めのチュートリアルでは、HTML, JavaScript, CSSでそれぞれ1ファイルで合計3ファイルだけを使います。練習としてはこれで十分ですが、分割すると便利なことがあり&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

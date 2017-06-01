@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>なぜ今Meteorを学ぶべきか - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/why-you-should-learn-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="なぜ今Meteorを学ぶべきか - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Just Meteorのブログにはしばしば参考になることが書いてあります。今回は、Why you should learn Meteor nowの記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。 ほんの数秒で開始できるインストールは手順に従えばすぐにできます。すべてがセットになっていてイ" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/why-you-should-learn-meteor/" />
+    <meta property="article:published_time" content="2015-10-22T14:22:15.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="紹介" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="なぜ今Meteorを学ぶべきか - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Just Meteorのブログにはしばしば参考になることが書いてあります。今回は、Why you should learn Meteor nowの記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。 ほんの数秒で開始できるインストールは手順に従えばすぐにできます。すべてがセットになっていてイ" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/why-you-should-learn-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "なぜ今Meteorを学ぶべきか - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/why-you-should-learn-meteor/",
+    "datePublished": "2015-10-22T14:22:15.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "紹介",
+    "description": "Just Meteorのブログにはしばしば参考になることが書いてあります。今回は、Why you should learn Meteor nowの記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。 ほんの数秒で開始できるインストールは手順に従えばすぐにできます。すべてがセットになっていてイ"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">なぜ今Meteorを学ぶべきか</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-10-22">22 October 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/intro/">紹介</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="http://justmeteor.com/blog/" target="_blank" rel="external">Just Meteor</a>のブログにはしばしば参考になることが書いてあります。今回は、<a href="http://justmeteor.com/blog/why-you-should-learn-meteor-now/" target="_blank" rel="external">Why you should learn Meteor now</a>の記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。</p>
+<h2 id="ほんの数秒で開始できる"><a href="#ほんの数秒で開始できる" class="headerlink" title="ほんの数秒で開始できる"></a>ほんの数秒で開始できる</h2><p>インストールは<a href="https://www.meteor.com/install" target="_blank" rel="external">手順</a>に従えばすぐにできます。すべてがセットになっていてインストール後に開発が開始できます。</p>
+<p>まず初めに<a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">公式チュートリアル</a>をやりましょう。このチュートリアルでは<a href="http://simple-todo.meteor.com" target="_blank" rel="external">こんな</a>アプリを作ります。数時間でこのチュートリアルを終えたときには、Meteorの基本を理解しているこしでしょう。</p>
+<h2 id="一つの言語を学ぶだけでよい"><a href="#一つの言語を学ぶだけでよい" class="headerlink" title="一つの言語を学ぶだけでよい"></a>一つの言語を学ぶだけでよい</h2><p>これまでのWeb開発ではPHP, Ruby, Pythonなど言語でのサーバサイドの開発とJavaScriptでのクライアントサイドの開発が必要でした。さらにデータベースのためにSQL言語が必要だったり、モバイルアプリのためにSwiftやObject-CやJavaやC#の言語が必要かもしれません。</p>
+<p>MeteorではJavaScript一つで済みます。異なるツールやプログラミングスタイルに悩ませることもありません。モバイルアプリの開発もJavaScriptでできてしまいます。</p>
+<h2 id="数時間で結果がでる"><a href="#数時間で結果がでる" class="headerlink" title="数時間で結果がでる"></a>数時間で結果がでる</h2><p>従来、使われもしない簡単なアプリの開発に何か月もかかったことがあるかもしれません。</p>
+<p>Meteorではアイデアを実現して他人に見せることがすぐにできます。共同創業者が顧客にアイデアを説明しているところでプロトタイプをハックして見せることもできるかもしれません。このようにアイデアすぐに形にしてフィードバックを得ることは、スタートアップには特に重要です。</p>
+<h2 id="コミュニティ"><a href="#コミュニティ" class="headerlink" title="コミュニティ"></a>コミュニティ</h2><p>Meteorのコミュニティはすばらしいです。<a href="https://atmospherejs.com/" target="_blank" rel="external">多くの便利なパッケージ</a>が開発されています。<a href="http://stackoverflow.com/questions/tagged/meteor" target="_blank" rel="external">Stack Overflow</a>や<a href="https://forums.meteor.com/" target="_blank" rel="external">Meteor forum</a>で質問すると親切に答えてくれるでしょう。</p>
+<p>MeteorはDevShopを毎月開催しています。<a href="https://www.youtube.com/user/MeteorVideos" target="_blank" rel="external">YouTube</a>でアーカイブを見ることもできますし、タイミングがよければ<a href="http://devshop.meteor.com/" target="_blank" rel="external">リアルタイム</a>で見ることもできるでしょう。</p>
+<p>また、世界各地で<a href="http://meteor.meetup.com/" target="_blank" rel="external">Meetup</a>も開催されています。</p>
+<h2 id="明るい未来"><a href="#明るい未来" class="headerlink" title="明るい未来"></a>明るい未来</h2><p>Meteorは単なる選択肢の一つのWebフレームワークとは少し違います。Meteorは<a href="http://jp.techcrunch.com/2015/05/20/20150519meteor-raises-20m-to-build-the-one-javascript-stack-to-rule-them-all/" target="_blank" rel="external">十分な資金を調達</a>し、<a href="https://www.meteor.com/people" target="_blank" rel="external">経験抱負なメンバ</a>を抱えています。<a href="https://github.com/meteor/meteor" target="_blank" rel="external">GitHub</a>での人気を見ても、すぐになくなってしまうようなフレームワークではないでしょう。</p>
+<h2 id="始めるには"><a href="#始めるには" class="headerlink" title="始めるには?"></a>始めるには?</h2><p>まず、JavaScriptを勉強しましょう。<a href="https://www.codecademy.com/tracks/javascript" target="_blank" rel="external">この</a>ようなコースがあります。</p>
+<p>JavaScriptの基本が分かったら、<a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">TODOアプリ</a>のチュートリアルを勉強しましょう。初めはとまどうかもしれませんが、そのうち理解できるはずです。</p>
+<p>その次は、Meteor関連の書籍を読むとよいでしょう。<a href="https://www.discovermeteor.com/" target="_blank" rel="external">Discover Meteor</a>がおすすめです。</p>
+<p>その後は、TwitterでMeteor関係の開発者をフォローしたり、<br><a href="http://crater.io/" target="_blank" rel="external">Crater.io</a>などのサイトで情報収集するとよいでしょう。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>全体を通して共感はできるのですが、少しべた褒めすぎる気もします。MeteorにはIDE的なものはまだありませんし、エディタに慣れていることが前提になっているところは一つのハードルかもしれません。モバイルアプリも現時点では少し誇張と思えるところもあります。スケーラビリティと合わせて他の記事などで批評されるポイントでもあります。</p>
+<p>最後の書籍についてですが、日本語のものはまだないかと思います。書籍でなければ、個人的には<a href="http://docs.meteor.com/#/basic/" target="_blank" rel="external">公式ドキュメント</a>を読むのが第二歩目なのではないかと思っています。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/why-you-should-learn-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=%E3%81%AA%E3%81%9C%E4%BB%8AMeteor%E3%82%92%E5%AD%A6%E3%81%B6%E3%81%B9%E3%81%8D%E3%81%8B&amp;url=http://meteor-fan.axlight.com/why-you-should-learn-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/why-you-should-learn-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/why-you-should-learn-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/why-you-should-learn-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/comparing-meteor-and-mean/">
+        <section class="post">
+            <h2>MeteorとMEANの比較</h2>
+            <p>Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文はこちら 導入まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor-features/">
+        <section class="post">
+            <h2>公式サイトで説明されているMeteorの特徴</h2>
+            <p>Meteor 1.2がリリースされてからMeteorの公式サイトもリニューアルされました。その中のWhy Meteor?のエリアにMeteorの特徴が載っていたので紹介します。なお、内容は執筆時点のものです。 Meteorで開発するMeteorを使うととても簡単な方法でリアルタイムアプリ(モバイルおよびWeb)を作ることができます。すべてJ&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Kadira DebugでMeteorアプリのデバッグ - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/kadira-debug-for-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Kadira DebugでMeteorアプリのデバッグ - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteorアプリのパフォーマンス向上を支援するKadira Platformというサービスがあります。 Kadira Platformは下図のように複数のツールから構成されています。  この中のKadira Debugというツールを紹介します。 Kadira DebugKadira DebugはKadira Platformの中で開発段階" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/kadira-debug-for-meteor/" />
+    <meta property="article:published_time" content="2015-09-05T08:52:29.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="パッケージ" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Kadira DebugでMeteorアプリのデバッグ - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteorアプリのパフォーマンス向上を支援するKadira Platformというサービスがあります。 Kadira Platformは下図のように複数のツールから構成されています。  この中のKadira Debugというツールを紹介します。 Kadira DebugKadira DebugはKadira Platformの中で開発段階" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/kadira-debug-for-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Kadira DebugでMeteorアプリのデバッグ - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/kadira-debug-for-meteor/",
+    "datePublished": "2015-09-05T08:52:29.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "パッケージ",
+    "description": "Meteorアプリのパフォーマンス向上を支援するKadira Platformというサービスがあります。 Kadira Platformは下図のように複数のツールから構成されています。  この中のKadira Debugというツールを紹介します。 Kadira DebugKadira DebugはKadira Platformの中で開発段階"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Kadira DebugでMeteorアプリのデバッグ</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-09-05">05 September 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/packages/">パッケージ</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteorアプリのパフォーマンス向上を支援する<a href="https://kadira.io" target="_blank" rel="external">Kadira Platform</a>というサービスがあります。</p>
+<p>Kadira Platformは下図のように複数のツールから構成されています。</p>
+<p><img src="https://cldup.com/yKMbqySHor.png" alt="Kadira Platform"></p>
+<p>この中のKadira Debugというツールを紹介します。</p>
+<h2 id="Kadira-Debug"><a href="#Kadira-Debug" class="headerlink" title="Kadira Debug"></a>Kadira Debug</h2><p><a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debug</a>はKadira Platformの中で開発段階で使うツールです。メインのツールはプロダクション段階で使うもののようです。Kadira Platformは基本的にサインアップして使うツールなのですが、Kadira Debugはサインアップ不要で使えるので手軽です。</p>
+<p>現時点では無料で使えるようですが、完全にオープンソースというわけではありません。Meteorアプリに組み込むパッケージはMITライセンスですが、UIのコードはオープンソースではありません。</p>
+<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>Meteorアプリに組み込むパッケージのインストールは次のようにします。</p>
+<pre><code>meteor add kadira:debug
+</code></pre><p>このパッケージはdebugOnlyであるためプロダクション段階では組み込まれません。</p>
+<h2 id="起動方法"><a href="#起動方法" class="headerlink" title="起動方法"></a>起動方法</h2><p>Meteorアプリをいつも通り起動したら、</p>
+<p><a href="http://debug.kadiraio.com/debug" target="_blank" rel="external">http://debug.kadiraio.com/debug</a></p>
+<p>にアクセスします。</p>
+<p><img src="https://farm6.staticflickr.com/5787/20540732563_74018de70c_h.jpg" alt="screenshot"></p>
+<p>このような画面が出たら、テキストフィールドにアプリのURLを入力します。例えば、</p>
+<pre><code>http://localhost:3000/
+</code></pre><p>がよくあるケースでしょう。その後Connectボタンを押すと起動完了です。</p>
+<h2 id="機能説明"><a href="#機能説明" class="headerlink" title="機能説明"></a>機能説明</h2><h3 id="Event-Stream"><a href="#Event-Stream" class="headerlink" title="Event Stream"></a>Event Stream</h3><p>“Event Stream”はMeteorアプリ内で起こっているイベントを表示する機能です。イベントには、ルート変更、メソッド呼び出し、Subscription、データ更新、DOMイベントなどがあります。これらをフィルタで見たいものだけに制限することができます。</p>
+<ul>
+<li>Route: アプリ内でのルートの変更</li>
+<li>Sub: アプリ内でのSubscriptionの実行</li>
+<li>Rready: サーバがSubscriptionを受け付けた時</li>
+<li>Unsub: Subscriptionの解除要求</li>
+<li>Nosub: Subscriptionが停止した時</li>
+<li>Method: アプリ内でMethod呼び出しの実行</li>
+<li>Updated: サーバがUpdatedメッセージを送った時 <a href="https://meteorhacks.com/introduction-to-latency-compensation" target="_blank" rel="external">参照</a></li>
+<li>Live Updates: サーバから来たデータ更新</li>
+<li>HCR: ホットコードリロードが起こった時</li>
+</ul>
+<h3 id="Blaze-Monitoring"><a href="#Blaze-Monitoring" class="headerlink" title="Blaze Monitoring"></a>Blaze Monitoring</h3><p>“Client Activities”にはBlazeで実行された処理と時間が表示されます。</p>
+<p>下記のようなBlazeの処理を見ることができます。</p>
+<ul>
+<li>テンプレートを作成したり削除したりする時間</li>
+<li>DOMエレメントを作成したり削除したりする時間</li>
+<li>ヘルパー実行、autorun、描画コールバックにかかる時間</li>
+</ul>
+<p>これによりどのテンプレートが作成と削除が頻繁に発生しているかが分かり、それをもとに改善することができます。</p>
+<h3 id="CPU-Monitoring"><a href="#CPU-Monitoring" class="headerlink" title="CPU Monitoring"></a>CPU Monitoring</h3><p>クライアントコードの負荷を知ることも重要です。”Client Activities”にはイベントループのブロック度合(%)が表示されます。もし急激な増加を見つけたら、その際にどのような動作やイベントがあったか調べることができるでしょう。根本的な原因を探るのに役立つはずです。</p>
+<p>実はCPU利用率は直接は計測できませんが、ブロック度合を観測することでそれなりに追跡することができます。仮にeventloop blocknessが40%だとすると40%の時間は何からの理由でアプリが忙しいという意味です。その理由には他のプロセスの動作も含まれます。</p>
+<h3 id="CPU-Profiling"><a href="#CPU-Profiling" class="headerlink" title="CPU Profiling"></a>CPU Profiling</h3><p>CPUプロファイリングを使うと具体的にコードのどの部分がボトルネックかを知ることができます。CPUプロファイルを取得した後にKadiraのアナライザで読み込んで解析することができます。</p>
+<p>サーバサイドのCPUプロファイルを取得するには、下記のパッケージを利用します。</p>
+<pre><code>meteorhacks:kadira-profiler
+</code></pre><p>さらに、</p>
+<pre><code>export KADIRA_PROFILE_LOCALLY=1
+</code></pre><p>の設定をして、アプリを起動し、ブラウザのコンソールから、</p>
+<pre><code>Kadira.profileCpu(10)
+</code></pre><p>を実行すると、10秒おきにプロファイルが保存されます。</p>
+<p>一方、クライアントサイドのCPUプロファイルを取得するには、Chromeのプロファイリングツールを使います。プロファイル取得後にSaveボタンで保存することでファイルに書き出します。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>以上がKadira Debugの簡単な説明です。残念ながら、細かい使い方には踏み込めていません。具体的な使い方は、<a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debugのページ</a>を参照してください。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/kadira-debug-for-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Kadira%20Debug%E3%81%A7Meteor%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0&amp;url=http://meteor-fan.axlight.com/kadira-debug-for-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/kadira-debug-for-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/kadira-debug-for-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/kadira-debug-for-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor-app-with-npm/">
+        <section class="post">
+            <h2>Meteorアプリでnpmを使う方法</h2>
+            <p>本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。 Npm.requireMeteorではnpmを使ってパッケージを利用する方法が公式に用意されています。 http://docs.meteor.com/#/full/Npm-require しかし、このNpm.requireはMeteo&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor-lecture-at-ucb/">
+        <section class="post">
+            <h2>UCBでのMeteorの講義</h2>
+            <p>UCBで行われたMeteorの講義の動画が公開されています。とても勉強になるのでぜひ参考にしてください。   講師はMeteorのco-founderのMatt Debergalisです。講義メモが公開されているので、それを紹介します。 CS 294-101でのMeteor講義メモMeteorの設計アイデアの多くはhttps://www.m&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

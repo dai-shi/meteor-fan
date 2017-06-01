@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.3 React日本語チュートリアル (step04) - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.3 React日本語チュートリアル (step04) - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteorの日本語版のチュートリアルのstep04です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する (本記事) タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/" />
+    <meta property="article:published_time" content="2016-03-25T02:46:46.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.3 React日本語チュートリアル (step04) - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteorの日本語版のチュートリアルのstep04です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する (本記事) タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step04//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.3 React日本語チュートリアル (step04) - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/",
+    "datePublished": "2016-03-25T02:46:46.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "Meteorの日本語版のチュートリアルのstep04です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する (本記事) タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.3 React日本語チュートリアル (step04)</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-25">25 March 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep04です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li>フォームを使ってタスクを追加する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="フォームを使ってタスクを追加する"><a href="#フォームを使ってタスクを追加する" class="headerlink" title="フォームを使ってタスクを追加する"></a>フォームを使ってタスクを追加する</h2><p>このステップでは、ユーザがタスクをリストに追加するためのインプットフィールドを追加します。</p>
+<p>はじめに、Appコンポーネントにフォームを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/b595a90b125e15632f84bbe16f7d46e1682418a0/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/1c0c67f6d53456e276d1.js"></script>
+
+<p>(メモ: JSXコード内では <code>{/* ... */}</code>でコメントを入れることができます)</p>
+<p>上記修正で、<code>form</code>要素に<code>onSubmit</code>属性がつきそこにコンポーネントの<code>handleSubmit</code>が指定されているのが分かるでしょう。Reactでは、このようにしてフォームのイベントなどブラウザのイベントを受け取ります。<code>input</code>要素には<code>ref</code>属性を付与することでコードから要素へのアクセスが簡単になります。</p>
+<p>それでは、<code>handleSubmit</code>メソッドを<code>App</code>コンポーネントに追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/9e3e3dd400d5d18024b2a1ba92a6fab5512be5b3/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/909bac9950f1449af5ca.js"></script>
+
+<p>これでアプリに入力フィールドができました。タスクを追加するには、フィールドに入力してエンターを押すだけです。新しいブラウザウィンドウを開いてアプリを開けば、リストが同期しているはずです。すべてのクライアントで自動同期します。</p>
+<h3 id="Reactでイベントを受け取る"><a href="#Reactでイベントを受け取る" class="headerlink" title="Reactでイベントを受け取る"></a>Reactでイベントを受け取る</h3><p>すでにやったように、Reactではコンポーネントのメソッドを直接指定することでDOMのイベントを処理します。イベントハンドラでは、<code>ref</code>属性を指定した要素を<code>ReactDOM.findDOMNode</code>で参照することができます。Reactがサポートするその他のイベントやイベントシステムの仕組みについては、<a href="https://facebook.github.io/react/docs/events.html" target="_blank" rel="external">React docs</a>を参照してください。</p>
+<h3 id="コレクションに追加する"><a href="#コレクションに追加する" class="headerlink" title="コレクションに追加する"></a>コレクションに追加する</h3><p>イベントハンドラでは、<code>Tasks.insert()</code>を呼び出して<code>tasks</code>コレクションにタスクを追加しています。コレクションのスキーマは定義しないため、タスクオブジェクトには作成時間など任意のプロパティを割り当てることができます。</p>
+<p>クライアントから任意のデータをデータベースに追加できることは実は安全ではありません。しかし、現時点ではよしとします。チュートリアルの後半のステップで、アプリを安全にするためのデータベースへのデータの追加を制限する方法を解説します。</p>
+<h3 id="タスクデータをソートする"><a href="#タスクデータをソートする" class="headerlink" title="タスクデータをソートする"></a>タスクデータをソートする</h3><p>現状では、新しいタスクはリストの最後に追加されて表示されます。これはあまり好ましくなく、新しいタスクは最初に見えるようにしたいでしょう。</p>
+<p>そこで、<code>createdAt</code>プロパティを自動で追加し、それをもとにソートするようにしましょう。<code>App</code>コンポーネントをラップしているコンテナにある<code>find</code>呼び出しにソートオプションを追加します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/0f68a3dea14816f10c88b4d6491612cedd093aaa/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/b5b99391b48270235dd8.js"></script>
+
+<p>ブラウザに戻って想定通りになっているか確認してください。新しいタスクがリストの最初に追加されるようになったはずです。</p>
+<p>次のステップでは、TODOリストの重要な機能を追加します。それはタスクの完了を示すチェックマークをつけることと、タスクを削除することです。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step05: <a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.3%20React%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%20(step04)&amp;url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step05)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep05です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する (本記事) アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step03/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step03)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep03です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する (本記事) フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

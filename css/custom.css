@@ -1,0 +1,169 @@
+.blog-logo img {
+  height: 60px;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  padding: 0;
+}
+
+.post-head.blog-cover.main-header {
+  height: 40vh;
+}
+
+@media only screen and (max-width: 900px) {
+  .post-head.blog-cover.main-header {
+    height: 30vh;
+  }
+  .archive-template .main-header {
+    min-height: 280px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .post-head.blog-cover.main-header {
+    height: 20vh;
+  }
+  .archive-template .main-header {
+    min-height: 200px;
+  }
+}
+
+figure.highlight {
+  overflow-x: scroll;
+}
+
+.post-footer .share {
+  width: auto;
+}
+
+.post-footer .share a {
+    font-size: 2.2rem;
+}
+
+@font-face {
+  font-family: "icomoon";
+  src:url("../fonts/icomoon.eot?-qz7pb2");
+  src:url("../fonts/icomoon.eot?#iefix-qz7pb2") format("embedded-opentype"),
+      url("../fonts/icomoon.woff?-qz7pb2") format("woff"),
+      url("../fonts/icomoon.ttf?-qz7pb2") format("truetype"),
+      url("../fonts/icomoon.svg?-qz7pb2#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon2-"], [class*=" icon2-"] {
+	font-family: "icomoon";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon2-evernote:before {
+	content: "\e004";
+}
+.icon2-feedly:before {
+	content: "\e007";
+}
+.icon2-pocket:before {
+	content: "\e008";
+}
+.icon2-line:before {
+	content: "\e009";
+}
+.icon2-hatena:before {
+	content: "\e00a";
+}
+.icon2-feedly-square:before {
+	content: "\e601";
+}
+.icon2-googleplus:before {
+	content: "\e608";
+}
+.icon2-facebook:before {
+	content: "\e60d";
+}
+.icon2-instagram:before {
+	content: "\e610";
+}
+.icon2-twitter:before {
+	content: "\e611";
+}
+.icon2-feed:before {
+	content: "\e614";
+}
+.icon2-youtube:before {
+	content: "\e617";
+}
+.icon2-flickr2:before {
+	content: "\e61e";
+}
+.icon2-githubmark:before {
+	content: "\e626";
+}
+.icon2-github:before {
+	content: "\e627";
+}
+.icon2-wordpress:before {
+	content: "\e629";
+}
+.icon2-tumblr:before {
+	content: "\e62d";
+}
+.icon2-yahoo:before {
+	content: "\e62f";
+}
+.icon2-apple:before {
+	content: "\e631";
+}
+.icon2-android:before {
+	content: "\e633";
+}
+.icon2-windows:before {
+	content: "\e634";
+}
+.icon2-windows8:before {
+	content: "\e635";
+}
+.icon2-skype:before {
+	content: "\e636";
+}
+.icon2-delicious:before {
+	content: "\e638";
+}
+.icon2-pinterest:before {
+	content: "\e63a";
+}
+
+.post-footer .share .icon2-twitter:hover {
+  color: #55acee;
+}
+.post-footer .share .icon2-facebook:hover {
+  color: #3b5998;
+}
+.post-footer .share .icon2-google-plus:hover {
+  color: #dd4b39;
+}
+.post-footer .share .icon2-hatena:hover {
+  color: #008fde;
+}
+.post-footer .share .icon2-pocket:hover {
+  color: #ee4056;
+}
+
+.social-links {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 7px 12px;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+}
+
+.social-links a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 4px 9px 1px 9px;
+}

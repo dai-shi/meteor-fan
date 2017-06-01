@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.4.1のアナウンス - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor141-announcement/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.4.1のアナウンス - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteor 1.4.1がリリースされました。詳細は公式ブログを参照してください。Meteor 1.4.1には多くの段階的な改良が含まれています。 アップグレード方法Meteorアプリを1.4.1にアップデートするには、単にアプリケーションディレクトリで、meteor updateを実行するだけです。 もしアップデートする前にMeteor " />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor141-announcement/" />
+    <meta property="article:published_time" content="2016-08-20T12:08:49.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="ニュース" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.4.1のアナウンス - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteor 1.4.1がリリースされました。詳細は公式ブログを参照してください。Meteor 1.4.1には多くの段階的な改良が含まれています。 アップグレード方法Meteorアプリを1.4.1にアップデートするには、単にアプリケーションディレクトリで、meteor updateを実行するだけです。 もしアップデートする前にMeteor " />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor141-announcement//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.4.1のアナウンス - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor141-announcement/",
+    "datePublished": "2016-08-20T12:08:49.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "ニュース",
+    "description": "Meteor 1.4.1がリリースされました。詳細は公式ブログを参照してください。Meteor 1.4.1には多くの段階的な改良が含まれています。 アップグレード方法Meteorアプリを1.4.1にアップデートするには、単にアプリケーションディレクトリで、meteor updateを実行するだけです。 もしアップデートする前にMeteor "
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.4.1のアナウンス</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-08-20">20 August 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/news/">ニュース</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteor 1.4.1がリリースされました。詳細は<a href="http://info.meteor.com/blog/announcing-meteor-1.4.1" target="_blank" rel="external">公式ブログ</a>を参照してください。Meteor 1.4.1には多くの段階的な改良が含まれています。</p>
+<h2 id="アップグレード方法"><a href="#アップグレード方法" class="headerlink" title="アップグレード方法"></a>アップグレード方法</h2><p>Meteorアプリを1.4.1にアップデートするには、単にアプリケーションディレクトリで、<code>meteor update</code>を実行するだけです。</p>
+<p>もしアップデートする前にMeteor 1.4.1を試したければ、<code>meteor create --release 1.4.1 my-test-app</code>で新しいアプリを作ることができます。</p>
+<p>1.4.1ではパッケージダウンロードが高速化されますが、1.4.1にアップデートする際は1.4で動くため高速化は効きません。もし時間がかかりすぎるようであれば、1.4.1をクリーンインストールする手もあります。</p>
+<h2 id="Node-4-5-0"><a href="#Node-4-5-0" class="headerlink" title="Node 4.5.0"></a>Node 4.5.0</h2><p>8/16にリリースされた最新のLTSバージョンに更新されました。Node 4.4.7との差分はそれほど特記するものはないため、アプリケーションを修正する必要はありません。ただ、Meteor 4.5.0では問題が解消されるいるため、Meteor 1.4.0.1でリリースしました。</p>
+<h2 id="より速いパッケージダウンロード"><a href="#より速いパッケージダウンロード" class="headerlink" title="より速いパッケージダウンロード"></a>より速いパッケージダウンロード</h2><p>パッケージダウンロードを不安定なネットワークでもより安定させるため、Meteor 1.4.1では格段にダウンロード時間を短縮しました。これはJSベースのtarの実装からネイティブのtarを使う(windowsでは7z.exe)ように変更したことによります。</p>
+<p>プログレス表示も改良され、「ダウンロード中」「展開中」「ロード中」が区別されるようになりました。</p>
+<h2 id="meteor-publish-for-archとのお別れ"><a href="#meteor-publish-for-archとのお別れ" class="headerlink" title="meteor publish-for-archとのお別れ"></a>meteor publish-for-archとのお別れ</h2><p>パッケージを公開するときに、バイナリモジュールを含む場合でも、<code>meteor publish-for-arch</code>を実行する必要がなくなりました。バイナリモジュールは開発者の責任でパッケージをインストールする際にコンパイルされるようになります。この方式が使えるのは1.3.3以降です。</p>
+<p>より詳しくは<a href="https://forums.meteor.com/t/whats-happening-to-meteor-publish-for-arch-in-meteor-1-4-1/28209" target="_blank" rel="external">こちらの記事</a>を参照してください。</p>
+<h2 id="その他の変更"><a href="#その他の変更" class="headerlink" title="その他の変更"></a>その他の変更</h2><p>詳細は<a href="https://github.com/meteor/meteor/blob/release-1.4.1/History.md#v141" target="_blank" rel="external">こちら</a>を参照してください。</p>
+<h2 id="次は何か"><a href="#次は何か" class="headerlink" title="次は何か"></a>次は何か</h2><p>Meteor 1.4.2はリビルドパフォーマンスに注力する予定です。またバグ修正も行います。近々ベータテストに入る予定です。詳細は<a href="https://github.com/meteor/meteor/pull/7668" target="_blank" rel="external">こちら</a>。</p>
+<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>1.4.*は地味ですが、実用性を上げる改修が多くて、使う人からすると助かるかと思います。そこまで手がまわるほど余裕がでてきたということですね。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor141-announcement/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.4.1%E3%81%AE%E3%82%A2%E3%83%8A%E3%82%A6%E3%83%B3%E3%82%B9&amp;url=http://meteor-fan.axlight.com/meteor141-announcement/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor141-announcement/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor141-announcement/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor141-announcement/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor142-annoucement/">
+        <section class="post">
+            <h2>Meteor 1.4.2のアナウンス</h2>
+            <p>Meteor 1.4.2がリリースされました。詳しくは、公式ブログでのアナウンスをご覧ください。 下記では、いくつかの要点を紹介します。 リビルド時のパフォーマンス向上特に大きいアプリでのリビルドの時間が短縮されるそうです。例えば、Galaxy自身のアプリとしては、これまで8〜10秒以上かかっていたリビルド時間が2秒未満になったそうです。よ&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor14-announcement/">
+        <section class="post">
+            <h2>Meteor 1.4のアナウンス</h2>
+            <p>3月のMeteor 1.3のリリースから4か月も経っていませんが、Meteor 1.4がリリースされました。公式ブログの記事を紹介します。 概要Meteor 1.4ではNodeとMongoDBのメジャーアップデートとより柔軟なパッケージリリースの仕組みが入りました。Meteor 1.4の狙いは長期間の安定性と、JavaScript全体のエコ&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

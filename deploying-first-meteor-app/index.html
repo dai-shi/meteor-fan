@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>初めてのMeteorアプリのデプロイ - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/deploying-first-meteor-app/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="初めてのMeteorアプリのデプロイ - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="本記事は公式チュートリアル6の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ (←とう" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/deploying-first-meteor-app/" />
+    <meta property="article:published_time" content="2015-08-06T12:07:22.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="初めてのMeteorアプリのデプロイ - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="本記事は公式チュートリアル6の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ (←とう" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/deploying-first-meteor-app//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "初めてのMeteorアプリのデプロイ - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/deploying-first-meteor-app/",
+    "datePublished": "2015-08-06T12:07:22.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "本記事は公式チュートリアル6の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ (←とう"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">初めてのMeteorアプリのデプロイ</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-08-06">06 August 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本記事は<a href="https://www.meteor.com/tutorials/blaze/deploying-your-app" target="_blank" rel="external">公式チュートリアル6</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次"><a href="#チュートリアルの目次" class="headerlink" title="チュートリアルの目次"></a>チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li>初めてのMeteorアプリのデプロイ (←とうとうここまで来た)</li>
+</ol>
+<h2 id="Meteorのクラウドサーバ"><a href="#Meteorのクラウドサーバ" class="headerlink" title="Meteorのクラウドサーバ"></a>Meteorのクラウドサーバ</h2><p>自分が作成したアプリを簡単に公開できるようにMeteorがクラウドサーバを用意してくれています。しかも、無料で使えます。今後のどのようになるかは分かりませんが、テスト用途や永続性がそれほど重要ではないアプリの場合は当面は使えるのではないでしょうか。</p>
+<p>(更新情報) 2016年3月にMeteorの無料のクラウドサービスは終了しました。</p>
+<h2 id="実際にデプロイしてみる"><a href="#実際にデプロイしてみる" class="headerlink" title="実際にデプロイしてみる"></a>実際にデプロイしてみる</h2><p>アプリのプロジェクトディレクトリで、</p>
+<pre><code>meteor deploy sample-app.meteor.com
+</code></pre><p>と入力して実行してください。しばらくすると完了するはずです。<code>sample-app</code>のところは適宜変更してください。</p>
+<p>既にデプロイ先が存在していて、別の開発者に所属している場合は、エラーになると思います。その場合は、デプロイ先の名前(上記の<code>sample-app</code>のところ)を変更してみてください。</p>
+<h2 id="サイトにアクセスする"><a href="#サイトにアクセスする" class="headerlink" title="サイトにアクセスする"></a>サイトにアクセスする</h2><p><a href="http://sample-app.meteor.com/" target="_blank" rel="external">http://sample-app.meteor.com/</a></p>
+<p>をブラウザで開きましょう。今までローカルで動かしていたものと全く同じものが動いているはずです。ただし、データベースは異なりますので、中身は空の状態でしょう。</p>
+<h2 id="開発者アカウント"><a href="#開発者アカウント" class="headerlink" title="開発者アカウント"></a>開発者アカウント</h2><p>初めてアプリをデプロイした際に電子メールアドレスを聞かれるかもしれません。手順に従うと開発者アカウントを作ることができます。開発者アカウントを作るとデプロイしたアプリに権限を設定することができ、自分もしくは権限を付与した開発者のみがアプリを操作できるようになります。</p>
+<p>詳しくは<a href="http://docs.meteor.com/#/full/meteordeploy" target="_blank" rel="external">ドキュメント</a>を参照。</p>
+<h2 id="次のステップ"><a href="#次のステップ" class="headerlink" title="次のステップ"></a>次のステップ</h2><p>ここまででチュートリアルの前半は終了です。後半はユーザ認証やデータベースの同期制御などより実際的な機能を学びます。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/deploying-first-meteor-app/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEMeteor%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4&amp;url=http://meteor-fan.axlight.com/deploying-first-meteor-app/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/deploying-first-meteor-app/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/deploying-first-meteor-app/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/deploying-first-meteor-app/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/mongol-for-debugging/">
+        <section class="post">
+            <h2>MeteorでMongoDBのデバッグに使えるMongolパッケージ</h2>
+            <p>Meteorでアプリの開発をするときにはどのようなデバッグ方法があるでしょうか。meteor shellやmeteor debugはサーバサイドのツールです。クライアントサイドはどうでしょう。Meteorのチュートリアルを見ているとブラウザのデベロッパーツールを使って、コンソールで操作することが一つの方法のようです。 今回は、クライアントサ&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor-famous-integration-intro/">
+        <section class="post">
+            <h2>MeteorでFamousを使うfamous-viewsの紹介</h2>
+            <p>2015/7/24のMeteorの公式ブログで、famous-viewsが取り上げられていましたので紹介します。 FamousとはFamousは、とてもユニークなJavaScriptのレンダリングエンジンです。機会があればもっと紹介したいところですが、一言で言うとアニメーションをふんだんに使ったユーザインタフェースを作れるライブラリであり、&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

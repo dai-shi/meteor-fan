@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.3 React日本語チュートリアル (step06) - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.3 React日本語チュートリアル (step06) - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteorの日本語版のチュートリアルのstep06です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす (本記事) 一時的なUIデータをステートに格納する ユーザア" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/" />
+    <meta property="article:published_time" content="2016-03-25T02:46:54.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.3 React日本語チュートリアル (step06) - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteorの日本語版のチュートリアルのstep06です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす (本記事) 一時的なUIデータをステートに格納する ユーザア" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step06//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.3 React日本語チュートリアル (step06) - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/",
+    "datePublished": "2016-03-25T02:46:54.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "Meteorの日本語版のチュートリアルのstep06です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす (本記事) 一時的なUIデータをステートに格納する ユーザア"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.3 React日本語チュートリアル (step06)</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-25">25 March 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep06です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li>アプリをAndroidやiOSで動かす (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="アプリをAndroidやiOSで動かす"><a href="#アプリをAndroidやiOSで動かす" class="headerlink" title="アプリをAndroidやiOSで動かす"></a>アプリをAndroidやiOSで動かす</h2><blockquote>
+<p>今のところ、MeteorのWindows版ははモバイル開発はサポートされていません。Windows版を使っている場合はこのステップはスキップしてください。</p>
+</blockquote>
+<p>これまではWebブラウザでアプリを作りテストしてきましたが、Meteorは複数のプラットフォームで動作するように設計されています。開発したsimple-todosアプリもいくつかのコマンドでiOSアプリやAndroidアプリにすることができます。</p>
+<p>Meteorでは簡単にモバイルアプリ開発環境を構築することができます。しかし、すべての開発環境をダウンロードするにはそれなりに時間がかかります。Andriodの場合は約300MBのダウンロードで、iOSの場合は約2GBのXcodeをインストールする必要があります。ダウンロードする時間がない場合は、このステップはスキップしても問題ありません。</p>
+<h3 id="iOSシミュレータで動かす-Macのみ"><a href="#iOSシミュレータで動かす-Macのみ" class="headerlink" title="iOSシミュレータで動かす (Macのみ)"></a>iOSシミュレータで動かす (Macのみ)</h3><p>Macを使っている場合は、アプリをiOSシミュレータで動かすことができます。<br>If you have a Mac, you can run your app inside the iOS simulator.</p>
+<p>アプリフォルダで下記を実行してください。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">install</span>-sdk ios</div></pre></td></tr></table></figure>
+<p>これにより、iOSアプリの開発に必要なものがセットアップされます。完了したら、次に下記を実行してください。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meteor<span class="built_in"> add-platform </span>ios</div><div class="line">meteor run ios</div></pre></td></tr></table></figure>
+<p>これで、iOSシミュレータが起動しアプリが動くはずです。</p>
+<h3 id="Androidエミュレータで動かす"><a href="#Androidエミュレータで動かす" class="headerlink" title="Androidエミュレータで動かす"></a>Androidエミュレータで動かす</h3><p>ターミナルで、アプリフォルダに移動し下記を実行してください。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">install</span>-sdk android</div></pre></td></tr></table></figure>
+<p>これにより、Androidアプリの開発に必要なツールがインストールされます。完了したら、次に下記を実行してください。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor<span class="built_in"> add-platform </span>android</div></pre></td></tr></table></figure>
+<p>ライセンスに合意した後に、下記を実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">run</span><span class="bash"> android</span></div></pre></td></tr></table></figure>
+<p>初期化処理の後に、Androidエミュレータが立ち上がり、アプリがAndroidラッパーの中で動いているはずです。エミュレータはいくぶん遅いため、もし実際の動きを確認したい場合は、実際のデバイスで動作させる必要があります。</p>
+<h3 id="Androidデバイスで動かす"><a href="#Androidデバイスで動かす" class="headerlink" title="Androidデバイスで動かす"></a>Androidデバイスで動かす</h3><p>最初に、上記のAndroid開発環境のセットアップが完了している必要があります。その後、<a href="http://developer.android.com/tools/device.html#developer-device-options" target="_blank" rel="external">USBデバッグを有効にしたデバイス</a>をUSBケーブルでコンピュータに接続してください。また、Androidエミュレータは事前に止めておく必要があります。</p>
+<p>準備ができたら、下記のコマンドを実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">run</span><span class="bash"> android-device</span></div></pre></td></tr></table></figure>
+<p>これでアプリがデバイスにインストールされるはずです。<br>The app will be built and installed on your device.</p>
+<h3 id="iPhoneやiPadで動かす-Macのみ-Apple-developer-accountが必要"><a href="#iPhoneやiPadで動かす-Macのみ-Apple-developer-accountが必要" class="headerlink" title="iPhoneやiPadで動かす (Macのみ; Apple developer accountが必要)"></a>iPhoneやiPadで動かす (Macのみ; Apple developer accountが必要)</h3><p>もしApple developer accountを持っていれば、アプリをiOSデバイスで動かすこともできます。下記のコマンドを実行してください。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor run ios-device</div></pre></td></tr></table></figure>
+<p>これによりiOSアプリのプロジェクトがXcodeで起動します。Xcodeを使ってアプリを任意のデバイスやサポートされたシミュレータで動かすことができます。</p>
+<p>さて、モバイルでアプリを簡単に動かせることが分かったところで、次のステップではさらに機能を追加していきましょう。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step07: <a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.3%20React%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%20(step06)&amp;url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step07/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step07)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep07です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する (本記事) ユーザア&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step05)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep05です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する (本記事) アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザア&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

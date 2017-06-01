@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor Fan (日本語情報)</title>
+    <meta name="description" content="JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/archives/2015/08/page/3/" />
+    <link rel="prev" href="http://meteor-fan.axlight.com/archives/2015/08/page/2/" />
+    <link rel="next" href="http://meteor-fan.axlight.com/archives/2015/08/page/4/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/archives/2015/08/page/3/" />
+    <meta property="og:image" content="https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/archives/2015/08/page/3/" />
+    <meta name="twitter:image:src" content="https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/archives/2015/08/page/3/",
+    "image": "https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png",
+    "description": "JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="archive-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+<header class="main-header " style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://twitter.com/meteor__fan" target="_blank" title="Twitter">
+            <i class="fa fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://meteor-fan.herokuapp.com/" target="_blank" title="Slack">
+            <i class="fa fa-slack fa-2x"></i>
+          </a>
+          <a href="http://meteor-fan.connpass.com/" target="_blank" title="connpass">
+            <i class="fa fa-calendar fa-2x"></i>
+          </a>
+          <a href="https://github.com/meteor-fan" target="_blank" title="GitHub">
+            <i class="fa fa-github fa-2x"></i>
+          </a>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+<main id="content" class="content" role="main">
+
+    <div class="extra-pagination inner">
+        <nav class="pagination" role="navigation">
+          <a class="newer-posts" href="/archives/2015/08/page/2/">&larr; Newer Posts</a>
+          <span class="page-number">Page 3 of 4</span>
+          <a class="older-posts" href="/archives/2015/08/page/4/">Older Posts &rarr;</a>
+        </nav>
+    </div>
+    
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="http://meteor-fan.axlight.com/meteor-file-structure/">Meteorのファイル・ディレクトリ(フォルダ)構成について</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>本記事では、Meteorのファイル構成について説明します。Meteorのファイル構成は複雑ではありませんが色々決まりがあるため理解する必要があります。 Meteorの初めのチュートリアルでは、HTML, JavaScript, CSSでそれぞれ1ファイルで合計3ファイルだけを使います。練習としてはこれで十分ですが、分割すると便利なことがあります。 公式マニュアルに詳しい説明がありますので、合わせて参照してください。 まず原則としてプロジェクトディレクトリに置かれた <a class="read-more" href="http://meteor-fan.axlight.com/meteor-file-structure/">&raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            <img class="author-thumb" src="https://avatars.githubusercontent.com/u/490574?v=3" alt="dai-shi" nopin="nopin" />
+            dai-shi
+             | 
+            <a href="http://meteor-fan.axlight.com/tag/tips/">Tips</a>
+            <time class="post-date" datetime="2015-08-12">12 August 2015</time>
+        </footer>
+    </article>
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>本記事は公式チュートリアル8の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Meteorで初めてのモバイルアプリ (スキップ) Meteorで初めてのセッション変数 (←今ここ)  チュートリアルも後半に入りま <a class="read-more" href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">&raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            <img class="author-thumb" src="https://avatars.githubusercontent.com/u/490574?v=3" alt="dai-shi" nopin="nopin" />
+            dai-shi
+             | 
+            <a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+            <time class="post-date" datetime="2015-08-11">11 August 2015</time>
+        </footer>
+    </article>
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="http://meteor-fan.axlight.com/mongol-for-debugging/">MeteorでMongoDBのデバッグに使えるMongolパッケージ</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>Meteorでアプリの開発をするときにはどのようなデバッグ方法があるでしょうか。meteor shellやmeteor debugはサーバサイドのツールです。クライアントサイドはどうでしょう。Meteorのチュートリアルを見ているとブラウザのデベロッパーツールを使って、コンソールで操作することが一つの方法のようです。 今回は、クライアントサイドでのデバッグに使えるライブラリであるMongolを紹介します。 MongolとはMongolは、Mongoのクライアントサ <a class="read-more" href="http://meteor-fan.axlight.com/mongol-for-debugging/">&raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            <img class="author-thumb" src="https://avatars.githubusercontent.com/u/490574?v=3" alt="dai-shi" nopin="nopin" />
+            dai-shi
+             | 
+            <a href="http://meteor-fan.axlight.com/tag/packages/">パッケージ</a>
+            <time class="post-date" datetime="2015-08-09">09 August 2015</time>
+        </footer>
+    </article>
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>本記事は公式チュートリアル6の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ (←とうとうここまで来た)  Meteorのクラウドサーバ自分が作成したアプリを簡単に公開できるようにMeteorがクラウドサーバを用 <a class="read-more" href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">&raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            <img class="author-thumb" src="https://avatars.githubusercontent.com/u/490574?v=3" alt="dai-shi" nopin="nopin" />
+            dai-shi
+             | 
+            <a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+            <time class="post-date" datetime="2015-08-06">06 August 2015</time>
+        </footer>
+    </article>
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="http://meteor-fan.axlight.com/meteor-famous-integration-intro/">MeteorでFamousを使うfamous-viewsの紹介</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>2015/7/24のMeteorの公式ブログで、famous-viewsが取り上げられていましたので紹介します。 FamousとはFamousは、とてもユニークなJavaScriptのレンダリングエンジンです。機会があればもっと紹介したいところですが、一言で言うとアニメーションをふんだんに使ったユーザインタフェースを作れるライブラリであり、デスクトップでもモバイルでも高速で動くことが強みです。DOMはフラットにしてCSSの3d transformを使って配置するこ <a class="read-more" href="http://meteor-fan.axlight.com/meteor-famous-integration-intro/">&raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            <img class="author-thumb" src="https://avatars.githubusercontent.com/u/490574?v=3" alt="dai-shi" nopin="nopin" />
+            dai-shi
+             | 
+            <a href="http://meteor-fan.axlight.com/tag/intro/">紹介</a>
+            <time class="post-date" datetime="2015-08-04">04 August 2015</time>
+        </footer>
+    </article>
+    
+    <nav class="pagination" role="navigation">
+      <a class="newer-posts" href="/archives/2015/08/page/2/">&larr; Newer Posts</a>
+      <span class="page-number">Page 3 of 4</span>
+      <a class="older-posts" href="/archives/2015/08/page/4/">Older Posts &rarr;</a>
+    </nav>
+
+</main>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

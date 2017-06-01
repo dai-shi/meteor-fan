@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteorアプリでnpmを使う方法 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor-app-with-npm/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteorアプリでnpmを使う方法 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。 Npm.requireMeteorではnpmを使ってパッケージを利用する方法が公式に用意されています。 http://docs.meteor.com/#/full/Npm-require しかし、このNpm.requireはMeteo" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor-app-with-npm/" />
+    <meta property="article:published_time" content="2015-09-18T10:56:38.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="パッケージ" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteorアプリでnpmを使う方法 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。 Npm.requireMeteorではnpmを使ってパッケージを利用する方法が公式に用意されています。 http://docs.meteor.com/#/full/Npm-require しかし、このNpm.requireはMeteo" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor-app-with-npm//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteorアプリでnpmを使う方法 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor-app-with-npm/",
+    "datePublished": "2015-09-18T10:56:38.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "パッケージ",
+    "description": "本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。 Npm.requireMeteorではnpmを使ってパッケージを利用する方法が公式に用意されています。 http://docs.meteor.com/#/full/Npm-require しかし、このNpm.requireはMeteo"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteorアプリでnpmを使う方法</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-09-18">18 September 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/packages/">パッケージ</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。</p>
+<h2 id="Npm-require"><a href="#Npm-require" class="headerlink" title="Npm.require"></a>Npm.require</h2><p>Meteorではnpmを使ってパッケージを利用する方法が公式に用意されています。</p>
+<p><a href="http://docs.meteor.com/#/full/Npm-require" target="_blank" rel="external">http://docs.meteor.com/#/full/Npm-require</a></p>
+<p>しかし、この<code>Npm.require</code>はMeteorパッケージの中でしか使うことができません。Meteorパッケージをアプリ内で作ることは比較的容易ですし、モジュール化できるためおすすめなのですが、1つのnpmパッケージを使うためだけにMeteorパッケージを作成するのは少し手間と感じることがあります。</p>
+<h2 id="meteorhacks-npm"><a href="#meteorhacks-npm" class="headerlink" title="meteorhacks:npm"></a>meteorhacks:npm</h2><p>そこで、<code>Npm.require</code>を汎用的に呼び出せるMeteorパッケージが公開されています。</p>
+<p><a href="https://atmospherejs.com/meteorhacks/npm" target="_blank" rel="external">https://atmospherejs.com/meteorhacks/npm</a></p>
+<p>これを使うとMeteorパッケージで数ファイル用意しなければならないことが1行でできるようになります。</p>
+<h3 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h3><p>インストール方法は、</p>
+<pre><code>meteor add meteorhacks:npm
+</code></pre><p>です。使いたいnpmパッケージをpackages.jsonに書きます。”s”を忘れずに。例えば、<a href="https://www.npmjs.com/package/github" target="_blank" rel="external">github</a>を使いたい場合には下記のようにします。</p>
+<pre><code>{
+  &quot;github&quot;: &quot;0.2.4&quot;
+}
+</code></pre><p>あとはMeteorのサーバサイドのコードで次のようにすることでロードできます。</p>
+<pre><code>var Github = Meteor.npmRequire(&apos;github&apos;);
+</code></pre><p>非同期処理をfibersで同期的に使うためには、<a href="http://docs.meteor.com/#/full/meteor_wrapasync" target="_blank" rel="external">Meteor.wrapAsync</a>を使いましょう。もしくは、meteorhacks:npmに用意されているAsync Utilitiesを使うこともできるでしょう。</p>
+<h2 id="おまけ"><a href="#おまけ" class="headerlink" title="おまけ"></a>おまけ</h2><p>クライアントサイドで使いたい場合は、<a href="https://atmospherejs.com/cosmos/browserify" target="_blank" rel="external">こちら</a>も試してみるとよさそうです。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor-app-with-npm/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A7npm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95&amp;url=http://meteor-fan.axlight.com/meteor-app-with-npm/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor-app-with-npm/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor-app-with-npm/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor-app-with-npm/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/changes-in-meteor-12/">
+        <section class="post">
+            <h2>Meteor 1.2での変更点</h2>
+            <p>Meteor 1.2がリリースされました→ https://www.meteor.com/ サイトの構成はほとんど変わっていないので、あまり大きなバージョンアップではないようにも見えますが、大きいはずです。チュートリアルは3種類になりました。 Meteor 1.2のBreaking changes公式ブログでのアナウンス記事はまだありません&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/kadira-debug-for-meteor/">
+        <section class="post">
+            <h2>Kadira DebugでMeteorアプリのデバッグ</h2>
+            <p>Meteorアプリのパフォーマンス向上を支援するKadira Platformというサービスがあります。 Kadira Platformは下図のように複数のツールから構成されています。  この中のKadira Debugというツールを紹介します。 Kadira DebugKadira DebugはKadira Platformの中で開発段階&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

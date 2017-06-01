@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.3のリリース - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/announcing-meteor13/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.3のリリース - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。 公式ブログのアナウンス文を紹介します。 Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか本日(2016/3/28)、Meteor JavaScriptアプリケーションフレームワークの最新版のMeteor 1.3が発表" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/announcing-meteor13/" />
+    <meta property="article:published_time" content="2016-03-29T22:02:55.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="ニュース" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.3のリリース - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。 公式ブログのアナウンス文を紹介します。 Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか本日(2016/3/28)、Meteor JavaScriptアプリケーションフレームワークの最新版のMeteor 1.3が発表" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/announcing-meteor13//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.3のリリース - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/announcing-meteor13/",
+    "datePublished": "2016-03-29T22:02:55.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "ニュース",
+    "description": "Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。 公式ブログのアナウンス文を紹介します。 Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか本日(2016/3/28)、Meteor JavaScriptアプリケーションフレームワークの最新版のMeteor 1.3が発表"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.3のリリース</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-30">30 March 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/news/">ニュース</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteor 1.3がリリースされました。以前から噂され、やっとでたところです。</p>
+<p><a href="http://info.meteor.com/blog/announcing-meteor-1.3" target="_blank" rel="external">公式ブログのアナウンス文</a>を紹介します。</p>
+<h2 id="Meteor-1-3のアナウンス-ES2015モジュール、アプリテスト、モバイル改善ほか"><a href="#Meteor-1-3のアナウンス-ES2015モジュール、アプリテスト、モバイル改善ほか" class="headerlink" title="Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか"></a>Meteor 1.3のアナウンス - ES2015モジュール、アプリテスト、モバイル改善ほか</h2><p>本日(2016/3/28)、Meteor JavaScriptアプリケーションフレームワークの最新版のMeteor 1.3が発表されました。このメジャリリースの狙いは、プロダクションアプリケーションを管理し、スケールさせ、テストし、 JavaScriptの最新技術を継続的に利用していく、これらを行う開発チームをサポートすることです。これまでのアプリをアップグレードするには<code>Meteor update</code>を実行してください。もしこれからMeteorを使い始めるのであれば、<a href="https://www.meteor.com/install" target="_blank" rel="external">Meteor install page</a>を参照してください。</p>
+<p>Meteor 1.3の狙いはこれまでいくつものMeteorのリリースを使ってプロダクションアプリを開発してきた顧客からのヒアリングをもとにしたものです。アプリケーションテストのサポートへの要望はその中でもおよそ一番強く、Meteor 1.3ではユニットテストとイングレーションテストがコアでサポートされるようになりました。ユニットテストはコードがきれいに分割されている場合に有効であり、Meteor 1.3でNode標準のNPMパッケージがサポートされたのもそれが理由の一つです。モバイル開発者にとっては、Meteor 1.3によってCordovaアプリでのより堅牢なホットコードプッシュが提供されます。MeteorのLivedataシステムでは、大規模アプリをスケールさせるためのtunable queriesがサポートされます。AngularやReactとの統合も改善し、これら有名なビューレイヤーを使ったフルスタックアプリケーションを開発する簡単な方法をMeteorは提供しています。</p>
+<p>今回はじめて、リリースに合わせて<a href="http://guide.meteor.com/" target="_blank" rel="external">Meteor Guide</a>も発表します。このガイドはMeteorアプリを開発するためのベストプラクティスの推薦し、モジュール構成からUI抽象化のためのデータベーススキーマの設計まで幅広くカバーします。ガイドと一緒になったMeteorを使うと、すぐにより生産的にアプリを開発できるでしょう。ガイドの推薦を越えたものが必要な場合は、直接の<a href="http://info.meteor.com/lp/developer-subscription" target="_blank" rel="external">ベンダーサポート</a>もあります。</p>
+<p>ES2015の採用とコミュニティのnpmへの集結により、JavaScript開発者にはこれまでにないくらいよい時代になりました。Meteor 1.3をJavaScriptエコシステムのどこに位置付けるかを入念に検討し、将来のリリースの方法性を計画しました。例えば、Meteor 1.3は最新のES2015の機能を有効にしてすぐに使えるようにしています。また、source mapsを自動で生成し、開発者がES2015でデバッグできるようにしています。新しいnpm統合では、開発者が<code>npm install</code>で簡単にパッケージをアプリのクライアントおよびサーバに簡単に追加できるようになりました。ReactやAngularのコンポーネントもnpmを用いてインストールできます。</p>
+<p>これまで以上にコミュニティと顧客の目にかかるよう、この3か月必死でリリースに向けて準備してきました。16個のベ3タと13個のリリース候補を経て、世界中の開発者コミュニティにテストされ、Meteor 1.3はこれまでになく完成されたリリースになっています。その上で、もし1.3でバグを見つけた場合でも、次の公式リリースまで長く待つことはありません。1.3までのプレリリースサイクルで、すばやく頻繁にリリースすることの価値が見えており、従来の遅く単一なリリースサイクルに戻ることは想像できません。</p>
+<p>下記にもう少し詳細に説明します。</p>
+<h3 id="ES2015モジュール"><a href="#ES2015モジュール" class="headerlink" title="ES2015モジュール"></a>ES2015モジュール</h3><p>Meteor 1.2では<a href="https://github.com/meteor/meteor/blob/devel/packages/ecmascript/README.md#supported-es2015-features" target="_blank" rel="external">多くの新しいECMAScript 2015の機能</a>が導入されましたが、一つの大きな欠落として<a href="http://exploringjs.com/es6/ch_modules.html" target="_blank" rel="external">ES2015のimportとexportの文法</a>がありました。Meteor 1.3は完全な標準モジュールシステムとのギャップを埋め、クライアントとサーバの両方で動くようにしました。複数の長期的な問題(ファイルのロード順など)を解決するとともに、これまでのMeteorのコードとの後方互換性も維持しました。</p>
+<p>さらに、<code>npm install</code>(もしくは<code>meteor npm install</code>)でnpmパッケージを直接Meteorアプリで使うことができるサポート追加しました。npmパッケージは、開発者がちゃんと設計していれば、クライアントとサーバの両方で動作します。この統合により、コアパッケージの一部をnpmに移し始めることができ、npmパッケージのラッパーパッケージをAtmosphereに作る必要がなくなりました。このニュースはnpmのエコシステムをそのまま使えるため、特にReactやAngularの開発者に歓迎されるはずです。</p>
+<h3 id="内蔵アプリケーションテスト"><a href="#内蔵アプリケーションテスト" class="headerlink" title="内蔵アプリケーションテスト"></a>内蔵アプリケーションテスト</h3><p>アプリケーションレベルでテストを実行する手段が追加されました。テストには、単体テストと統合テストの<a href="http://guide.meteor.com/testing.html" target="_blank" rel="external">2種類があります</a>。単体テストモード(<code>meteor test</code>)では、Meteorはテストモジュールとそこからインポートされるものだけロードし、他のコードと分離してテストできます。統合テスト(<code>meteor test --full-app</code>)では、テストコードに加えてアプリケーションコードすべてをロードし、全体が期待通りに動くかどうかを検証できます。</p>
+<p>ES2015モジュールと合わせることで、新しいテストの仕組みでは、アプリのコードをテストだけのためにローカルパッケージに分割する必要がなくなります。また、特定のテストフレームワークでテストを動かすためのドライバーを書くこともできます。これまでのところ、コミュニティと協力して<a href="https://atmospherejs.com/practicalmeteor/mocha" target="_blank" rel="external">Mochaのドライバー</a>を作りました。今後、他のドライバーも出てくることを期待します。</p>
+<h3 id="新しいCordova実装"><a href="#新しいCordova実装" class="headerlink" title="新しいCordova実装"></a>新しいCordova実装</h3><p>Meteor 1.3ではiOSとAndroidアプリを作るためのCordovaレイヤーが完全に書き直されました。新しい堅牢なiOSとAndroidラッパーは不完全なJavaScriptコードを検出し対処します。以前はアプリの再インストールでしか直せなかった、壊れたコードをホットコードプッシした状態から回復することができるようになりました。ホットコードプッシュはとても速くなり、逐次的かつ復元可能な更新によりネットワーク帯域とバッテリを節約します。Meteor 1.3はiOS(含iOS8)のWKWebViewをサポートし、アプリのパフォーマンスとフレームレートが大幅に改善されました。最後に、Cordovaは最新バージョンにアップグレードされました。(Cordova 6.0.0, Cordova iOS 4.1.0, Android 5.1.1)</p>
+<h3 id="さらに加えて"><a href="#さらに加えて" class="headerlink" title="さらに加えて"></a>さらに加えて</h3><p>アプリのビルドパフォーマンスとminimongoの更新クエリを改善しました。<a href="http://guide.meteor.com/" target="_blank" rel="external">Meteor Guide</a>はMeteorのベストプラクティスで更新され、<a href="http://guide.meteor.com/1.3-migration.html" target="_blank" rel="external">1.2からのアップグレード</a>もサポートします。<a href="https://github.com/meteor/meteor/blob/master/History.md" target="_blank" rel="external">release notes</a>にある改善一覧も参照してください。</p>
+<h3 id="次は何がくるか"><a href="#次は何がくるか" class="headerlink" title="次は何がくるか"></a>次は何がくるか</h3><p>いろいろあります。NodeとMongoのアップデート、npmへの移行、コアパッケージの分離。より詳しくは、<a href="https://www.youtube.com/watch?v=7d0xTR-eYh0" target="_blank" rel="external">Meteor Nightのトーク</a>を見て、<a href="https://forums.meteor.com/t/mdg-s-plans-and-priorities/18185" target="_blank" rel="external">Meteor forums</a>の議論に参加してください。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/announcing-meteor13/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.3%E3%81%AE%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9&amp;url=http://meteor-fan.axlight.com/announcing-meteor13/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/announcing-meteor13/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/announcing-meteor13/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/announcing-meteor13/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor-full-app-testing/">
+        <section class="post">
+            <h2>Meteorでフルアプリテスト</h2>
+            <p>Meteor 1.3からアプリのテストもサポートされました。チュートリアルにもとても簡単なものが紹介されています。Meteor 1.3 React日本語チュートリアル (step11)にあるものです。 Meteorの公式ブログでフルアプリテストに関する記事があったので紹介します。 Meteorはフルスタックフレームワークであるため、フルアプ&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step12)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep12です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザアカウントを追&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

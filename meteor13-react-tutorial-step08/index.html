@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteor 1.3 React日本語チュートリアル (step08) - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteor 1.3 React日本語チュートリアル (step08) - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteorの日本語版のチュートリアルのstep08です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザアカウントを追" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/" />
+    <meta property="article:published_time" content="2016-03-25T02:47:00.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteor 1.3 React日本語チュートリアル (step08) - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteorの日本語版のチュートリアルのstep08です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザアカウントを追" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/meteor13-react-tutorial-step08//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteor 1.3 React日本語チュートリアル (step08) - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/",
+    "datePublished": "2016-03-25T02:47:00.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "Meteorの日本語版のチュートリアルのstep08です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザアカウントを追"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteor 1.3 React日本語チュートリアル (step08)</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-25">25 March 2016</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep08です。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
+<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
+<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
+<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
+<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
+<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
+<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
+<li>ユーザアカウントを追加する (本記事)</li>
+<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
+<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
+<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
+<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
+</ol>
+<h2 id="ユーザアカウントを追加する"><a href="#ユーザアカウントを追加する" class="headerlink" title="ユーザアカウントを追加する"></a>ユーザアカウントを追加する</h2><p>Meteorはアカウントシステムとすぐ使えるログインUIを備えていて、数分でアプリにマルチユーザの機能を追加できます。</p>
+<blockquote>
+<p>今のところ、そのUIはMeteor標準のUIエンジンであるBlazeで作られています。将来的には、React専用のコンポーネントも用意されるかもしれません。</p>
+</blockquote>
+<p>アカウントシステムとそのUIを有効にするには、対応するパッケージが必要です。アプリディレクトリで下記のコマンドを実行してください。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meteor <span class="keyword">add</span><span class="bash"> accounts-ui accounts-password</span></div></pre></td></tr></table></figure>
+<h3 id="BlazeコンポーネントをReactでラップする"><a href="#BlazeコンポーネントをReactでラップする" class="headerlink" title="BlazeコンポーネントをReactでラップする"></a>BlazeコンポーネントをReactでラップする</h3><p><code>accounts-ui</code>パッケージに含まれるBlazeのUIコンポーネントを利用するには、それをReactコンポーネントでラップする必要があります。そのために、<code>AccountsUIWrapper</code>というコンポーネントを新しいファイルで作りましょう。次のようにファイルを作成してください。ファイル名は<code>imports/ui/AccountsUIWrapper.jsx</code>です。</p>
+<script src="http://gist-it.appspot.com/github/meteor/simple-todos-react/blob/cfb42777b34ec46a22101588c646109b77fbf2cd/imports/ui/AccountsUIWrapper.jsx"></script>
+
+<p>新しく定義したコンポーネントを読み込みましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/aa6a33ec1a5c203a62ac0c7459ebb378f70bfc81/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/2cf26129263f728078e8.js"></script>
+
+<p>続いて、アカウントUIにおいて電子メールアドレスの代わりにユーザ名を使う設定を追加しましょう。次のようにファイルを作成してください。ファイル名は<code>imports/startup/accounts-config.js</code>です。</p>
+<script src="http://gist-it.appspot.com/github/meteor/simple-todos-react/blob/ea28e3011eda90020f1329b3cdd8be37857bfdb8/imports/startup/accounts-config.js"></script>
+
+<p>この設定を読み込む必要があります。<code>client/main.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/eef345667c247c8adca26d365a9d57fac1ca5c65/client/main.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/90b165c7375966141041.js"></script>
+
+<h3 id="ユーザ関連の機能を追加する"><a href="#ユーザ関連の機能を追加する" class="headerlink" title="ユーザ関連の機能を追加する"></a>ユーザ関連の機能を追加する</h3><p>ユーザがアカウントを作成してアプリにログインできるようになりました。しかし、ログインできただけでは大して便利でもありません。2つの機能を追加しましょう。</p>
+<ol>
+<li>新しいタスクの入力フィールドをログインしたユーザにのみ見せる</li>
+<li>それぞれのタスクをだれが作成したか見せる</li>
+</ol>
+<p>これを実現するために、<code>tasks</code>コレクションに2つのフィールドを追加します。</p>
+<ol>
+<li><code>owner</code> - そのタスクを作成したユーザの<code>_id</code>。</li>
+<li><code>username</code> - そのタスクを作成したユーザの<code>username</code>。ユーザ名を直接タスクオブジェクトに保存することで、表示する度にユーザ情報を検索する必要がなくなります。</li>
+</ol>
+<p>はじめに、<code>handleSubmit</code>イベントハンドラでこれらのフィールドを保存するコードを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/08ab8b186c3fbe9adb69bea457152e26b95617fb/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/67ed0af79701245c8563.js"></script>
+
+<p>データコンテナを修正してログインしているユーザの情報を取得します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/c49b83bef043096b8294bbb1e93483b66ce371a2/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/6b3263a0683d0c34e509.js"></script>
+
+<p>続いて、<code>render</code>メソッドにおいて、ユーザがログインしているときのみ表示するように条件文を追加します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/b784c6a07138104abf3b7e7f537457b4b46f6a66/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/5c6c200f7a70131509b9.js"></script>
+
+<p>最後に、それぞれのタスクのテキストの直前に<code>username</code>フィールドを表示するようにします。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/083e8e6b5dff73a926e6efe5848f69dd5e42f2b6/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
+<script src="https://gist.github.com/dai-shi/6f47116b07664e6979d5.js"></script>
+
+<p>ブラウザで、タスクを追加してみて自分の名前が表示されることを確認してください。本ステップ以前に入力した古いタスクはユーザ名がついていません。気になるようなら削除してしまいましょう。</p>
+<p>これで、ユーザがログインしてそれぞれのタスクが誰のものであるかを管理できるようになりました。以下では、今回用いた概念を少し解説します。</p>
+<h3 id="自動型アカウントUI"><a href="#自動型アカウントUI" class="headerlink" title="自動型アカウントUI"></a>自動型アカウントUI</h3><p><code>accounts-ui</code>パッケージをアプリに導入すると、ログインドロップダウンを追加するのに必要なことはそのUIコンポーネントを表示することだけです。このドロップダウンUIはどのログインメソッドがアプリに導入されているかを検知し、自動で必要なコントロールUIを表示します。今回の例では、有効にされたログインメソッドは<code>accounts-password</code>だけであったため、ドロップダウンUIはパスワードフィールドを表示しました。もし試したければ、Facebookログインを有効にする<code>accounts-facebook</code>パッケージを追加してみましょう。ドロップダウンUIにFacebookボタンが自動で表示されるはずです。</p>
+<h3 id="ログインしているユーザの情報を取得する"><a href="#ログインしているユーザの情報を取得する" class="headerlink" title="ログインしているユーザの情報を取得する"></a>ログインしているユーザの情報を取得する</h3><p>データコンテナにおいて、ログインしているユーザの情報を取得するために<code>Meteor.user()</code>を使うことができます。例えば、<code>Meteor.user().username</code>はログインしているユーザの名前を返します。また、<code>Meteor.userId()</code>を使うと単にログインしているユーザの<code>_id</code>を取得できます。</p>
+<p>次のステップでは、データのバリデーションをサーバで行い、アプリをより安全にする方法を学びます。</p>
+<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step09: <a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%201.3%20React%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%20(step08)&amp;url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step09/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step09)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep09です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する ユーザアカウントを追&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/meteor13-react-tutorial-step07/">
+        <section class="post">
+            <h2>Meteor 1.3 React日本語チュートリアル (step07)</h2>
+            <p>Meteorの日本語版のチュートリアルのstep07です。 目次 最初のアプリを作成する Reactコンポーネントでビューを定義する コレクションにタスクを格納する フォームを使ってタスクを追加する タスクにチェックマークをつける・削除する アプリをAndroidやiOSで動かす 一時的なUIデータをステートに格納する (本記事) ユーザア&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

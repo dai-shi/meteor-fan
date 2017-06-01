@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Meteorで初めてのパーミッション制御 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/first-permission-control-in-meteor/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Meteorで初めてのパーミッション制御 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="本記事は公式チュートリアル10の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/first-permission-control-in-meteor/" />
+    <meta property="article:published_time" content="2015-08-13T12:12:28.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Meteorで初めてのパーミッション制御 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="本記事は公式チュートリアル10の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/first-permission-control-in-meteor//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "Meteorで初めてのパーミッション制御 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/first-permission-control-in-meteor/",
+    "datePublished": "2015-08-13T12:12:28.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "チュートリアル",
+    "description": "本記事は公式チュートリアル10の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Meteorで初めてのパーミッション制御</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-08-13">13 August 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本記事は<a href="https://www.meteor.com/tutorials/blaze/security-with-methods" target="_blank" rel="external">公式チュートリアル10</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次"><a href="#チュートリアルの目次" class="headerlink" title="チュートリアルの目次"></a>チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/">Meteorで初めてのユーザアカウント</a></li>
+<li>Meteorで初めてのパーミッション制御 (←今ここ)</li>
+</ol>
+<h2 id="これまでのmongoデータベースのパーミッション"><a href="#これまでのmongoデータベースのパーミッション" class="headerlink" title="これまでのmongoデータベースのパーミッション"></a>これまでのmongoデータベースのパーミッション</h2><p>上記の一連のチュートリアルにおいては、これまでのところmongoに誰でもアクセスできるようになっていました。完全にオープンです。ユーザ認証機能を加えたことでもこれは変わりません。例えば、ログイン前はタスクを登録できないようにフォームを非表示にしましたが、実際にはJavaScriptのコードを直接実行すればログインしなくてもタスクが登録できてしまいます。</p>
+<p>ただし、これは一概に悪いことではありません。そのようなセキュリティモデルであることを正しく理解して使う分には価値があります。例えば、開発途中のアプリで外部に公開しないもの、一人だけで使うアプリ、寿命が極端に短いアプリ、何かしらの方法で別のセキュリティモデルを提供しているアプリなど、利用シーンは様々です。</p>
+<h2 id="mongoデータベースのパーミッションを制御する"><a href="#mongoデータベースのパーミッションを制御する" class="headerlink" title="mongoデータベースのパーミッションを制御する"></a>mongoデータベースのパーミッションを制御する</h2><p>この完全にオープンなパーミッションは、実はデフォルトで追加されている<code>insecure</code>というパッケージによって実現されています。よってこのパッケージを削除すると、パーミッションはオープンではなくなり自分で制御することになります。</p>
+<p>さて、パッケージを削除してみましょう。meteorを起動している状態で、</p>
+<pre><code>meteor remove insecure
+</code></pre><p>を実行してください。パッケージが削除されると、今までできていたタスクの追加などができなくなっているはずです。この時点で動作を確認しましょう。</p>
+<h2 id="Meteor-methodsを定義する"><a href="#Meteor-methodsを定義する" class="headerlink" title="Meteor.methodsを定義する"></a>Meteor.methodsを定義する</h2><p>クライアント側で直接データを修正することができなくなったので、データを修正するAPI(methods)を用意してクライアントから呼び出せるようにします。その際にmethodsの内部でログインしているかなどの権限をチェックすればよいことになります。</p>
+<p>少しややこしいのですが、このmethodsはサーバ側とクライアント側両方に動作するように定義することができます。そうすることで、クライアントではサーバにリクエストを送ると同時に定義されたmethodを実行します。そうすることでサーバの処理の結果を待たずに処理を完了してUIに反映することができます。これをOptimistic UIと呼びます。後ほどサーバからの処理結果が反映されたら再度それをUIに反映します。このとき、結果が同じであればUI上は変化がないため、ユーザからはとても反応のよいUIに見えることになります。</p>
+<p>さて、methodsを定義しましょう。sample-app.jsの最後に下記のコードを追加してください。isClientブロックの外に書いてください。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Meteor.methods(&#123;</div><div class="line">  addTask: <span class="function"><span class="keyword">function</span> <span class="params">(text)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (! Meteor.userId()) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">"not-authorized"</span>);</div><div class="line">    &#125;</div><div class="line">    Tasks.insert(&#123;</div><div class="line">      text: text,</div><div class="line">      createdAt: <span class="keyword">new</span> Date(),</div><div class="line">      owner: Meteor.userId(),</div><div class="line">      username: Meteor.user().username</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  deleteTask: <span class="function"><span class="keyword">function</span> <span class="params">(taskId)</span> </span>&#123;</div><div class="line">    Tasks.remove(taskId);</div><div class="line">  &#125;,</div><div class="line">  setChecked: <span class="function"><span class="keyword">function</span> <span class="params">(taskId, setChecked)</span> </span>&#123;</div><div class="line">    Tasks.update(taskId, &#123; $<span class="keyword">set</span>: &#123; checked: setChecked&#125; &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>addTask</code>の初めにログインのチェックが加わりました。これにより、ログインしていないユーザからのアクセスを確実に拒否することができます。</p>
+<h2 id="methodsを呼び出す"><a href="#methodsを呼び出す" class="headerlink" title="methodsを呼び出す"></a>methodsを呼び出す</h2><p>次に、これらのmethodsを呼び出すようにクライアント側のコードを修正します。</p>
+<p>sample-app.jsのisClientブロック内の<code>Tasks.insert()</code>文は、</p>
+<pre><code>Meteor.call(&quot;addTask&quot;, text);
+</code></pre><p>になります。同じく、<code>Tasks.update()</code>文は、</p>
+<pre><code>Meteor.call(&quot;setChecked&quot;, this._id, ! this.checked);
+</code></pre><p>になります。同じく、<code>Tasks.remove()</code>文は、</p>
+<pre><code>Meteor.call(&quot;deleteTask&quot;, this._id);
+</code></pre><p>になります。</p>
+<p>すべての修正が完了したファイルは、<a href="https://github.com/meteor/simple-todos/blob/40f20dec61f94269f434f8e6600f52e48dab9c59/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>のようになっているはずですので、確認してください。</p>
+<h2 id="動作確認"><a href="#動作確認" class="headerlink" title="動作確認"></a>動作確認</h2><p>今回の修正でこれまでと同じように正しく動くか確認しましょう。タスクの追加、タスクの変更・削除ができるはずです。</p>
+<p>ログインしていない場合にタスクが追加できないことを確認するには、一旦、フォームをログインしていなくても表示するように変更を戻してから、試してみるとよいでしょう。具体的には、</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> currentUser&#125;&#125;</span><span class="xml"></span></div><div class="line">  ...</div><div class="line"><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p>のifの開始と終了のそれぞれ1行を一時的に削除することで戻すことができます。</p>
+<h2 id="確認項目"><a href="#確認項目" class="headerlink" title="確認項目"></a>確認項目</h2><ul>
+<li>addTaskメソッドが定義されていること</li>
+<li>addTaskメソッドが正しく例外処理すること</li>
+<li>deleteTaskメソッドが定義されていること</li>
+<li>setCheckedメソッドが定義されていること</li>
+</ul>
+<h2 id="まとめと次のステップ"><a href="#まとめと次のステップ" class="headerlink" title="まとめと次のステップ"></a>まとめと次のステップ</h2><p>今回はパーミッションを完全オープンではなく独自に制御する方法を学びました。ここはMeteorの複雑な部分でもあり、すぐに全体を見通すことは難しいかもしれません。しかし、重要な部分でもあるため、時間をかけて理解する必要があるでしょう。</p>
+<p>次回は最後のデータの読み込み権限に関する改善について学びます。</p>
+<h2 id="おまけ"><a href="#おまけ" class="headerlink" title="おまけ"></a>おまけ</h2><p>実は、Meteor.methods以外にもパーミッションを制御する方法があります。collection.allowとcollection.denyです。これらは、ある利用シーンにおいては、比較的手軽に制御することができます。しかし、現在(2015/8/13)の公式チュートリアルでは言及されていないので割愛しました。詳しくは、<a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external">ドキュメント</a>をご覧ください。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/first-permission-control-in-meteor/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%81%A7%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%88%B6%E5%BE%A1&amp;url=http://meteor-fan.axlight.com/first-permission-control-in-meteor/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/first-permission-control-in-meteor/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/first-permission-control-in-meteor/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/first-permission-control-in-meteor/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/introducing-meteorpad/">
+        <section class="post">
+            <h2>Meteorをブラウザ環境のみで試すMeteorPad</h2>
+            <p>MeteorPadについて紹介します。過去のMeteorの公式ブログでも紹介されていました。 MeteorPadとは通常、Meteorアプリを開発する場合はローカルマシンに開発環境をインストールして、エディタでコードを書いて、ブラウザで動作を確認します。MeteorPadはこれをブラウザ環境で実行できるようにしたものです。 MeteorPa&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/">
+        <section class="post">
+            <h2>Meteorのaccounts-facebookの設定をリセットする方法</h2>
+            <p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。 accounts-facebookの簡単な使い方説明meteor add accounts-ui accounts-facebook でアプリにパッケージを導入し、HTMLで&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

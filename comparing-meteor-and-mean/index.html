@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>MeteorとMEANの比較 - Meteor Fan (日本語情報)</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/comparing-meteor-and-mean/" />
+    
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="MeteorとMEANの比較 - Meteor Fan (日本語情報)" />
+    <meta property="og:description" content="Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文はこちら 導入まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/comparing-meteor-and-mean/" />
+    <meta property="article:published_time" content="2015-10-26T12:05:04.000Z" />
+    <meta property="article:modified_time" content="2017-06-01T04:54:06.000Z" />
+    <meta property="article:tag" content="紹介" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MeteorとMEANの比較 - Meteor Fan (日本語情報)" />
+    <meta name="twitter:description" content="Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文はこちら 導入まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/comparing-meteor-and-mean//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": "Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中"
+    },
+    "headline": "MeteorとMEANの比較 - Meteor Fan (日本語情報)",
+    "url": "http://meteor-fan.axlight.com/comparing-meteor-and-mean/",
+    "datePublished": "2015-10-26T12:05:04.000Z",
+    "dateModified": "2017-06-01T04:54:06.000Z",
+    "keywords": "紹介",
+    "description": "Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文はこちら 導入まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor13-react-tutorial/">チュートリアル(1.3 React)</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">チュートリアル(1.1 Blaze)</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関していろいろ紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">MeteorとMEANの比較</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-10-26">26 October 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/intro/">紹介</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteorの比較対象としてはMEANスタックが合っていますが、その比較記事を紹介します。原文は<a href="http://wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack" target="_blank" rel="external">こちら</a></p>
+<h2 id="導入"><a href="#導入" class="headerlink" title="導入"></a>導入</h2><p>まず初めに「MEAN」という名のスタックは存在しないということです。MEANはMongDB, Express, AngularJS, Node.jsの頭文字であり、それらを合わせて使うということでしかないです。一方、Meteorは完全なプラットォーム(フレームワークと多くのユーテリティ)です。</p>
+<h2 id="Meteorが標準で与えるもの"><a href="#Meteorが標準で与えるもの" class="headerlink" title="Meteorが標準で与えるもの"></a>Meteorが標準で与えるもの</h2><p>Meteorは標準で多くの機能を与えてくれます。クライアントとサーバはシームレスに通信し、何もコードを書かなくても自動更新してくれます。</p>
+<p><img src="http://wiki.dandascalescu.com/essays/Meteor_js_vs_the_MEAN_stack.attachment/85/view" alt="image"></p>
+<p>MEANは4つが一緒になっただけで何もシームレスではありません。MongoDBとNode.jsの連携、ExpressとAngularの連携、REST APIとその呼び出しをすべてコーディングしなければなりません。これらは基本的なWebアプリを動かすのに必要ですが、Meteorではこれらに加えてさらに、ホットコードリロードやモバイル開発、リアクティブテンプレート、セッション管理、クライアントサーバ共通のパッケージが標準でついてきます。</p>
+<p>MEANスタックではREST APIを使ってデータを要求しますが、Meteorではsubscribeすると更新のたびにデータが自動でWebSocket経由で送られてきます。</p>
+<p>Meteorではクライアントとサーバで同じAPIを使うためフルスタックアプリケーションを開発するのが容易です。MEANスタックの場合は、クライアントとサーバは分離しているためそのようには行きません。</p>
+<h2 id="コールバック地獄なし"><a href="#コールバック地獄なし" class="headerlink" title="コールバック地獄なし"></a>コールバック地獄なし</h2><p>MeteorのサーバサイドはNode.js上で動きますが、<a href="https://www.discovermeteor.com/blog/understanding-sync-async-javascript-node/" target="_blank" rel="external">Fibersを使ってcallbackを省略</a>できるようにしています。クライアントサイドでも<a href="https://www.youtube.com/watch?v=2WQRm4McIZQ" target="_blank" rel="external">simple Tracker</a>と<a href="https://github.com/meteor/meteor/issues/3776#issuecomment-75683372" target="_blank" rel="external">Reactive Method</a>を使うことでコールバックだけでなくPromiseも省略できています。</p>
+<h2 id="リッチWebアプリケーションの7原則"><a href="#リッチWebアプリケーションの7原則" class="headerlink" title="リッチWebアプリケーションの7原則"></a>リッチWebアプリケーションの7原則</h2><p>Socket.IOの作者のGuillermo Rauchは「リッチWebアプリケーションの7原則」という記事を書きました。彼はトークもしています。</p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/p2F-128e3sI" frameborder="0" allowfullscreen></iframe>
+
+<ol>
+<li>サーバでのページ生成は任意ではない</li>
+<li>ユーザの入力に瞬時に動作する</li>
+<li>データの変更に反応する</li>
+<li>サーバでのデータ変換を制御する</li>
+<li>履歴をこわさず、活用する</li>
+<li>コードの変更を反映させる</li>
+<li>人の行動を予測する</li>
+</ol>
+<p>Meteorは2,3,4,6を実装しています。1と5はパッケージによってサポートされています。7はフレームワークの仕事ではないでしょう。一方で、MEANスタックはこれらの一部を実現するSocket.IOを組み込む手間がかかります。Meteorはすべてをつないでいるのにです。</p>
+<p>Meteorはまたツールチェインを持ち、Coffeescriptのコンパイルやファイルの結合およびminifyを実現します。ファイルを保存してから数秒でブラウザが更新されるのです。これは上記6に対応したホットコードプッシュのおかげです。</p>
+<p>Meteor = MEANスタック + Socket.IO + grunt/gulp + Cordova + ホットコードプッシュ + もっとたくさん</p>
+<p>例えば、<code>accounts-facebook</code>というパッケージを使うとテンプレートに一行追加するだけで、Facebook認証の機能を使うことができます。他にも多くのパッケージがあります。さらに、Meteorでは一つのコマンドでアプリをデプロイすることができます。</p>
+<h2 id="どちらの方が簡単に学べるか"><a href="#どちらの方が簡単に学べるか" class="headerlink" title="どちらの方が簡単に学べるか?"></a>どちらの方が簡単に学べるか?</h2><p>でも、これらの機能を全部使えるには大変なのではないかって? 実はそうでもないんです。MeteorのシンプルさのおかげでMeteorはAngular一つを学ぶより簡単です。多くの人がAngularは学ぶのが大変で挫折すると言っています。</p>
+<p>Meteorはその基本を一時間で学ぶことができます。公式チュートリアルを試してみてください。また公式ドキュメントもよく書かれています。それに対してMEAN.ioのドキュメントは話になりません。MEAN.JSのドキュメントには次のように書かれています。</p>
+<blockquote>
+<p>ソースコードをダウンロードして、MongoDB, ExpressJS, AngularJS, Node.jsのドキュメントを読んだら、MEAN.JSのドキュメントに進みましょう。</p>
+</blockquote>
+<p>Meteorのチュートリアルが一時間で終わるのであれば、それを試してからMEAN.ioやMEAN.JSを参照してもよいくらいでしょう。</p>
+<p>もちろん製品アプリを作るのであればMeteorでもMongoDBの知識を学ぶ必要があります。しかし、当初はそれは必要ではありません。MeteorのドキュメントはよくあるMongoDBの使い方を説明しているからです。</p>
+<h2 id="コミュニティ"><a href="#コミュニティ" class="headerlink" title="コミュニティ"></a>コミュニティ</h2><p>Meteorはすべてが一つに詰まっているため、情報検索にも有利です。</p>
+<p>一方、MEANスタックはMEAN.ioとMEAN.JSのどちらを選ぶかから始めなくてはなりません。詳しくは、<a href="http://blog.meanjs.org/post/76726660228/forking-out-of-an-open-source-conflict" target="_blank" rel="external">分離の理由</a>や<a href="http://stackoverflow.com/questions/23199392/difference-between-mean-js-and-mean-io" target="_blank" rel="external">StackOverflow</a>を参照してください。これによりGitHubスターは6000と2000程度に分断されました。Meteorは23000です。</p>
+<p>StackOverflowではmeteorは10000の質問がありますが、mean,mean.io,meanjsを合わせても1100だけです。</p>
+<p>コミュニティサイズについては、<a href="http://wiki.dandascalescu.com/essays/why_meteor#Community" target="_blank" rel="external">Why Meteor</a>も参照してください。</p>
+<h2 id="どういうときにMeteorを使うべきではないか"><a href="#どういうときにMeteorを使うべきではないか" class="headerlink" title="どういうときにMeteorを使うべきではないか"></a>どういうときにMeteorを使うべきではないか</h2><p>他のツールでもあるように、Meteorが適さない場面もあります。これについては<a href="http://wiki.dandascalescu.com/essays/why_meteor#When_not_to_use_Meteor" target="_blank" rel="external">Why Meteor</a>でも説明がありますが、MEANスタックが適する場面を見てみましょう。</p>
+<ul>
+<li>既にほとんどのアプリの機能をMEANスタックで書いている場合。Meteorは追加メリットをもたらしますが、移行コストとの兼ね合いになるでしょう。</li>
+<li>REST APIのみを用いてサービスを作り、クライアントが不要な場合。Meteorはクライアント-サーバのプラットフォームですから。</li>
+<li>開発するWebアプリにリアルタイム性がまったくいらない場合。リアルタイム性を実現するにはメモリとCPUのコストがかかります。</li>
+<li>WebアプリではなくWebサイトを作る場合。しかも、最初のページをできる限り速く表示したい場合。(プロトタイプをできる限り速く作りたいわけではなく)</li>
+<li>現時点で数百万人のユーザにスケールさせる必要がある場合。</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>これまでの経験から、Meteorは生産性が高いだけでなく、調査コストも下げました。アドバイスとしては、Meteorがいい選択肢かどうか「考える」のではなく、チュートリアルを一時間かけてやってみて、それからMEANスタックを調べて、どちらがよいか決めましょう。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>だいぶMeteor推しで、やりすぎ感(不公平感)もありますが、まず触ってから考えようというアドバイスは同意できます。また、Meteorを使わない方がよいシーンの説明は逆に使えるシーンが明確になって分かりやすいと思いました。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                    <p>Meteorでアプリ開発に挑戦中、日本語コミュニティで推進中</p>
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>この記事をシェアする</h4>
+                <a class="icon2-hatena" href="http://b.hatena.ne.jp/entry/http://meteor-fan.axlight.com/comparing-meteor-and-mean/"
+                    onclick="window.open(this.href, 'hatena-share', 'width=800,height=550');return false;">
+                    <span class="hidden">はてなブックマーク</span>
+                </a>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Meteor%E3%81%A8MEAN%E3%81%AE%E6%AF%94%E8%BC%83&amp;url=http://meteor-fan.axlight.com/comparing-meteor-and-mean/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/comparing-meteor-and-mean/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+		<!--
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/comparing-meteor-and-mean/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+		-->
+                <a class="icon2-pocket" href="http://getpocket.com/edit?url=http://meteor-fan.axlight.com/comparing-meteor-and-mean/"
+                   onclick="window.open(this.href, 'pocket-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Pocket</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/introducing-blaze-plus/">
+        <section class="post">
+            <h2>Meteorの標準テンプレートエンジンの拡張Blaze Plusの紹介</h2>
+            <p>Meteor 1.2からReactとAngularのサポートが追加されましたが、標準のビューであるBlazeも根強い人気を持っています。機能面で見るとReactやAngularに見劣りする点もあるかもしれませんが、Blazeにも期待したいです。 Meteorを以前から使っている人はBlazeを好む開発者が多いようで、いろいろな拡張が提案され&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/why-you-should-learn-meteor/">
+        <section class="post">
+            <h2>なぜ今Meteorを学ぶべきか</h2>
+            <p>Just Meteorのブログにはしばしば参考になることが書いてあります。今回は、Why you should learn Meteor nowの記事を紹介します。この記事では今Meteorを学ぶのがよいという主張でその理由をいくつか述べています。 ほんの数秒で開始できるインストールは手順に従えばすぐにできます。すべてがセットになっていてイ&hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>
