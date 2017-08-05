@@ -8,8 +8,43 @@
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト</description>
-    <pubDate>Thu, 01 Jun 2017 12:08:20 GMT</pubDate>
+    <pubDate>Sat, 05 Aug 2017 23:49:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Meteor 1.5.1のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor151-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor151-announcement/</guid>
+      <pubDate>Sat, 05 Aug 2017 23:13:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Meteor 1.5.1がリリースされました。&lt;br&gt;&lt;a href=&quot;https://blog.meteor.com/announcing-meteor-1-5-1-b65ecddf955b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公式ブログ&lt;/a
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Meteor 1.5.1がリリースされました。<br><a href="https://blog.meteor.com/announcing-meteor-1-5-1-b65ecddf955b" target="_blank" rel="external">公式ブログ</a></p>
+<p>本リリースがこのタイミングで出た理由は、Node.jsのセキュリティアップデートが出たからですが、本リリースには他にも変更が含まれています。</p>
+<h2 id="アップグレード方法"><a href="#アップグレード方法" class="headerlink" title="アップグレード方法"></a>アップグレード方法</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">meteor update</span></div></pre></td></tr></table></figure>
+<p>とするだけです。</p>
+<h2 id="サーバサイドレンダリング"><a href="#サーバサイドレンダリング" class="headerlink" title="サーバサイドレンダリング"></a>サーバサイドレンダリング</h2><p>サーバサイドレンダリングはMeteorに以前から求められていた機能ですが、本リリースで <code>server-render</code> というパッケージでサポートされました。 <code>onPageLoad</code> という関数を使うことで、サーバが初めてレスポンスを返す時に処理を追加できるようです。詳しくは<a href="http://docs.meteor.com/packages/server-render.html" target="_blank" rel="external">公式ドキュメント</a>を参照。</p>
+<h2 id="より簡単なバンドルビジュアライザー"><a href="#より簡単なバンドルビジュアライザー" class="headerlink" title="より簡単なバンドルビジュアライザー"></a>より簡単なバンドルビジュアライザー</h2><p>1.5で導入された <code>bundle-visualizer</code> は素晴らしいものでしたが、実行には手間がかかりました。1.5.1では下記のようにすることで簡単に実行できるようになりました。</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">meteor</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">extra</span><span class="literal">-</span><span class="comment">packages</span> <span class="comment">bundle</span><span class="literal">-</span><span class="comment">visualizer</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">production</span></div></pre></td></tr></table></figure>
+<h2 id="pub-subの改良"><a href="#pub-subの改良" class="headerlink" title="pub/subの改良"></a>pub/subの改良</h2><ul>
+<li>これまで <code>this.userId</code> と書かなければならなかったところで、 <code>Meteor.userId()</code> が使えるようになった、 <code>Meteor.user()</code> も</li>
+<li><code>this.onStop</code> がpublicationの <code>this</code> コンテキストで動くようになった</li>
+<li><code>this.onReady</code> がre-subscriptionで毎回呼ばれるようになった (一応breaking change)</li>
+<li>publicationで呼ばれた <code>Meteor.call(...)</code> などで <code>this.connection</code> が使えるようになった</li>
+</ul>
+<h2 id="その他"><a href="#その他" class="headerlink" title="その他"></a>その他</h2><ul>
+<li>ReactiveDictで初期値が設定できるようになった</li>
+<li>minimongoのupsertがmongo v2.6以降の仕様と合うようになった</li>
+<li>accounts-facebookがFacebook API v2.9に対応した</li>
+<li>standard-minifier-jsが <code>process.env.NODE_ENV</code> を適切に置き換え、React Dev Toolsでワーニングが出ないようになった</li>
+</ul>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor151-announcement/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Meteor 1.5のアナウンス</title>
@@ -805,57 +840,6 @@
 ]]></content:encoded>
       
       <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Meteor 1.3 React日本語チュートリアル (step04)</title>
-      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</link>
-      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</guid>
-      <pubDate>Fri, 25 Mar 2016 02:46:46 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep04
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep04です。</p>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
-<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
-<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
-<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
-<li>フォームを使ってタスクを追加する (本記事)</li>
-<li><a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></li>
-<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
-<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
-<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
-<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
-<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
-<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
-<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
-</ol>
-<h2 id="フォームを使ってタスクを追加する"><a href="#フォームを使ってタスクを追加する" class="headerlink" title="フォームを使ってタスクを追加する"></a>フォームを使ってタスクを追加する</h2><p>このステップでは、ユーザがタスクをリストに追加するためのインプットフィールドを追加します。</p>
-<p>はじめに、Appコンポーネントにフォームを追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/b595a90b125e15632f84bbe16f7d46e1682418a0/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
-<script src="https://gist.github.com/dai-shi/1c0c67f6d53456e276d1.js"></script>
-
-<p>(メモ: JSXコード内では <code>{/* ... */}</code>でコメントを入れることができます)</p>
-<p>上記修正で、<code>form</code>要素に<code>onSubmit</code>属性がつきそこにコンポーネントの<code>handleSubmit</code>が指定されているのが分かるでしょう。Reactでは、このようにしてフォームのイベントなどブラウザのイベントを受け取ります。<code>input</code>要素には<code>ref</code>属性を付与することでコードから要素へのアクセスが簡単になります。</p>
-<p>それでは、<code>handleSubmit</code>メソッドを<code>App</code>コンポーネントに追加しましょう。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/9e3e3dd400d5d18024b2a1ba92a6fab5512be5b3/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
-<script src="https://gist.github.com/dai-shi/909bac9950f1449af5ca.js"></script>
-
-<p>これでアプリに入力フィールドができました。タスクを追加するには、フィールドに入力してエンターを押すだけです。新しいブラウザウィンドウを開いてアプリを開けば、リストが同期しているはずです。すべてのクライアントで自動同期します。</p>
-<h3 id="Reactでイベントを受け取る"><a href="#Reactでイベントを受け取る" class="headerlink" title="Reactでイベントを受け取る"></a>Reactでイベントを受け取る</h3><p>すでにやったように、Reactではコンポーネントのメソッドを直接指定することでDOMのイベントを処理します。イベントハンドラでは、<code>ref</code>属性を指定した要素を<code>ReactDOM.findDOMNode</code>で参照することができます。Reactがサポートするその他のイベントやイベントシステムの仕組みについては、<a href="https://facebook.github.io/react/docs/events.html" target="_blank" rel="external">React docs</a>を参照してください。</p>
-<h3 id="コレクションに追加する"><a href="#コレクションに追加する" class="headerlink" title="コレクションに追加する"></a>コレクションに追加する</h3><p>イベントハンドラでは、<code>Tasks.insert()</code>を呼び出して<code>tasks</code>コレクションにタスクを追加しています。コレクションのスキーマは定義しないため、タスクオブジェクトには作成時間など任意のプロパティを割り当てることができます。</p>
-<p>クライアントから任意のデータをデータベースに追加できることは実は安全ではありません。しかし、現時点ではよしとします。チュートリアルの後半のステップで、アプリを安全にするためのデータベースへのデータの追加を制限する方法を解説します。</p>
-<h3 id="タスクデータをソートする"><a href="#タスクデータをソートする" class="headerlink" title="タスクデータをソートする"></a>タスクデータをソートする</h3><p>現状では、新しいタスクはリストの最後に追加されて表示されます。これはあまり好ましくなく、新しいタスクは最初に見えるようにしたいでしょう。</p>
-<p>そこで、<code>createdAt</code>プロパティを自動で追加し、それをもとにソートするようにしましょう。<code>App</code>コンポーネントをラップしているコンテナにある<code>find</code>呼び出しにソートオプションを追加します。<code>imports/ui/App.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/0f68a3dea14816f10c88b4d6491612cedd093aaa/imports/ui/App.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
-<script src="https://gist.github.com/dai-shi/b5b99391b48270235dd8.js"></script>
-
-<p>ブラウザに戻って想定通りになっているか確認してください。新しいタスクがリストの最初に追加されるようになったはずです。</p>
-<p>次のステップでは、TODOリストの重要な機能を追加します。それはタスクの完了を示すチェックマークをつけることと、タスクを削除することです。</p>
-<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step05: <a href="../meteor13-react-tutorial-step05/">タスクにチェックマークをつける・削除する</a></p>
-]]></content:encoded>
-      
-      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/#disqus_thread</comments>
     </item>
     
   </channel>
