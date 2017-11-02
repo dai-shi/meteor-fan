@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/meteor16-announcement/</loc>
+    
+    <lastmod>2017-11-02T00:35:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor151-announcement/</loc>
     
     <lastmod>2017-08-05T23:49:13.000Z</lastmod>
@@ -23,28 +30,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-file-structure/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/at-first/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/announcing-meteor13/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/coming-soon-meteor-14/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-in-2015/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -58,7 +44,14 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/comparing-meteor-and-mean/</loc>
+    <loc>http://meteor-fan.axlight.com/announcing-meteor13/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/at-first/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -86,7 +79,21 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/30min-meteor-intro-video/</loc>
+    <loc>http://meteor-fan.axlight.com/comparing-meteor-and-mean/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/7-reasons-to-choose-meteor/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-meteor-forms/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -101,13 +108,6 @@
   
   <url>
     <loc>http://meteor-fan.axlight.com/first-data-filtering-in-meteor/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-meteor-forms/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -149,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
+    <loc>http://meteor-fan.axlight.com/how-to-read-meteor/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/how-to-read-meteor/</loc>
+    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-12-coming/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-12-coming/</loc>
+    <loc>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -205,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-autoform/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-famous-integration-intro/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -219,13 +219,6 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-famous-integration-intro/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/meteor-features/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
@@ -233,14 +226,21 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-autoform/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-guide-blaze-each-in/</loc>
+    <loc>http://meteor-fan.axlight.com/3min-meteor-intro-video/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/meteor-file-structure/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -254,7 +254,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-in-2015/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-guide-blaze-each-in/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -268,14 +268,14 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-postgres-preview/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-scoped-reactivity/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-scoped-reactivity/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor-postgres-preview/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step03/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step04/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step03/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -324,13 +324,6 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/</loc>
-    
-    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step08/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
@@ -338,7 +331,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step10/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -359,7 +352,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step10/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -373,7 +366,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor14-announcement/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor13-react-tutorial-step12/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -387,7 +380,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor141-announcement/</loc>
+    <loc>http://meteor-fan.axlight.com/meteor14-announcement/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -401,6 +394,20 @@
   </url>
   
   <url>
+    <loc>http://meteor-fan.axlight.com/30min-meteor-intro-video/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/meteor141-announcement/</loc>
+    
+    <lastmod>2017-06-01T04:54:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor143-announcement/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
@@ -408,21 +415,21 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/3min-meteor-intro-video/</loc>
+    <loc>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/7-reasons-to-choose-meteor/</loc>
+    <loc>http://meteor-fan.axlight.com/coming-soon-meteor-14/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/mongol-for-debugging/</loc>
+    <loc>http://meteor-fan.axlight.com/use-graphql-in-meteor/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     
@@ -436,7 +443,7 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/use-graphql-in-meteor/</loc>
+    <loc>http://meteor-fan.axlight.com/mongol-for-debugging/</loc>
     
     <lastmod>2017-06-01T04:54:06.000Z</lastmod>
     

@@ -8,8 +8,33 @@
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト</description>
-    <pubDate>Sat, 05 Aug 2017 23:49:13 GMT</pubDate>
+    <pubDate>Thu, 02 Nov 2017 00:35:30 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Meteor 1.6のアナウンス</title>
+      <link>http://meteor-fan.axlight.com/meteor16-announcement/</link>
+      <guid>http://meteor-fan.axlight.com/meteor16-announcement/</guid>
+      <pubDate>Thu, 02 Nov 2017 00:22:10 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;https://blog.meteor.com/announcing-meteor-1-6-abf30f29e2c6&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;公式ブログ&lt;/a&gt;で、Meteor 1.6がアナウンスされました。&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="https://blog.meteor.com/announcing-meteor-1-6-abf30f29e2c6" target="_blank" rel="external">公式ブログ</a>で、Meteor 1.6がアナウンスされました。</p>
+<p>一言で言うと、</p>
+<ul>
+<li>Node v8にアップデート</li>
+<li>ネイティブデバッギングをサポート</li>
+<li>改善されたWindowsインストーラー</li>
+</ul>
+<p>と言う感じでしょうか。<br>地味に聞こえるかもしれませんが、とても大きな進歩だと思います。<br>これまでのMeteorへの不満が大きく改善されていることが期待できます。<br>ぜひ、アップデートしてみましょう。</p>
+<p>今後はMeteor 1.6.1やApolloとの融合に進んでいく模様です。</p>
+]]></content:encoded>
+      
+      <comments>http://meteor-fan.axlight.com/meteor16-announcement/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Meteor 1.5.1のアナウンス</title>
@@ -800,46 +825,6 @@
 ]]></content:encoded>
       
       <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step06/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Meteor 1.3 React日本語チュートリアル (step05)</title>
-      <link>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/</link>
-      <guid>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/</guid>
-      <pubDate>Fri, 25 Mar 2016 02:46:50 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.meteor.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Meteor&lt;/a&gt;の&lt;a href=&quot;../meteor13-react-tutorial/&quot;&gt;日本語版のチュートリアル&lt;/a&gt;のstep05
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の<a href="../meteor13-react-tutorial/">日本語版のチュートリアル</a>のstep05です。</p>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
-<li><a href="../meteor13-react-tutorial/">最初のアプリを作成する</a></li>
-<li><a href="../meteor13-react-tutorial-step02/">Reactコンポーネントでビューを定義する</a></li>
-<li><a href="../meteor13-react-tutorial-step03/">コレクションにタスクを格納する</a></li>
-<li><a href="../meteor13-react-tutorial-step04/">フォームを使ってタスクを追加する</a></li>
-<li>タスクにチェックマークをつける・削除する (本記事)</li>
-<li><a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></li>
-<li><a href="../meteor13-react-tutorial-step07/">一時的なUIデータをステートに格納する</a></li>
-<li><a href="../meteor13-react-tutorial-step08/">ユーザアカウントを追加する</a></li>
-<li><a href="../meteor13-react-tutorial-step09/">メソッドによるセキュリティ</a></li>
-<li><a href="../meteor13-react-tutorial-step10/">パブリッシュとサブスクライブによるデータフィルタリング</a></li>
-<li><a href="../meteor13-react-tutorial-step11/">テストについて</a></li>
-<li><a href="../meteor13-react-tutorial-step12/">その後の学習法について</a></li>
-</ol>
-<h2 id="タスクにチェックマークをつける・削除する"><a href="#タスクにチェックマークをつける・削除する" class="headerlink" title="タスクにチェックマークをつける・削除する"></a>タスクにチェックマークをつける・削除する</h2><p>これまでは、コレクションに対してデータの追加しかしてきませんでした。ここでは、データの更新と削除について学びます。</p>
-<p><code>task</code>コンポーネントに2つの要素を追加しましょう。チェックボックスと削除ボタンです。それぞれイベントハンドラも設定します。<code>imports/ui/Task.jsx</code>を下記のように修正してください。修正後のファイルは<a href="https://github.com/meteor/simple-todos-react/blob/c8be3a08ea2ae3a778dab859d9f19dc71056c608/imports/ui/Task.jsx" target="_blank" rel="external">こちら</a>のようになります。</p>
-<script src="https://gist.github.com/dai-shi/2396f8d6d6a0578bf601.js"></script>
-
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>上記のコードでは、<code>Tasks.update</code>を呼び出してチェックマークをつけます。</p>
-<p>コレクションの<code>update</code>関数は2つの引数をとります。1つ目はコレクションのサブセットを特定するためのセレクタで、2つ目は該当するオブジェクトをどう変更するかを示すアップデートパラメータです。</p>
-<p>今回の例では、セレクタは単に対象タスクの<code>_id</code>です。アップデートパラメータは<code>$set</code>を用いて<code>checked</code>フィールドをトグル変換しています。<code>checked</code>フィールドがタスクが完了しているかを表しています。</p>
-<h3 id="削除"><a href="#削除" class="headerlink" title="削除"></a>削除</h3><p>上記のコードでは、<code>Tasks.remove</code>を使ってタスクを削除しています。<code>remove</code>関数は1つの引数をとり、コレクションから削除するドキュメントを決めるためのセレクタを指定します。</p>
-<h3 id="次のステップへ"><a href="#次のステップへ" class="headerlink" title="次のステップへ"></a>次のステップへ</h3><p>step06: <a href="../meteor13-react-tutorial-step06/">アプリをAndroidやiOSで動かす</a></p>
-]]></content:encoded>
-      
-      <comments>http://meteor-fan.axlight.com/meteor13-react-tutorial-step05/#disqus_thread</comments>
     </item>
     
   </channel>
